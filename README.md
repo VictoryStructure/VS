@@ -1,1 +1,1 @@
-# VS
+# Victory Structure is victorious!
