@@ -1,0 +1,113 @@
+nav{
+   	font-weight: bold;
+   	text-align: center;
+	font-family: "Segoe UI Black", sans-serif;
+	font-size: 30px;
+	float: right;
+}
+
+nav > ul {
+    margin: 0;
+    padding: 0;
+}
+
+nav > ul > li {
+	display: inline-block;
+	list-style-type: none;
+}
+
+nav > ul > li > a {
+    display: block;
+    line-height: 56px;
+    padding: 0 40px;
+    text-decoration: none;
+	color: #d40000;
+}
+
+.studio {
+	font-style: italic;
+}
+
+footer{
+	text-align: center;
+	font-size:0.8em;
+	font-style: italic;
+	padding: 5px;
+}
+
+label{
+	float: left;
+	display: block;
+	text-align: right;
+	width: 150px;
+	padding-right: 10px;
+	font-family: "arial black", sans-serif;
+}
+
+input, textarea{
+	width: 15%;
+	padding: 5px 0 5px 5px;
+	border-radius: 5px;
+	border: 3px solid #6e6e6e;
+	margin-bottom: 2px;
+	display: block;
+}
+
+input[type=submit]{
+	margin-left: 160px;
+	margin-bottom: 20px;
+	padding: 5px;
+}
+
+form{
+	padding: 3px 0 3px 40px;
+}
+
+.inlineNav {
+	display: inline-block;
+}
+
+.inlineImg{
+	display: inline-block;
+	padding: 5px 0 0 5px;
+}
+
+h1{
+	
+	font-family: "arial black", sans-serif;
+	color: #730303;
+	background-color: #74992e;
+}
+
+p{
+	font-family: "arial black", sans-serif;
+}
+
+.currentPage{
+	color: #730303;
+}
+
+.container1{
+	padding: 0 0 10px 25px;
+}
+
+.container2{
+	background-color: #c9c5c5;
+	padding-top: 20px;
+	margin: 0;
+}
+
+.container3{
+	padding: 0;
+	background-color: #666565;
+	color: white;
+}
+
+.blackLine{
+	background-color: #000000;
+	padding: 2px;
+}
+
+body{
+	margin: 0;
+}
