@@ -1,7 +1,5 @@
 # Victory Structure is victorious!
 
-#### Run the app
-
 Install dependencies:
 
 ```
@@ -13,3 +11,5 @@ Then run the app:
 ```
   npm run start
 ```
+
+Open `http://localhost:3000/` in a web browser.
