@@ -17,13 +17,16 @@
 	<main>
 		<h2> Login Page </h2>
 		<!-- <p> Information that is required is marked with an asterisk (*).</p> -->
+		<% if (messages.error) { %>
+			<%= messages.error %>
+		<% } %>
 		<form action="/login" method="POST">
 		 <fieldset>
 			<legend> Login </legend>
-			<label for = "user_name"> Username: </label>
-			<input type = "text" id = "user_name" name = "user_name" placeholder = "Reggie22" accesskey = "U" required></br>
+			<label for = "username"> Username: </label>
+			<input type = "text" id = "username" name = "username" placeholder = "Reggie22" accesskey = "U" required></br>
 			<label for = "password"> Password: </label>
-			<input type = "text" id = "password" name = "password" placeholder = "Password123" accesskey = "P" required></br>
+			<input type = "password" id = "password" name = "password" placeholder = "Password123" accesskey = "P" required></br>
 			<!-- <label for = "email"> Email *:</label>
 			<input type = "text" id = "email" name = "email" placeholder = "Reggie.Sanchez@uea.ac.uk" accesskey = "E" required></br>
 			<label for = "phone_number">Phone number: </label>
