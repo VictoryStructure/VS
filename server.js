@@ -9,6 +9,7 @@ const passport = require('passport')
 const flash = require('express-flash')
 const session = require('express-session')
 const methodOverride = require('method-override')
+const fs = require('fs');
 
 const initializePassport = require('./passport-config')
 initializePassport(
@@ -21,19 +22,16 @@ app.set('view-engine', 'ejs')
 app.use(express.static('public'))
 app.use(express.urlencoded({extended: false})) // https://stackoverflow.com/questions/23259168/what-are-express-json-and-express-urlencoded
 app.use(flash())
-
 app.use(session({
   secret: 'secret',
   resave: false,
   saveUninitialized: false
 }))
-
 app.use(passport.initialize())
 app.use(passport.session())
 app.use(methodOverride('_method'))
 
 // read json data
-const fs = require('fs');
 let rawdata = fs.readFileSync('users.json');
 let users = JSON.parse(rawdata);
 
