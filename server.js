@@ -13,9 +13,9 @@ const fs = require('fs');
 
 const initializePassport = require('./passport-config')
 initializePassport(
-  passport,
-  username => users.find(user => user.username === username),
-  id => users.find(user => user.id === id)
+    passport,
+    username => users.find(user => user.username === username),
+    id => users.find(user => user.id === id)
 )
 
 app.set('view-engine', 'ejs')
@@ -23,9 +23,9 @@ app.use(express.static('public'))
 app.use(express.urlencoded({extended: false})) // https://stackoverflow.com/questions/23259168/what-are-express-json-and-express-urlencoded
 app.use(flash())
 app.use(session({
-  secret: 'secret',
-  resave: false,
-  saveUninitialized: false
+    secret: 'secret',
+    resave: false,
+    saveUninitialized: false
 }))
 app.use(passport.initialize())
 app.use(passport.session())
@@ -36,7 +36,7 @@ let rawdata = fs.readFileSync('users.json');
 let users = JSON.parse(rawdata);
 
 app.get('/', checkAuthenticated, (req, res) => {
-  res.render('index.ejs', { name: req.user.username })
+    res.render('index.ejs', { name: req.user.username })
 })
 
 app.get('/login', checkNotAuthenticated, (req, res) => {
