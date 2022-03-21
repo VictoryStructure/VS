@@ -1,0 +1,20 @@
+[
+    {
+        "id": "1519211809934",
+        "username": "john.doe",
+        "email": "john.doe@uea.ac.uk",
+        "password": "john"
+    },
+    {
+        "id": "1519211809935",
+        "username": "jane.doe",
+        "email": "jane.doe@uea.ac.uk",
+        "password": "jane"
+    },
+    {
+        "id": "1519211809936",
+        "username": "hello.world",
+        "email": "hello.world@uea.ac.uk",
+        "password": "hello"
+    }
+]
