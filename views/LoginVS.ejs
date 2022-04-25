@@ -2,45 +2,39 @@
 <html>
 <head>
 	<title> Victory Structure </title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<body>
 <body>
 	<header>
 		<h1>Victory Structure</h1>
 		 <link rel="stylesheet" href="css/LoginVS.css">
 	</header>
-	<nav>
-		<ul>
-			
-		</ul>
-	</nav>
 	<main>
-		<h2> Login Page </h2>
-		<!-- <p> Information that is required is marked with an asterisk (*).</p> -->
-		<% if (messages.error) { %>
-			<%= messages.error %>
-		<% } %>
+		<div id = "whole" class "whole">
+		<p> </p>
+		</div>
+		<div id = "login" class = "login">
+			<% if (messages.error) { %>
+				<%= messages.error %>
+			<% } %>
 		<form action="/login" method="POST">
-		 <fieldset>
-			<legend> Login </legend>
-			<label for = "username"> Username: </label>
+			<legend> Login	</legend>
+			<label for = "username"> Your username:</label>
 			<input type = "text" id = "username" name = "username" placeholder = "Reggie22" accesskey = "U" required></br>
-			<label for = "password"> Password: </label>
+			<label for = "password"> Your password:</label>
 			<input type = "password" id = "password" name = "password" placeholder = "Password123" accesskey = "P" required></br>
-			<!-- <label for = "email"> Email *:</label>
-			<input type = "text" id = "email" name = "email" placeholder = "Reggie.Sanchez@uea.ac.uk" accesskey = "E" required></br>
-			<label for = "phone_number">Phone number: </label>
-			<input type = "text" id = "phone_number" name = "phone_number" placeholder = "02035456782" accesskey = "P"> -->
-
+		</div>
+		<div id = "submit" class = "submit">
 			<button type="submit">Login</button>
-	</main>
-	<footer>
-		<div> Victory Structure</br>
-			<p>Contact us:</p>
-			<a href = "placeholder@uea.ac.uk">Email: placeholder@uea.ac.uk  </a></br>
-			<a href = "020855733255"> Phone: 020855733255 </a>
+		</div>
+		<div id = "forgot" class = "forgot">
+			<p> Forgot Password </p>
+		</div>
+		<div id = "new" class = "new">
+			<p> New User </p>
 		</div>
 		
-	</footer>
+		
+	</main>
 </body>
 </html>
