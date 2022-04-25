@@ -100,16 +100,15 @@ input[type=submit]{
 h1{
 	
 	font-family: 'Trebuchet MS' ;
-	font-size: 50px;
+	font-size: 100px;
 	position: absolute;
-	left: 50%;
-	top: 30%;
-	transform: translate(-50%, -50%);
+	left: 25%;
+	top: 15%;
+	text-align: center;
 	background-size: 100px, 100px;
 	background-color: #A3B4A2;
 	z-index: 2;
-	
-	
+		
 }
 
  
