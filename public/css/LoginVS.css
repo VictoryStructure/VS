@@ -1,17 +1,19 @@
 
 
 .login{
+	width: 50%;
 	z-index: 1;
-	padding: 150px;
+	padding: 25px;
 	margin: 0;
-	background-color: #ECEAE0;
 	position: absolute;
 	left: 50%;
 	top: 55%;
 	transform: translate(-50%, -50%);
 	max-width: 100%;
+	min-width: 500px;
 	overflow: hidden;
-	  	
+	/* background-color: black; */
+	
 }
 .new{
 	position: absolute;
@@ -74,27 +76,35 @@ body{
 
 label{
 	float: left;
-	display: block;
-	text-align: right;
-	max-width: 100%;
+	display: inline-block;
+	text-align: left;
+	
+	clear: left;
+
 	padding-right: 10px;
 	font-family: "arial black", sans-serif;
+	font-size: 35px;
 }
 
 input, textarea{
-	width: 300px;
-	padding: 5px 0 5px 5px;
+
+	width: 45%;
+	padding: 10px 0 5px 5px;
 	border-radius: 10px;
 	border: 3px solid green;
 	margin-bottom: 2px;
-	display: block;
+	display: inline-block;
+	float: right;
+	font-size: 15px;
+	transform: translate(0px, 10px);
 }
 
-input[type=submit]{
+
+/*input[type=submit]{
 	margin-left: 160px;
 	margin-bottom: 20px;
 	padding: 5px;
-}
+}*/
 
 
 h1{
@@ -105,7 +115,6 @@ h1{
 	text-align: center;
 	background-size: 100px, 100px;
 	background-color: #A3B4A2;
-	z-index: 2;
 		
 }
 
