@@ -1,6 +1,6 @@
 # Victory Structure is victorious!
 
-How to run on Windows:
+### How to run on Windows:
 
 Do steps 1-9: https://docs.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-windows
 
