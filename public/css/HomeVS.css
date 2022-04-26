@@ -1,114 +1,81 @@
-
-
-h1{
-	
-	position: absolute;
-	background-color: #A3B4A2;
-	transform: translate(-50%, -50%);
-	top: 8%;
-	left: 50%;
-	font-family: 'Trebuchet MS';
-	font-size: 40px;
-	display: inline;
-	padding-bottom: 10px;
-	margin: 10px; 
-	padding: 15px;
-	z-index: 2;
-	
-	
-}
-.background{
-	transform: translate(-50%, -50%);
-
-	position: absolute;
-	left: 50%;
-	top: 50%;
-	background-color: #ECEAE0;
-	padding: 300px;
-	max-height: 100%;
-	top: 55%;
-	width: 40%;
-	
-	z-index: 1;
-	
-}
-.schedule{
-	transform: translate(-50%, -50%);
-	position: absolute;
-	top: 40%;
-	left: 50%;
-	z-index: 2;
-	width: 638px;
-	background-color:   grey;
-	padding: 150px;
-	border: 3px solid white;
-}
-.urgent{
-	transform: translate(-50%, -50%);
-	top: 80%;
-	left: 50%;
-	position: absolute;
-	z-index: 2;
-	max-height: 30%;
-	width: 800px;
-	background-color:  grey;
-	padding: 70px;
-	border: 3px solid white;
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
 }
 
 body{
-	
-	position: absolute;
-	background-color: #CDC6AE;
-	min-width: 100%;
-    height: 100%;
-    margin: 0; /* Space from this element (entire page) and others*/
-    padding: 0; /*space from content and border*/
-	
+   background-color: #ECEAE0;
 }
 
-
-
-
-.sidenav {
-  height: 100%; 
-  width: 0; /* Edited in javascript */
-  position: fixed; 
-  z-index: 1; /* Appears on top of webpage */
-  top: 0; 
-  left: 0;
-  background-color: #111; /* black menu*/
-  overflow-x: hidden; /* Disable horizontal scroll */
-  padding-top: 60px; 
-  transition: 0.5s; /* 0.5 second transition from when button is pressed */
+.wrapper{
+  display: flex;
+  position: relative;
 }
 
-/* The navigation menu selection*/
-.sidenav a {
-  padding: 8px 8px 8px 32px;
-  text-decoration: none;
-  font-size: 25px;
-  color: #818181;
-  display: block;
-  transition: 0.3s;
+.wrapper .sidebar{
+  width: 200px;
+  height: 100%;
+  background: #A3B4A2;
+  padding: 30px 0px;
+  position: fixed;
 }
 
-/* Hovering over options changes the colour */
-.sidenav a:hover {
-  color: #f1f1f1;
+.wrapper .sidebar h2{
+  color: black;
+  font-size: 32px;
+  text-transform: uppercase;
+  text-align: left;
+  margin-bottom: 30px;
 }
 
-/* Position and style of the exit button */
-.sidenav .closebtn {
+.wrapper .sidebar ul li{
+  padding: 15px;
+  border-bottom: 1px solid black;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  border-top: 1px solid rgba(255,255,255,0.05);
+}    
+
+.wrapper .sidebar ul li a{
+  color: black;
+  text-align: left;
+}    
+
+.wrapper .sidebar ul li:hover{
+  background-color: #768f75;
+}
+    
+ 
+.wrapper .sidebar .options{
   position: absolute;
-  top: 0;
-  right: 25px;
-  font-size: 36px;
-  margin-left: 50px;
+  bottom: 0;
+  width: 200px;
 }
 
-/* For smaller screens */
-@media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
+.wrapper .main_content{
+  width: 100%;
+  margin-left: 200px;
+}
+
+.wrapper .main_content .header{
+  padding: 20px;
+  background: #fff;
+  color: #717171;
+  border-bottom: 1px solid #e0e4e8;
+}
+
+.wrapper .main_content .info{
+  margin: 20px;
+  color: #717171;
+  line-height: 25px;
+}
+
+.wrapper .main_content .info div{
+  margin-bottom: 20px;
+}
+
+.header{
+	font-size: 35px;
 }
