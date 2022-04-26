@@ -1,81 +1,88 @@
 *{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  list-style: none;
-  text-decoration: none;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	list-style: none;
+	text-decoration: none;
 }
 
 body{
-   background-color: #ECEAE0;
+	background-color: #ECEAE0;
 }
 
 .wrapper{
-  display: flex;
-  position: relative;
+	display: flex;
+	position: relative;
 }
 
 .wrapper .sidebar{
-  width: 200px;
-  height: 100%;
-  background: #A3B4A2;
-  padding: 30px 0px;
-  position: fixed;
+	width: 200px;
+	height: 100%;
+	background: #A3B4A2;
+	padding: 30px 0px;
+	position: fixed;
 }
 
 .wrapper .sidebar h2{
-  color: black;
-  font-size: 32px;
-  text-transform: uppercase;
-  text-align: left;
-  margin-bottom: 30px;
+	color: black;
+	font-size: 32px;
+	text-transform: uppercase;
+	text-align: left;
+	margin-bottom: 30px;
 }
 
 .wrapper .sidebar ul li{
-  padding: 15px;
-  border-bottom: 1px solid black;
-  border-bottom: 1px solid rgba(0,0,0,0.05);
-  border-top: 1px solid rgba(255,255,255,0.05);
+	padding: 15px;
+	border-bottom: 1px solid black;
+	border-bottom: 1px solid rgba(0,0,0,0.05);
+	border-top: 1px solid rgba(255,255,255,0.05);
 }    
 
 .wrapper .sidebar ul li a{
-  color: black;
-  text-align: left;
+	color: black;
+	text-align: left;
 }    
 
 .wrapper .sidebar ul li:hover{
-  background-color: #768f75;
+	background-color: #768f75;
 }
     
  
 .wrapper .sidebar .options{
-  position: absolute;
-  bottom: 0;
-  width: 200px;
+	position: absolute;
+	bottom: 0;
+	width: 200px;
 }
 
 .wrapper .main_content{
-  width: 100%;
-  margin-left: 200px;
+	width: 100%;
+	margin-left: 200px;
 }
 
 .wrapper .main_content .header{
-  padding: 20px;
-  background: #fff;
-  color: #717171;
-  border-bottom: 1px solid #e0e4e8;
+	font-size: 35px;
+	padding: 20px;
+	background: #fff;
+	color: #717171;
+	border-bottom: 1px solid #e0e4e8;
 }
 
 .wrapper .main_content .info{
-  margin: 20px;
-  color: #717171;
-  line-height: 25px;
+	margin: 15px;
+	color: #717171;
+	line-height: 25px;
 }
 
 .wrapper .main_content .info div{
-  margin-bottom: 20px;
+	margin-bottom: 15px;
+	background: white;
+	
 }
 
-.header{
-	font-size: 35px;
+.wrapper .main_content .info .Table{
+	height: 425px;
+}
+
+.wrapper .main_content .info .Tasks{
+	height: 200px;
 }
