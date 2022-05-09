@@ -63,7 +63,7 @@ app.get('/coursework', checkAuthenticated, (req, res) => {
 })
 
 app.get('/createcoursework', checkAuthenticated, (req, res) => {
-    res.render('CreateCourseworkVS.ejs.ejs');
+    res.render('CreateCourseworkVS.ejs');
 })
   
 function checkAuthenticated(req, res, next) {
