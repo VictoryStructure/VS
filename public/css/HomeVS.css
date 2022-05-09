@@ -86,3 +86,10 @@ body{
 .wrapper .main_content .info .Tasks{
 	height: 200px;
 }
+
+.linked_button {
+	background: none!important;
+	border: none;
+	padding: 0!important;
+	cursor: pointer;
+  }

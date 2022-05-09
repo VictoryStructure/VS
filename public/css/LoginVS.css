@@ -108,17 +108,17 @@ input, textarea{
 
 
 h1{
-	
 	font-family: 'Trebuchet MS' ;
 	font-size: 100px;
 	top: 15%;
 	text-align: center;
 	background-size: 100px, 100px;
-	background-color: #A3B4A2;
-		
+	background-color: #A3B4A2;	
 }
 
- 
-
-
-
+.linked_button {
+	background: none!important;
+	border: none;
+	padding: 0!important;
+	cursor: pointer;
+}

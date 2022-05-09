@@ -19,7 +19,11 @@
         <div class="options">
 			<ul>
 				<li><a href="#">Account and Settings</a></li>
-				<li><a href="#">Sign Out​</a></li>
+				<li>
+          <form action="/logout?_method=DELETE" method="POST">
+            <button type="submit" class="linked_button">Log Out</button>
+          </form>
+        </li>
 			</ul>
       </div>
     </div>
