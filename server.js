@@ -92,6 +92,10 @@ app.get('/createcoursework', checkAuthenticated, (req, res) => {
     res.render('CreateCourseworkVS.ejs');
 })
 
+app.get('/calendar', checkAuthenticated, (req, res) => {
+    res.render('Calendar.ejs');
+})
+
 app.get('/createactivity', checkAuthenticated, (req, res) => {
     res.render('CreateCourseworkActivity.ejs');
 })
