@@ -43,6 +43,10 @@ app.get('/login', checkNotAuthenticated, (req, res) => {
     res.render('LoginVS.ejs')
 })
 
+app.get('/Semester.ejs', (req, res) => {
+    res.render('Semester.ejs');
+   });
+
 app.post('/login', checkNotAuthenticated, passport.authenticate('local', {
     successRedirect: '/',
     failureRedirect: '/login',
