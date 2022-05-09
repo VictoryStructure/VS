@@ -3,7 +3,7 @@
 .login{
 	width: 50%;
 	z-index: 1;
-	padding: 25px;
+	padding: 30px;
 	margin: 0;
 	position: absolute;
 	left: 50%;
@@ -12,7 +12,7 @@
 	max-width: 100%;
 	min-width: 500px;
 	overflow: hidden;
-	/* background-color: black; */
+	/*background-color: black; */
 	
 }
 .new{
@@ -44,6 +44,7 @@
 	display: inline-block;
 	font-size: 12px;
 	z-index: 2;
+	
 
 }
 
@@ -61,9 +62,23 @@
 	display: inline-block;
 	font-size: 12px;
 	z-index: 2;
-
- 
 }
+
+.register {
+	text-align: center;
+	width:200px;
+	font-size:20px;
+	margin-left:50%;
+	transform: translate(-50%, 50%);
+	background-color: #ECEAE0; 
+    border: solid green;
+}
+
+.header{
+		text-align: center;
+		font-size: 40px;
+}
+
 body{
 	position: absolute;
 	
@@ -76,11 +91,8 @@ body{
 
 label{
 	float: left;
-	display: inline-block;
 	text-align: left;
-	
 	clear: left;
-
 	padding-right: 10px;
 	font-family: "arial black", sans-serif;
 	font-size: 35px;
@@ -93,7 +105,6 @@ input, textarea{
 	border-radius: 10px;
 	border: 3px solid green;
 	margin-bottom: 2px;
-	display: inline-block;
 	float: right;
 	font-size: 15px;
 	transform: translate(0px, 10px);
@@ -121,4 +132,9 @@ h1{
 	border: none;
 	padding: 0!important;
 	cursor: pointer;
+}
+
+a {
+	text-decoration: none;
+	color: black;
 }

@@ -9,7 +9,8 @@ const passport = require('passport')
 const flash = require('express-flash')
 const session = require('express-session')
 const methodOverride = require('method-override')
-const fs = require('fs');
+const fs = require('fs')
+const bcrypt = require('bcrypt')
 
 const initializePassport = require('./passport-config')
 initializePassport(
@@ -43,6 +44,31 @@ app.get('/', checkAuthenticated, (req, res) => {
     res.render('index.ejs', { name: req.user.username })
 })
 
+app.get('/register', checkNotAuthenticated, (req, res) => {
+    res.render('Register.ejs')
+})
+
+app.post('/register', checkNotAuthenticated, async (req, res) => {
+    try {
+        const hashedPassword = await bcrypt.hash(req.body.password, 10)
+        users.push({
+            id: Date.now().toString(),
+            username: req.body.username,
+            email: req.body.email,
+            password: hashedPassword
+        })
+        
+        // write data to json file
+        let data = JSON.stringify(users, undefined, 4)
+        fs.writeFileSync('users.json', data)
+
+        res.redirect('/login')
+    } 
+    catch {
+        res.redirect('/register')
+    }
+})
+
 app.get('/login', checkNotAuthenticated, (req, res) => {
     res.render('LoginVS.ejs')
 })
@@ -68,6 +94,10 @@ app.get('/coursework', checkAuthenticated, (req, res) => {
 
 app.get('/createcoursework', checkAuthenticated, (req, res) => {
     res.render('CreateCourseworkVS.ejs');
+})
+
+app.get('/createactivity', checkAuthenticated, (req, res) => {
+    res.render('CreateCourseworkActivity.ejs');
 })
   
 function checkAuthenticated(req, res, next) {

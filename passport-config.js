@@ -1,6 +1,7 @@
 2// referenced from https://github.com/WebDevSimplified/Nodejs-Passport-Login/blob/master/passport-config.js
 
 const LocalStrategy = require('passport-local').Strategy
+const bcrypt = require('bcrypt')
 
 function initialize(passport, getUsername, getUserId) {
     const authenticateUser = async (username, password, done) => {
@@ -11,11 +12,11 @@ function initialize(passport, getUsername, getUserId) {
         }
 
         try {
-            if (password == user.password) {
+            if (await bcrypt.compare(password, user.password)) {
                 return done(null, user)
             } 
             else {
-                return done(null, false, {message: 'Password incorrect'})
+                return done(null, false, { message: 'Password incorrect' })
             }
         } 
         
