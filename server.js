@@ -32,9 +32,13 @@ app.use(passport.initialize())
 app.use(passport.session())
 app.use(methodOverride('_method'))
 
-// read json data
+// read user json data
 let rawdata = fs.readFileSync('users.json');
 let users = JSON.parse(rawdata);
+
+// read coursework json data
+// let courseworkdata = fs.readFileSync('coursework.json');
+// let coursework = JSON.parse(courseworkdata);
 
 app.get('/', checkAuthenticated, (req, res) => {
     res.render('index.ejs', { name: req.user.username })
