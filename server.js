@@ -43,7 +43,7 @@ app.get('/login', checkNotAuthenticated, (req, res) => {
     res.render('LoginVS.ejs')
 })
 
-app.get('/Semester.ejs', (req, res) => {
+app.get('/semester', checkAuthenticated, (req, res) => {
     res.render('Semester.ejs');
    });
 
