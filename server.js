@@ -57,6 +57,10 @@ app.delete('/logout', (req, res) => {
 app.get('/semester', checkAuthenticated, (req, res) => {
     res.render('Semester.ejs');
 })
+
+app.get('/coursework', checkAuthenticated, (req, res) => {
+    res.render('CourseworkVS.ejs');
+})
   
 function checkAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
