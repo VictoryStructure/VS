@@ -43,10 +43,6 @@ app.get('/login', checkNotAuthenticated, (req, res) => {
     res.render('LoginVS.ejs')
 })
 
-app.get('/semester', checkAuthenticated, (req, res) => {
-    res.render('Semester.ejs');
-   });
-
 app.post('/login', checkNotAuthenticated, passport.authenticate('local', {
     successRedirect: '/',
     failureRedirect: '/login',
@@ -56,6 +52,10 @@ app.post('/login', checkNotAuthenticated, passport.authenticate('local', {
 app.delete('/logout', (req, res) => {
     req.logOut()
     res.redirect('/login')
+})
+
+app.get('/semester', checkAuthenticated, (req, res) => {
+    res.render('Semester.ejs');
 })
   
 function checkAuthenticated(req, res, next) {
