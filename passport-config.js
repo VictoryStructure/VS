@@ -1,4 +1,4 @@
-// referenced from https://github.com/WebDevSimplified/Nodejs-Passport-Login/blob/master/passport-config.js
+2// referenced from https://github.com/WebDevSimplified/Nodejs-Passport-Login/blob/master/passport-config.js
 
 const LocalStrategy = require('passport-local').Strategy
 
