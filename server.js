@@ -41,7 +41,7 @@ app.get('/', checkAuthenticated, (req, res) => {
 })
 
 app.get('/register', checkNotAuthenticated, (req, res) => {
-    res.render('register.ejs')
+    res.render('Register.ejs')
 })
 
 app.post('/register', checkNotAuthenticated, async (req, res) => {
@@ -53,7 +53,8 @@ app.post('/register', checkNotAuthenticated, async (req, res) => {
             email: req.body.email,
             password: hashedPassword
         })
-
+        
+        // write data to json file
         let data = JSON.stringify(users, undefined, 4)
         fs.writeFileSync('users.json', data)
 
@@ -66,7 +67,6 @@ app.post('/register', checkNotAuthenticated, async (req, res) => {
 
 app.get('/login', checkNotAuthenticated, (req, res) => {
     res.render('LoginVS.ejs')
-    console.log(users)
 })
 
 app.post('/login', checkNotAuthenticated, passport.authenticate('local', {
