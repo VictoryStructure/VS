@@ -61,6 +61,10 @@ app.get('/semester', checkAuthenticated, (req, res) => {
 app.get('/coursework', checkAuthenticated, (req, res) => {
     res.render('CourseworkVS.ejs');
 })
+
+app.get('/createcoursework', checkAuthenticated, (req, res) => {
+    res.render('CreateCourseworkVS.ejs.ejs');
+})
   
 function checkAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
