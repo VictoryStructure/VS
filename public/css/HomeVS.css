@@ -6,6 +6,23 @@
 	text-decoration: none;
 }
 
+.button1{
+	
+	list-style: none;
+    text-align: center;
+    background-color: #01AAAD;
+    width: 150px;
+    line-height: 60px;
+    float: left;
+	
+}
+.button2{
+	margin-top: 0px;
+	padding: 10px;
+	margin-left: 90%;
+	line-height: 25px;
+}
+
 body{
 	background-color: #ECEAE0;
 }
