@@ -269,6 +269,14 @@ body {
 .right .dates {
     grid-template-rows: repeat(7, 1fr);
 }
+.show .full{
+    width: 100vw;
+    height: 100vh;
+    background: var(--light-body-bg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+}
 @keyframes animate {
     0% {
         transform: scale(0.85);
