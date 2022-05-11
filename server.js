@@ -137,6 +137,32 @@ app.post('/createcoursework', checkAuthenticated, (req, res) => {
     }
 })
 
+app.post('/createmodule', checkAuthenticated, (req, res) => {
+    try {
+        if (req.user.id in module) {
+            module[req.user.id].push({
+                modulename : req.body.moduleename,
+                description : req.body.description
+            })
+        }
+        else {
+            module[req.user.id] = [{
+                modulename : req.body.moduleename,
+                description : req.body.description
+            }]
+        }
+        
+        // write data to json file
+        let data = JSON.stringify(module, undefined, 4)
+        fs.writeFileSync('public/data/module.json', data)
+
+        res.redirect('/module')
+    } 
+    catch {
+        res.redirect('/createmodule')
+    }
+})
+
 app.get('/calendar', checkAuthenticated, (req, res) => {
     res.render('Calendar.ejs');
 })

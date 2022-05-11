@@ -32,9 +32,23 @@
     <div class="main_content">
         <div class="header">Create Coursework Activity</div>  
         <div class="info">
-			<div class="Table">Schedule Table​</div>
-      <iframe src="/calendar" width="100%" height="800px"></iframe>
-
+			<div class="Table">
+				<form action="#" method="POST">
+				  <label for = "coursename">Enter Module Name</label>
+				  <input type = "text" id = "modulename" name = "modulename" placeholder = "Modlue Name" required>
+				  <label for = "description">Description</label>
+				  <input type = "text" id = "description" name = "description" placeholder = "Description" required >
+				  <label for = "coursename">Enter Module Name</label>
+				  <select id = "modulename" name = "modulename" placeholder = "Modlue Name" required>
+					<option value="volvo">Volvo</option>
+					<option value="saab">Saab</option>
+					<option value="fiat" selected>Fiat</option>
+					<option value="audi">Audi</option>
+				  </select>
+				  
+					  <button type="submit" class="linked_button" id="form_submit">Submit</button>       
+				</form>  
+			</div>
 		</div>
     </div>
 </div>

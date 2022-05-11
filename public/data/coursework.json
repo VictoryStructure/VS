@@ -23,6 +23,14 @@
             "markvalue": "30",
             "notes": "sad life",
             "percentage": 0
+        },
+        {
+            "coursename": "df",
+            "description": "sdf",
+            "deadline": "2022-05-20",
+            "markvalue": "dsf",
+            "notes": "sdf",
+            "percentage": 0
         }
     ]
 }
