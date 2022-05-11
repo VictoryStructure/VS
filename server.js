@@ -41,7 +41,7 @@ let coursework = JSON.parse(courseworkdata);
 
 // read module json data
 let moduledata = fs.readFileSync('public/data/module.json');
-let module = JSON.parse(moduleworkdata);
+let modulejson = JSON.parse(moduledata);
 
 app.get('/', checkAuthenticated, (req, res) => {
     res.render('index.ejs', { name: req.user.username })
@@ -143,24 +143,25 @@ app.post('/createcoursework', checkAuthenticated, (req, res) => {
 
 app.post('/createmodule', checkAuthenticated, (req, res) => {
     try {
-        if (req.user.id in module) {
-            module[req.user.id].push({
+        if (req.user.id in modulejson) {
+            modulejson[req.user.id].push({
                 modulename : req.body.modulename,
                 description : req.body.description
             })
         }
         else {
-            module[req.user.id] = [{
+            modulejson[req.user.id] = [{
                 modulename : req.body.modulename,
                 description : req.body.description
             }]
         }
         
         // write data to json file
-        let data = JSON.stringify(module, undefined, 4)
+        let data = JSON.stringify(modulejson, undefined, 4)
         fs.writeFileSync('public/data/module.json', data)
 
         res.redirect('/module')
+        console.log(modulejson)
     } 
     catch {
         res.redirect('/createmodule')
