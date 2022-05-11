@@ -111,7 +111,7 @@ app.post('/createcoursework', checkAuthenticated, (req, res) => {
     try {
         if (req.user.id in coursework) {
             coursework[req.user.id].push({
-                coursename : req.body.coursename,
+                courseworkname : req.body.courseworkname,
                 description : req.body.description,
                 deadline : req.body.deadline,
                 markvalue : req.body.markvalue,
@@ -121,7 +121,7 @@ app.post('/createcoursework', checkAuthenticated, (req, res) => {
         }
         else {
             coursework[req.user.id] = [{
-                coursename : req.body.coursename,
+                courseworkname : req.body.courseworkname,
                 description : req.body.description,
                 deadline : req.body.deadline,
                 markvalue : req.body.markvalue,
@@ -157,11 +157,12 @@ app.post('/createmodule', checkAuthenticated, (req, res) => {
         }
         
         // write data to json file
-        let data = JSON.stringify(modulejson, undefined, 4)
-        fs.writeFileSync('public/data/module.json', data)
+        let data1 = JSON.stringify(modulejson, undefined, 4)
+        console.log("modulejson", modulejson)
+        console.log("Data", data1)
+        fs.writeFileSync('public/data/module.json', data1)
 
         res.redirect('/module')
-        console.log(modulejson)
     } 
     catch {
         res.redirect('/createmodule')
