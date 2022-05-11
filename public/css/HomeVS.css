@@ -34,6 +34,35 @@
   /* displays in its own space */
   display: table;
 }
+.module-group{
+	background-color: none;
+	padding-top:10px;
+}
+.module-group button{
+	position: absolute;
+	left: 80%;
+	width: 200px;
+	float: left;
+	background-color: #A3B4A2;
+	border: 1px solid green; 
+	color: white; 
+	
+	padding: 10px 24px; 
+	cursor: pointer
+}
+.module-group button:not(:last-child) {
+  border-right: none; /* Prevent double borders */
+}
+
+
+.module-group:after {
+  content: "";
+  clear: both;
+  /* displays in its own space */
+  display: table;
+}
+
+
 
 /* Add a background color on hover */
 .button-group button:hover {
