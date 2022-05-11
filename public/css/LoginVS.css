@@ -51,15 +51,15 @@
 	z-index: 2;
 }
 
-/*.register {
+.register {
 	text-align: center;
 	width:200px;
-	font-size:20px;;
+	font-size:20px;
 	margin-left:50%;
 	transform: translate(-50%, 50%);
 	background-color: #ECEAE0; 
     border: solid green;
-}*/
+}
 
 .header{
 		text-align: center;
