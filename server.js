@@ -84,13 +84,12 @@ app.delete('/logout', (req, res) => {
     res.redirect('/login')
 })
 
-<<<<<<< HEAD
+
 app.get('/Module', checkAuthenticated, (req, res) => {
     res.render('Module.ejs');
-=======
+})
 app.get('/semester', checkAuthenticated, (req, res) => {
     res.render('Semester.ejs')
->>>>>>> 8d169f1986c605f7c4f65f8f408fc8890885125c
 })
 
 app.get('/coursework', checkAuthenticated, (req, res) => {
