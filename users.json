@@ -16,5 +16,11 @@
         "username": "test1",
         "email": "test1@gmail.com",
         "password": "$2b$10$MnxWDxtkqnwchhVfX3I8aOqnJSvTytq0Cf0zH9t1oDeAwxPBHKFWe"
+    },
+    {
+        "id": "1652279794490",
+        "username": "john.doe",
+        "email": "sfsfs@dsds",
+        "password": "$2b$10$7EXSscjkE02hfuf6zzVeje0Zt38BjIMpasittvz9e9opUmNTQM3YK"
     }
 ]
