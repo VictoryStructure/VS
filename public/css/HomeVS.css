@@ -6,8 +6,8 @@
 	text-decoration: none;
 }
 .button-group{
-	
 	background-color: none;
+	padding-top:10px;
 }
 .button-group button{
 	/*transform: translate(-50%,-50%);*/
