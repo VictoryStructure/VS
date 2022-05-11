@@ -31,6 +31,14 @@
             "markvalue": "dsf",
             "notes": "sdf",
             "percentage": 0
+        },
+        {
+            "coursename": "fdfg",
+            "description": "dfgdfg",
+            "deadline": "2022-05-05",
+            "markvalue": "dfg",
+            "notes": "dfg",
+            "percentage": 0
         }
     ]
 }
