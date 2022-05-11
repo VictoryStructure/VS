@@ -1,0 +1,18 @@
+[
+    {
+        "coursename": "Networks",
+        "description": "Connection",
+        "deadline": "2022-05-17",
+        "markvalue": "20%",
+        "notes": "Hello World",
+        "percentage": 0
+    },
+    {
+        "coursename": "Software Engineering ",
+        "description": "Team based hell",
+        "deadline": "2022-05-16",
+        "markvalue": "90%",
+        "notes": "Ka shoot me ",
+        "percentage": 0
+    }
+]

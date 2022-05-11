@@ -1,18 +1,10 @@
 [
     {
-        "coursename": "SWE",
-        "description": "SWE",
-        "deadline": "2022-05-11",
-        "markvalue": "30",
-        "notes": "",
-        "percentage": 0
-    },
-    {
-        "coursename": "DS",
-        "description": "DS",
-        "deadline": "2022-05-11",
-        "markvalue": "20",
-        "notes": "a",
+        "coursename": "Networks",
+        "description": "No",
+        "deadline": "2022-05-25",
+        "markvalue": "Yes",
+        "notes": "please",
         "percentage": 0
     }
 ]
