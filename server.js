@@ -33,11 +33,11 @@ app.use(passport.session())
 app.use(methodOverride('_method'))
 
 // read user json data
-let rawdata = fs.readFileSync('users.json');
+let rawdata = fs.readFileSync('public/data/users.json');
 let users = JSON.parse(rawdata);
 
 // read coursework json data
-let courseworkdata = fs.readFileSync('coursework.json');
+let courseworkdata = fs.readFileSync('public/data/coursework.json');
 let coursework = JSON.parse(courseworkdata);
 
 app.get('/', checkAuthenticated, (req, res) => {
@@ -60,7 +60,7 @@ app.post('/register', checkNotAuthenticated, async (req, res) => {
         
         // write data to json file
         let data = JSON.stringify(users, undefined, 4)
-        fs.writeFileSync('users.json', data)
+        fs.writeFileSync('public/data/users.json', data)
 
         res.redirect('/login')
     } 
@@ -128,7 +128,7 @@ app.post('/createcoursework', checkAuthenticated, (req, res) => {
         
         // write data to json file
         let data = JSON.stringify(coursework, undefined, 4)
-        fs.writeFileSync('coursework.json', data)
+        fs.writeFileSync('public/data/coursework.json', data)
 
         res.redirect('/coursework')
     } 
