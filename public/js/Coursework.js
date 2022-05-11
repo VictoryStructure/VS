@@ -8,7 +8,5 @@ slider.oninput = function() {
 }
 
 function handleChange(checkbox) {
-    if(checkbox.checked == true){
-        alert("boop");
-    }
+        confirm("This action will delete this coursework. Do you want to delete it?");
 }
