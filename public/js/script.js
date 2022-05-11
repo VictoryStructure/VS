@@ -6,6 +6,9 @@ const forward = document.querySelector(".forward");
 const themeSwitch = document.querySelector(".themeSwitch");
 const body = document.querySelector("body");
 
+
+
+
 let monthIndex = 0;
 const Months = [
     "January",
