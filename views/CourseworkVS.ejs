@@ -10,7 +10,8 @@
 <div class="wrapper">
     <div class="sidebar">
         <h2>Victory Structure</h2>
-        <ul>
+    
+    <ul>
             <li><a href="/">Home</a></li>
             <li><a href="/semester">Semester</a></li>
             <li><a href="/coursework"></i>Create Coursework</a></li>
@@ -44,18 +45,16 @@
 		<div class="Table">Schedule Table​</div>
 		
 		<div class="slidecontainer">
-			<input type="range" min="1" max="100" value="50" class="slider" id="myRange">
-			<p>Value: <span id="demo"></span></p>
+			<input type="range" min="0" max="100" value="0" class="slider" id="myRange">
+			<p>Percentage Complete: <span id="demo"></span>%</p>
 		</div>
-		<script src = "Coursework.js"></script>
 		
 		
-        <iframe src="/calendar" frameborder="0" style="overflow:hidden;height:100%;width:100%" height="100%" width="100%"></iframe>
-    </body>
-			
+        <iframe src="/calendar" frameborder="0" style="overflow:hidden;height:100%;width:100%" height="100%" width="100%"></iframe>			
 		</div>
     </div>
 </div>
 
+<script src="js/Coursework.js"></script>
 </body>
 </html>
