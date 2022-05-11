@@ -17,46 +17,33 @@
 }
 .new{
 	position: absolute;
-	transform: translate(-50%, -50%);
-	left: 62.5%;
+	/*transform: translate(-50%, -50%);*/
+	left: 65%;
 	top: 65%;
-    background-color: #ECEAE0; 
-    border: solid green;
-	color: black;
-	padding: 0px 10px;
-	text-align: center;
-	text-decoration: none;
-	display: inline-block;
-	font-size: 12px;
-	z-index: 2;
-}
-.forgot {
-	position: absolute;
-	transform: translate(-50%, -50%);
-	left: 56%;
-	top: 65%;
-    background-color: #ECEAE0; 
-    border: solid green;
-	color: black;
-	padding: 0px 10px;
-	text-align: center;
-	text-decoration: none;
-	display: inline-block;
-	font-size: 12px;
-	z-index: 2;
 	
-
+    background-color: #ECEAE0; 
+    border: solid green;
+	color: black;
+	padding: 11px 20px;
+	text-align: center;
+	text-decoration: none;
+	font-family: "Arial";
+	display: inline-block;
+	font-size: 12px;
+	z-index: 2;
 }
+
 
 .submit {
 	position: absolute;
-	transform: translate(-50%, -50%);
-	left: 50%;
+	/*transform: translate(-50%, -50%);*/
+	left: 60%;
 	top: 65%;
+	font-family: "Arial";
 	background-color: #ECEAE0; 
 	border: solid green;
 	color: black;
-	padding: 0px 10px;
+	padding: 9.5px 20px;
 	text-align: center;
 	text-decoration: none;
 	display: inline-block;
@@ -64,15 +51,15 @@
 	z-index: 2;
 }
 
-.register {
+/*.register {
 	text-align: center;
 	width:200px;
-	font-size:20px;
+	font-size:20px;;
 	margin-left:50%;
 	transform: translate(-50%, 50%);
 	background-color: #ECEAE0; 
     border: solid green;
-}
+}*/
 
 .header{
 		text-align: center;
@@ -111,11 +98,11 @@ input, textarea{
 }
 
 
-/*input[type=submit]{
+input[type=submit]{
 	margin-left: 160px;
 	margin-bottom: 20px;
 	padding: 5px;
-}*/
+}
 
 
 h1{
