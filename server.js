@@ -1,6 +1,5 @@
 // server.js
 //
-// Right now only contains login system
 // Referenced from https://github.com/WebDevSimplified/Nodejs-Passport-Login/blob/master/server.js
 
 const express = require('express')
@@ -33,12 +32,16 @@ app.use(passport.session())
 app.use(methodOverride('_method'))
 
 // read user json data
-let rawdata = fs.readFileSync('users.json');
+let rawdata = fs.readFileSync('public/data/users.json');
 let users = JSON.parse(rawdata);
 
 // read coursework json data
-let courseworkdata = fs.readFileSync('coursework.json');
+let courseworkdata = fs.readFileSync('public/data/coursework.json');
 let coursework = JSON.parse(courseworkdata);
+
+// read module json data
+let moduledata = fs.readFileSync('public/data/module.json');
+let modulejson = JSON.parse(moduledata);
 
 app.get('/', checkAuthenticated, (req, res) => {
     res.render('index.ejs', { name: req.user.username })
@@ -60,7 +63,7 @@ app.post('/register', checkNotAuthenticated, async (req, res) => {
         
         // write data to json file
         let data = JSON.stringify(users, undefined, 4)
-        fs.writeFileSync('users.json', data)
+        fs.writeFileSync('public/data/users.json', data)
 
         res.redirect('/login')
     } 
@@ -93,12 +96,13 @@ app.get('/semester', checkAuthenticated, (req, res) => {
 })
 
 app.get('/coursework', checkAuthenticated, (req, res) => {
-    res.render('CourseworkVS.ejs')
+    res.render('CourseworkVS.ejs', { passedid: req.user.id })
 })
 
 app.get('/createcoursework', checkAuthenticated, (req, res) => {
     res.render('CreateCourseworkVS.ejs')
 })
+
 app.get('/createmodule', checkAuthenticated, (req, res) => {
 	res.render('CreateModule.ejs');
 })
@@ -128,12 +132,39 @@ app.post('/createcoursework', checkAuthenticated, (req, res) => {
         
         // write data to json file
         let data = JSON.stringify(coursework, undefined, 4)
-        fs.writeFileSync('coursework.json', data)
+        fs.writeFileSync('public/data/coursework.json', data)
 
         res.redirect('/coursework')
     } 
     catch {
         res.redirect('/createcoursework')
+    }
+})
+
+app.post('/createmodule', checkAuthenticated, (req, res) => {
+    try {
+        if (req.user.id in modulejson) {
+            modulejson[req.user.id].push({
+                modulename : req.body.modulename,
+                description : req.body.description
+            })
+        }
+        else {
+            modulejson[req.user.id] = [{
+                modulename : req.body.modulename,
+                description : req.body.description
+            }]
+        }
+        
+        // write data to json file
+        let data = JSON.stringify(modulejson, undefined, 4)
+        fs.writeFileSync('public/data/module.json', data)
+
+        res.redirect('/module')
+        console.log(modulejson)
+    } 
+    catch {
+        res.redirect('/createmodule')
     }
 })
 
