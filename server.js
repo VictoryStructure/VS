@@ -124,7 +124,6 @@ app.post('/createcoursework', checkAuthenticated, (req, res) => {
         fs.writeFileSync('coursework.json', data)
 
         res.redirect('/coursework')
-        console.log(coursework)
     } 
     catch {
         res.redirect('/createcoursework')
