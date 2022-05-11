@@ -85,27 +85,39 @@ app.delete('/logout', (req, res) => {
 })
 
 app.get('/semester', checkAuthenticated, (req, res) => {
-    res.render('Semester.ejs');
+    res.render('Semester.ejs')
 })
 
 app.get('/coursework', checkAuthenticated, (req, res) => {
-    res.render('CourseworkVS.ejs');
+    res.render('CourseworkVS.ejs')
 })
 
 app.get('/createcoursework', checkAuthenticated, (req, res) => {
-    res.render('CreateCourseworkVS.ejs');
+    res.render('CreateCourseworkVS.ejs')
 })
 
 app.post('/createcoursework', checkAuthenticated, (req, res) => {
     try {
-        coursework.push({
-            coursename : req.body.coursename,
-            description : req.body.description,
-            deadline : req.body.deadline,
-            markvalue : req.body.markvalue,
-            notes : req.body.notes,
-            percentage : 0
-        })
+        if (req.user.id in coursework) {
+            coursework[req.user.id].push({
+                coursename : req.body.coursename,
+                description : req.body.description,
+                deadline : req.body.deadline,
+                markvalue : req.body.markvalue,
+                notes : req.body.notes,
+                percentage : 0
+            })
+        }
+        else {
+            coursework[req.user.id] = [{
+                coursename : req.body.coursename,
+                description : req.body.description,
+                deadline : req.body.deadline,
+                markvalue : req.body.markvalue,
+                notes : req.body.notes,
+                percentage : 0
+            }]
+        }
         
         // write data to json file
         let data = JSON.stringify(coursework, undefined, 4)
