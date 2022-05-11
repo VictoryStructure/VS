@@ -111,7 +111,7 @@ app.post('/createcoursework', checkAuthenticated, (req, res) => {
     try {
         if (req.user.id in coursework) {
             coursework[req.user.id].push({
-                coursename : req.body.coursename,
+                courseworkname : req.body.courseworkname,
                 description : req.body.description,
                 deadline : req.body.deadline,
                 markvalue : req.body.markvalue,
@@ -121,7 +121,7 @@ app.post('/createcoursework', checkAuthenticated, (req, res) => {
         }
         else {
             coursework[req.user.id] = [{
-                coursename : req.body.coursename,
+                courseworkname : req.body.courseworkname,
                 description : req.body.description,
                 deadline : req.body.deadline,
                 markvalue : req.body.markvalue,
