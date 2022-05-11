@@ -1,6 +1,5 @@
 // server.js
 //
-// Right now only contains login system
 // Referenced from https://github.com/WebDevSimplified/Nodejs-Passport-Login/blob/master/server.js
 
 const express = require('express')
@@ -93,12 +92,13 @@ app.get('/semester', checkAuthenticated, (req, res) => {
 })
 
 app.get('/coursework', checkAuthenticated, (req, res) => {
-    res.render('CourseworkVS.ejs')
+    res.render('CourseworkVS.ejs', { passedid: req.user.id })
 })
 
 app.get('/createcoursework', checkAuthenticated, (req, res) => {
     res.render('CreateCourseworkVS.ejs')
 })
+
 app.get('/createmodule', checkAuthenticated, (req, res) => {
 	res.render('CreateModule.ejs');
 })

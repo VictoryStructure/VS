@@ -53,22 +53,23 @@
 				</tr>
 			</table>
 			<script>
-			$(document).ready(function(){
-				$.getJSON("data/coursework.json", function(data){
-					var coursework_data = '';
-					$.each(data,function(key, value){
-						coursework_data += '<tr>';
-						coursework_data += '<td>'+value.coursename+'</td>';
-						coursework_data += '<td>'+value.description+'</td>';
-						coursework_data += '<td>'+value.deadline+'</td>';
-						coursework_data += '<td>'+value.markvalue+'</td>';
-						coursework_data += '<td>'+value.notes+'</td>';
-						coursework_data += '<td>'+value.percentage+'</td>';
-						coursework_data += '</tr>';
+				$(document).ready(function(){
+					$.getJSON("data/coursework.json", function(data){
+						var coursework_data = '';
+						let userid = <%= passedid %>;
+						$.each(data[userid],function(key, value){
+							coursework_data += '<tr>';
+							coursework_data += '<td>'+value.coursename+'</td>';
+							coursework_data += '<td>'+value.description+'</td>';
+							coursework_data += '<td>'+value.deadline+'</td>';
+							coursework_data += '<td>'+value.markvalue+'</td>';
+							coursework_data += '<td>'+value.notes+'</td>';
+							coursework_data += '<td>'+value.percentage+'</td>';
+							coursework_data += '</tr>';
+						});
+						$('#coursework_table').append(coursework_data);
 					});
-					$('#coursework_table').append(coursework_data);
 				});
-			});
 			</script>
 			</div>
 			<div class="slidecontainer">
