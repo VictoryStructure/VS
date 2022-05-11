@@ -100,7 +100,7 @@ app.get('/createcoursework', checkAuthenticated, (req, res) => {
     res.render('CreateCourseworkVS.ejs')
 })
 app.get('/createmodule', checkAuthenticated, (req, res) => {
-	res.render('createmodule.ejs');
+	res.render('CreateModule.ejs');
 })
 
 app.post('/createcoursework', checkAuthenticated, (req, res) => {
