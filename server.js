@@ -85,7 +85,7 @@ app.delete('/logout', (req, res) => {
 })
 
 
-app.get('/Module', checkAuthenticated, (req, res) => {
+app.get('/module', checkAuthenticated, (req, res) => {
     res.render('Module.ejs');
 })
 app.get('/semester', checkAuthenticated, (req, res) => {
@@ -100,7 +100,7 @@ app.get('/createcoursework', checkAuthenticated, (req, res) => {
     res.render('CreateCourseworkVS.ejs')
 })
 app.get('/createmodule', checkAuthenticated, (req, res) => {
-	res.render('createmodule.ejs');
+	res.render('CreateModule.ejs');
 })
 
 app.post('/createcoursework', checkAuthenticated, (req, res) => {

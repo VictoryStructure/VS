@@ -63,6 +63,7 @@ body {
     height: 100vh;
     position: relative;
 }
+
 .left .themeSwitch {
     position: absolute;
     width: 35px;
@@ -171,7 +172,7 @@ body {
     margin-bottom: 20px;
     font-weight: bold;
     color: var(--left-month-name);
-}
+} 
 .border {
     width: 60%;
     height: 1px;
