@@ -45,10 +45,10 @@
 		<div class="info">
 			<div>Schedule Table​</div>
 			<div class="slidecontainer">
-				<input type="range" min="0" max="100" value="0" class="slider" id="myRange">
+				<input type="range" min="1" max="100" value="1" class="slider" id="myRange">
 				
 				<label for="complete"> Completed:</label>
-				<input type="checkbox" id="complete" name="complete" value="complete"><br>
+				<input type="checkbox" id="complete" name="complete" onchange="handleChange()">
 				
 				<p>Percentage Complete: <span id="demo"></span>%</p>
 				

@@ -6,3 +6,9 @@ slider.oninput = function() {
 	output.innerHTML = slider.value;
 	output.innerHTML = this.value;
 }
+
+function handleChange(checkbox) {
+    if(checkbox.checked == true){
+        alert("boop");
+    }
+}
