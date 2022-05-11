@@ -6,8 +6,8 @@
 	text-decoration: none;
 }
 .button-group{
-	
 	background-color: none;
+	padding-top:10px;
 }
 .button-group button{
 	/*transform: translate(-50%,-50%);*/
@@ -131,6 +131,8 @@ body{
 
 .slidecontainer {
   width: 100%;
+  padding:15px;
+  font-size:20px;
 }
 
 .slider {

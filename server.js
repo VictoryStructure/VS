@@ -37,8 +37,8 @@ let rawdata = fs.readFileSync('users.json');
 let users = JSON.parse(rawdata);
 
 // read coursework json data
-// let courseworkdata = fs.readFileSync('coursework.json');
-// let coursework = JSON.parse(courseworkdata);
+let courseworkdata = fs.readFileSync('coursework.json');
+let coursework = JSON.parse(courseworkdata);
 
 app.get('/', checkAuthenticated, (req, res) => {
     res.render('index.ejs', { name: req.user.username })
@@ -94,6 +94,29 @@ app.get('/coursework', checkAuthenticated, (req, res) => {
 
 app.get('/createcoursework', checkAuthenticated, (req, res) => {
     res.render('CreateCourseworkVS.ejs');
+})
+
+app.post('/createcoursework', checkAuthenticated, (req, res) => {
+    try {
+        coursework.push({
+            coursename : req.body.coursename,
+            description : req.body.description,
+            deadline : req.body.deadline,
+            markvalue : req.body.markvalue,
+            notes : req.body.notes,
+            percentage : 0
+        })
+        
+        // write data to json file
+        let data = JSON.stringify(coursework, undefined, 4)
+        fs.writeFileSync('coursework.json', data)
+
+        res.redirect('/coursework')
+        console.log(coursework)
+    } 
+    catch {
+        res.redirect('/createcoursework')
+    }
 })
 
 app.get('/calendar', checkAuthenticated, (req, res) => {
