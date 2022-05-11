@@ -5,14 +5,23 @@
 	list-style: none;
 	text-decoration: none;
 }
-
+.button-group{
+	
+	background-color: none;
+}
 .button-group button{
-	background-color: #04AA6D;
+	/*transform: translate(-50%,-50%);*/
+	position: relative;
+	left: 70%;
+	width: 200px;
+	float: left;
+	background-color: #A3B4A2;
 	border: 1px solid green; 
 	color: white; 
+	
 	padding: 10px 24px; 
 	cursor: pointer; /* changes the cursor to poiter symbol */
-	float: left; /* Float the buttons side by side */
+	
 }
 .button-group button:not(:last-child) {
   border-right: none; /* Prevent double borders */
@@ -28,7 +37,7 @@
 
 /* Add a background color on hover */
 .button-group button:hover {
-  background-color: #3e8e41;
+  background-color: #768f75;
 }
 
 
