@@ -84,8 +84,8 @@ app.delete('/logout', (req, res) => {
     res.redirect('/login')
 })
 
-app.get('/semester', checkAuthenticated, (req, res) => {
-    res.render('Semester.ejs');
+app.get('/Module', checkAuthenticated, (req, res) => {
+    res.render('Module.ejs');
 })
 
 app.get('/coursework', checkAuthenticated, (req, res) => {
@@ -94,6 +94,9 @@ app.get('/coursework', checkAuthenticated, (req, res) => {
 
 app.get('/createcoursework', checkAuthenticated, (req, res) => {
     res.render('CreateCourseworkVS.ejs');
+})
+app.get('/createmodule', checkAuthenticated, (req, res) => {
+	res.render('createmodule.ejs');
 })
 
 app.post('/createcoursework', checkAuthenticated, (req, res) => {
