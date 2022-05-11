@@ -219,3 +219,23 @@ input[type=text], select {
   background-color:#A3B4A2;
   height:40px;
 }
+.Table{
+	
+}
+coursework_table{
+	background-color: none;
+	max-width: 100%;
+	position: relative;
+	left: ;
+}
+tr{
+	
+	text-align: center;
+	border-spacing: px;
+
+}
+th{
+	background-color:#A3B4A2;
+	padding:10px;
+	
+}
