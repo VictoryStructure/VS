@@ -34,13 +34,10 @@
   /* displays in its own space */
   display: table;
 }
-.module-group{
-	background-color: none;
-	padding-top:10px;
-}
-.module-group button{
-	position: absolute;
-	left: 80%;
+.button-group1 button{
+	/*transform: translate(-50%,-50%);*/
+	position: relative;
+	left: 75%;
 	width: 200px;
 	float: left;
 	background-color: #A3B4A2;
@@ -48,19 +45,21 @@
 	color: white; 
 	
 	padding: 10px 24px; 
-	cursor: pointer
+	cursor: pointer; /* changes the cursor to poiter symbol */
+	
 }
-.module-group button:not(:last-child) {
+.button-group1 button:not(:last-child) {
   border-right: none; /* Prevent double borders */
 }
 
 
-.module-group:after {
+.button-group1:after {
   content: "";
   clear: both;
   /* displays in its own space */
   display: table;
 }
+
 
 
 
