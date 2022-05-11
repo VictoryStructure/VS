@@ -84,16 +84,21 @@ app.delete('/logout', (req, res) => {
     res.redirect('/login')
 })
 
+<<<<<<< HEAD
 app.get('/Module', checkAuthenticated, (req, res) => {
     res.render('Module.ejs');
+=======
+app.get('/semester', checkAuthenticated, (req, res) => {
+    res.render('Semester.ejs')
+>>>>>>> 8d169f1986c605f7c4f65f8f408fc8890885125c
 })
 
 app.get('/coursework', checkAuthenticated, (req, res) => {
-    res.render('CourseworkVS.ejs');
+    res.render('CourseworkVS.ejs')
 })
 
 app.get('/createcoursework', checkAuthenticated, (req, res) => {
-    res.render('CreateCourseworkVS.ejs');
+    res.render('CreateCourseworkVS.ejs')
 })
 app.get('/createmodule', checkAuthenticated, (req, res) => {
 	res.render('createmodule.ejs');
@@ -101,21 +106,32 @@ app.get('/createmodule', checkAuthenticated, (req, res) => {
 
 app.post('/createcoursework', checkAuthenticated, (req, res) => {
     try {
-        coursework.push({
-            coursename : req.body.coursename,
-            description : req.body.description,
-            deadline : req.body.deadline,
-            markvalue : req.body.markvalue,
-            notes : req.body.notes,
-            percentage : 0
-        })
+        if (req.user.id in coursework) {
+            coursework[req.user.id].push({
+                coursename : req.body.coursename,
+                description : req.body.description,
+                deadline : req.body.deadline,
+                markvalue : req.body.markvalue,
+                notes : req.body.notes,
+                percentage : 0
+            })
+        }
+        else {
+            coursework[req.user.id] = [{
+                coursename : req.body.coursename,
+                description : req.body.description,
+                deadline : req.body.deadline,
+                markvalue : req.body.markvalue,
+                notes : req.body.notes,
+                percentage : 0
+            }]
+        }
         
         // write data to json file
         let data = JSON.stringify(coursework, undefined, 4)
         fs.writeFileSync('coursework.json', data)
 
         res.redirect('/coursework')
-        console.log(coursework)
     } 
     catch {
         res.redirect('/createcoursework')

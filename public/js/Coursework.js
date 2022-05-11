@@ -1,9 +1,17 @@
 2// referenced from https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_rangeslider_round
 
 var slider = document.getElementById("myRange");
-var output = document.getElementById("demo");
-output.innerHTML = slider.value;
-
 slider.oninput = function() {
-  output.innerHTML = this.value;
+	var output = document.getElementById("demo");
+	output.innerHTML = slider.value;
+	output.innerHTML = this.value;
+}
+
+function handleChange(checkbox) {
+	let question = "This action will delete this coursework. Do you want to delete it?";
+	if (confirm(question) == true) {
+		text = "You pressed OK!";
+    } else {
+		document.getElementById("checkbox").checked = false;
+    }
 }
