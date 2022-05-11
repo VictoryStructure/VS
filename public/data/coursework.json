@@ -1,7 +1,7 @@
 {
     "1652106491240": [
         {
-            "coursename": "Networks",
+            "courseworkname": "Networks",
             "description": "Connection",
             "deadline": "2022-05-17",
             "markvalue": "20%",
@@ -9,7 +9,7 @@
             "percentage": 0
         },
         {
-            "coursename": "Software Engineering ",
+            "courseworkname": "Software Engineering ",
             "description": "Team based hell",
             "deadline": "2022-05-16",
             "markvalue": "90%",
@@ -17,7 +17,7 @@
             "percentage": 0
         },
         {
-            "coursename": "Data Science",
+            "courseworkname": "Data Science",
             "description": "sad",
             "deadline": "2022-05-23",
             "markvalue": "30",
@@ -25,43 +25,11 @@
             "percentage": 0
         },
         {
-            "coursename": "df",
-            "description": "sdf",
-            "deadline": "2022-05-20",
-            "markvalue": "dsf",
-            "notes": "sdf",
-            "percentage": 0
-        },
-        {
-            "coursename": "fdfg",
-            "description": "dfgdfg",
-            "deadline": "2022-05-05",
-            "markvalue": "dfg",
-            "notes": "dfg",
-            "percentage": 0
-        },
-        {
-            "courseworkname": "df",
-            "description": "sdf",
-            "deadline": "2022-05-19",
-            "markvalue": "sf",
-            "notes": "sdf",
-            "percentage": 0
-        },
-        {
-            "courseworkname": "sdfsdfsd",
-            "description": "sdfsdfsd",
-            "deadline": "2022-05-19",
-            "markvalue": "dsfsdfs",
-            "notes": "sdfsdfdsf",
-            "percentage": 0
-        },
-        {
-            "courseworkname": "sdgdgd",
-            "description": "dfgdfgd",
-            "deadline": "2022-05-07",
-            "markvalue": "dfgdfg",
-            "notes": "dfgdfgdf",
+            "courseworkname": "hell",
+            "description": "fd",
+            "deadline": "2022-05-02",
+            "markvalue": "df",
+            "notes": "df",
             "percentage": 0
         }
     ]
