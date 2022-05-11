@@ -93,7 +93,24 @@ app.get('/createcoursework', checkAuthenticated, (req, res) => {
 })
 
 app.post('/createcoursework', checkAuthenticated, (req, res) => {
-    
+    try {
+        coursework.push({
+            coursename : req.body.coursename,
+            description : req.body.description,
+            deadline : req.body.deadline,
+            markvalue : req.body.markvalue,
+            notes : req.body.notes
+        })
+        
+        // write data to json file
+        let data = JSON.stringify(coursework, undefined, 4)
+        fs.writeFileSync('coursework.json', data)
+
+        res.redirect('/coursework')
+    } 
+    catch {
+        res.redirect('/createcoursework')
+    }
 })
 app.get('/calendar', checkAuthenticated, (req, res) => {
     res.render('Calendar.ejs');
