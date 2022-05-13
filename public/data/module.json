@@ -3,6 +3,14 @@
         {
             "modulename": "Data Science",
             "description": "Numbers"
+        },
+        {
+            "modulename": "Test",
+            "description": "test"
+        },
+        {
+            "modulename": "Number 2",
+            "description": "Number 2"
         }
     ]
 }
