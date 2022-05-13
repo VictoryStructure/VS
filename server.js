@@ -167,7 +167,7 @@ app.post('/createmodule', checkAuthenticated, (req, res) => {
 })
 
 app.post('/allcourseworks', checkAuthenticated, (req, res) => {
-    res.render('CourseworkSpecific.ejs', { passedid: req.user.id, coursework_json: coursework, module_json: modulejson })
+    res.render('CourseworkSpecific.ejs', { selectedpage: req.body.selectpage,passedid: req.user.id, coursework_json: coursework, module_json: modulejson,  })
 })
 
 app.get('/calendar', checkAuthenticated, (req, res) => {
