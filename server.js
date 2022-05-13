@@ -177,7 +177,7 @@ app.get('/calendar', checkAuthenticated, (req, res) => {
 })
 
 app.get('/createactivity', checkAuthenticated, (req, res) => {
-    res.render('CreateCourseworkActivity.ejs');
+    res.render('CreateCourseworkActivity.ejs', { passedid: req.user.id });
 })
   
 function checkAuthenticated(req, res, next) {
