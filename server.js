@@ -164,6 +164,15 @@ app.post('/createmodule', checkAuthenticated, (req, res) => {
     }
 })
 
+app.post('/deletecoursework', checkAuthenticated, (req, res) => {
+    try {
+        res.redirect('/allcourseworks')
+    } 
+    catch {
+        res.redirect('/allcourseworks')
+    }
+})
+
 app.post('/allcourseworks', checkAuthenticated, (req, res) => {
     res.render('CourseworkSpecific.ejs', { selectedpage: req.body.selectpage,passedid: req.user.id, coursework_json: coursework, module_json: modulejson,  })
 })
