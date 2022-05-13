@@ -92,7 +92,7 @@ app.get('/module', checkAuthenticated, (req, res) => {
     res.render('Module.ejs', {passedid: req.user.id, module_json: modulejson})
 })
 
-app.get('/coursework', checkAuthenticated, (req, res) => {
+app.get('/allcourseworks', checkAuthenticated, (req, res) => {
     res.render('CourseworkVS.ejs', { passedid: req.user.id, coursework_json: coursework, module_json: modulejson })
 })
 
@@ -138,7 +138,7 @@ app.post('/createcoursework', checkAuthenticated, (req, res) => {
         let data = JSON.stringify(coursework, undefined, 4)
         fs.writeFileSync('public/data/coursework.json', data)
 
-        res.redirect('/coursework')
+        res.redirect('/allcourseworks')
     } 
     catch {
         res.redirect('/createcoursework')

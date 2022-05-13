@@ -44,6 +44,15 @@
             "notes": "REMOVE",
             "percentage": 0,
             "modulename": "MODULE"
+        },
+        {
+            "courseworkname": "sd",
+            "description": "sd",
+            "deadline": "2022-05-18",
+            "markvalue": "sd",
+            "notes": "sd",
+            "percentage": 0,
+            "modulename": "Data Structures"
         }
     ]
 }
