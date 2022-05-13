@@ -108,11 +108,12 @@ app.get('/createmodule', checkAuthenticated, (req, res) => {
 	res.render('CreateModule.ejs');
 })
 
+
 app.post('/createcoursework', checkAuthenticated, (req, res) => {
     try {
         if (req.user.id in coursework) {
             coursework[req.user.id].push({
-                courseworkname : req.body.courseworkname,
+                name : req.body.courseworkname,
                 description : req.body.description,
                 deadline : req.body.deadline,
                 markvalue : req.body.markvalue,
@@ -122,7 +123,7 @@ app.post('/createcoursework', checkAuthenticated, (req, res) => {
         }
         else {
             coursework[req.user.id] = [{
-                courseworkname : req.body.courseworkname,
+                name : req.body.courseworkname,
                 description : req.body.description,
                 deadline : req.body.deadline,
                 markvalue : req.body.markvalue,
@@ -146,20 +147,18 @@ app.post('/createmodule', checkAuthenticated, (req, res) => {
     try {
         if (req.user.id in modulejson) {
             modulejson[req.user.id].push({
-                modulename : req.body.modulename,
+                name : req.body.modulename,
                 description : req.body.description
             })
         }
         else {
             modulejson[req.user.id] = [{
-                modulename : req.body.modulename,
+                name : req.body.modulename,
                 description : req.body.description
             }]
         }
         // write data to json file
         let data1 = JSON.stringify(modulejson, undefined, 4)
-        console.log("modulejson", modulejson)
-        console.log("Data", data1)
         fs.writeFileSync('public/data/module.json', data1)
 
         res.redirect('/module')
@@ -168,6 +167,42 @@ app.post('/createmodule', checkAuthenticated, (req, res) => {
         res.redirect('/createmodule')
     }
 })
+
+// referenced from https://www.aspsnippets.com/Articles/Create-dynamic-DropDownList-in-HTML-using-JavaScript.aspx
+function AddDropBox(fileOption) {
+	if (fileOption == 'cc'){
+		parseFile = modulejson;
+	}
+	if (fileOption == 'cca'){
+		parseFile = coursework;
+	}
+	
+	try {
+        if (req.user.id in parseFile) {
+            optionsForUser = parseFile[req.user.id];
+			console.log(optionsForUser);
+        }
+	}
+    catch {
+        res.redirect('/createmodule')
+    }
+	
+	var ddl = document.createElement("SELECT");
+	
+	for (var i = 0; i < optionsForUser.length; i++) {
+		var option = document.createElement("OPTION");
+
+		//Set Name in Text part.
+		option.innerHTML = optionsForUser[i].name;
+
+		//Set Id in Value part.
+		//option.value = optionsForUser[i].CustomerId;
+
+		//Add the Option element to DropDownList.
+		ddl.options.add(option);
+	}
+	document.getElementById('selectContainer').appendChild(ddl);  
+}
 
 app.get('/calendar', checkAuthenticated, (req, res) => {
     res.render('Calendar.ejs');
