@@ -1,8 +1,20 @@
 {
     "1652106491240": [
         {
-            "name": "Data Structures",
+            "modulename": "Data Structures",
             "description": "Binary Tree"
+        },
+        {
+            "modulename": "Data Sci",
+            "description": "Numbers "
+        },
+        {
+            "modulename": "Sys Eng",
+            "description": "sdfsdfsd"
+        },
+        {
+            "modulename": "Maths 2",
+            "description": "Mathematics"
         }
     ]
 }
