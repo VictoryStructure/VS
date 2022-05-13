@@ -12,7 +12,7 @@
 <div class="wrapper">
     <div class="sidebar">
         <h2>Victory Structure</h2>
-    <ul>
+    	<ul>
             <li><a href="/">Home</a></li>
             <li><a href="/module">Module</a></li>
             <li><a href="/coursework"></i>Coursework</a></li>
@@ -42,7 +42,7 @@
 		</div>
 	
 		<div class="info">
-			<div class = "table">
+			 <div class = "table">
 			<table id = "coursework_table">
 				<tr>
 					<th>Coursename</th>
@@ -57,22 +57,22 @@
 		
 			<script>
 				$(document).ready(function(){
-					$.getJSON("data/coursework.json", function(data){
-						var coursework_data = '';
-						let userid = <%= passedid %>;
+					var coursework_data = '';
+					let userid = <%= passedid %>;
+					var data = <%-JSON.stringify(coursework_json)%>;
 
-						$.each(data[userid],function(key, value){
-							coursework_data += '<tr>';
-							coursework_data += '<td>'+value.courseworkname+'</td>';
-							coursework_data += '<td>'+value.description+'</td>';
-							coursework_data += '<td>'+value.deadline+'</td>';
-							coursework_data += '<td>'+value.markvalue+'</td>';
-							coursework_data += '<td>'+value.notes+'</td>';
-							coursework_data += '<td>'+value.percentage+'</td>';
-							coursework_data += '</tr>';
-						});
-						$('#coursework_table').append(coursework_data);
+					$.each(data[userid],function(key, value){
+						coursework_data += '<tr>';
+						coursework_data += '<td>'+value.courseworkname+'</td>';
+						coursework_data += '<td>'+value.description+'</td>';
+						coursework_data += '<td>'+value.deadline+'</td>';
+						coursework_data += '<td>'+value.markvalue+'</td>';
+						coursework_data += '<td>'+value.notes+'</td>';
+						coursework_data += '<td>'+value.percentage+'</td>';
+						coursework_data += '</tr>';
 					});
+					
+					$('#coursework_table').append(coursework_data);
 				});
 			</script>
 			</div>
@@ -82,6 +82,8 @@
 				<label for="checkbox"> Completed:</label>
 				<input type="checkbox" id="checkbox" name="completecheckbox" onchange="handleChange()">
 				
+				
+
 				<p>Percentage Complete: <span id="demo"></span>%</p>
 				
 			</div>	
