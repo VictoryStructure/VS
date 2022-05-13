@@ -75,14 +75,13 @@ function saveEvent(){
     eventTitleInput.classList.add('error');
   }
 }
-// function closeModal(){
-//   newEventModal.style.display = 'none';
-//   backDrop.style.display = 'none';
-//   eventTitleInput.style.display = 'none';
-//   clicked = null;
-//   load();
-  
-
+function closeModal(){
+  newEventModal.style.display = 'none';
+  backDrop.style.display = 'none';
+  eventTitleInput.style.display = 'none';
+  clicked = null;
+  load(); 
+}
  function initButtons(){
   document.getElementById('nextButton').addEventListener('click', ()=>{
     nav++;
@@ -92,8 +91,8 @@ function saveEvent(){
       nav--;
       load();
     }); 
-    //document.getElementById('saveButton', saveEvent ).addEventListener('click',saveEvent);
-    //document.getElementById('cancelButton', closeModal).addEventListener('click', closeModal);
+    document.getElementById('saveButton', saveEvent ).addEventListener('click',saveEvent);
+    document.getElementById('cancelButton', closeModal).addEventListener('click', closeModal);
 }
 initButtons();
 load();
