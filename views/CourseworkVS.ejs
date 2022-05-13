@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Home</title>
+	<title>Coursework</title>
 	<link rel="stylesheet" href="css/HomeVS.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<link rel="icon" href="asset/ICON.png">
@@ -59,6 +59,7 @@
 					$.getJSON("data/coursework.json", function(data){
 						var coursework_data = '';
 						let userid = <%= passedid %>;
+
 						$.each(data[userid],function(key, value){
 							coursework_data += '<tr>';
 							coursework_data += '<td>'+value.courseworkname+'</td>';
@@ -69,6 +70,7 @@
 							coursework_data += '<td>'+value.percentage+'</td>';
 							coursework_data += '</tr>';
 						});
+						
 						$('#coursework_table').append(coursework_data);
 					});
 				});
