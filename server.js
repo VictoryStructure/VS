@@ -89,7 +89,7 @@ app.delete('/logout', (req, res) => {
 
 
 app.get('/module', checkAuthenticated, (req, res) => {
-    res.render('Module.ejs', {passedid: req.user.id})
+    res.render('Module.ejs', {passedid: req.user.id, module_json: modulejson})
 })
 
 app.get('/coursework', checkAuthenticated, (req, res) => {
@@ -118,7 +118,8 @@ app.post('/createcoursework', checkAuthenticated, (req, res) => {
                 deadline : req.body.deadline,
                 markvalue : req.body.markvalue,
                 notes : req.body.notes,
-                percentage : 0
+                percentage : 0,
+				modulename : req.body.modulename
             })
         }
         else {
@@ -128,7 +129,8 @@ app.post('/createcoursework', checkAuthenticated, (req, res) => {
                 deadline : req.body.deadline,
                 markvalue : req.body.markvalue,
                 notes : req.body.notes,
-                percentage : 0
+                percentage : 0,
+				modulename : req.body.modulename
             }]
         }
         
@@ -175,7 +177,7 @@ app.get('/calendar', checkAuthenticated, (req, res) => {
 })
 
 app.get('/createactivity', checkAuthenticated, (req, res) => {
-    res.render('CreateCourseworkActivity.ejs');
+    res.render('CreateCourseworkActivity.ejs', { passedid: req.user.id });
 })
   
 function checkAuthenticated(req, res, next) {
