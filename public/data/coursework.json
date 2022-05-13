@@ -1,7 +1,7 @@
 {
     "1652106491240": [
         {
-            "coursework": "Networks",
+            "courseworkname": "Networks",
             "description": "Connection",
             "deadline": "2022-05-17",
             "markvalue": "20%",
@@ -9,7 +9,7 @@
             "percentage": 0
         },
         {
-            "coursework": "Software Engineering ",
+            "courseworkname": "Software Engineering ",
             "description": "Team based hell",
             "deadline": "2022-05-16",
             "markvalue": "90%",
@@ -17,7 +17,7 @@
             "percentage": 0
         },
         {
-            "coursework": "Data Science",
+            "courseworkname": "Data Science",
             "description": "sad",
             "deadline": "2022-05-23",
             "markvalue": "30",
@@ -25,7 +25,7 @@
             "percentage": 0
         },
         {
-            "coursework": "hell",
+            "courseworkname": "hell",
             "description": "fd",
             "deadline": "2022-05-02",
             "markvalue": "df",
@@ -38,107 +38,6 @@
             "deadline": "2022-05-04",
             "markvalue": "weeoo",
             "notes": "we",
-            "percentage": 0
-        },
-        {
-            "coursework": "ds",
-            "description": "ds",
-            "deadline": "2022-05-05",
-            "markvalue": "dd",
-            "notes": "s",
-            "percentage": 0
-        },
-        {
-            "coursework": "lv",
-            "description": "v",
-            "deadline": "2022-05-04",
-            "markvalue": "v",
-            "notes": "",
-            "percentage": 0
-        },
-        {
-            "coursework": "vv",
-            "description": "v",
-            "deadline": "2022-04-28",
-            "markvalue": "vv",
-            "notes": "sss",
-            "percentage": 0
-        },
-        {
-            "coursework": "woa",
-            "description": "shit",
-            "deadline": "2022-05-05",
-            "markvalue": "baby",
-            "notes": "lover",
-            "percentage": 0
-        },
-        {
-            "coursework": "please",
-            "description": "can",
-            "deadline": "2022-05-18",
-            "markvalue": "you",
-            "notes": "work",
-            "percentage": 0
-        },
-        {
-            "coursework": "d",
-            "description": "d",
-            "deadline": "2022-06-02",
-            "markvalue": "d",
-            "notes": "d",
-            "percentage": 0
-        },
-        {
-            "coursework": "s",
-            "description": "s",
-            "deadline": "2022-05-19",
-            "markvalue": "s",
-            "notes": "s",
-            "percentage": 0
-        },
-        {
-            "coursework": "dd",
-            "description": "d",
-            "deadline": "2022-05-20",
-            "markvalue": "d",
-            "notes": "d",
-            "percentage": 0
-        },
-        {
-            "coursework": "dd",
-            "description": "d",
-            "deadline": "2022-05-12",
-            "markvalue": "d",
-            "notes": "d",
-            "percentage": 0
-        },
-        {
-            "coursework": "d",
-            "description": "s",
-            "deadline": "2022-05-04",
-            "markvalue": "s",
-            "notes": "d",
-            "percentage": 0
-        },
-        {
-            "coursework": "dd",
-            "description": "ddd",
-            "deadline": "2022-05-19",
-            "markvalue": "ddd",
-            "notes": "ddd",
-            "courseworkname": "sdfsdfsd",
-            "description": "Numbers ",
-            "deadline": "2022-04-27",
-            "markvalue": "dsf",
-            "notes": "ss",
-            "percentage": 0
-        },
-        {
-            "courseworkname": "df",
-            "description": "sdf",
-            "deadline": "2022-05-05",
-            "markvalue": "dfg",
-            "notes": "sdfsdfdsf",
             "percentage": 0
         }
     ]
