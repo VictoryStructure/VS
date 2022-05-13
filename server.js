@@ -101,7 +101,7 @@ app.get('/semester', checkAuthenticated, (req, res) => {
 })
 
 app.get('/createcoursework', checkAuthenticated, (req, res) => {
-    res.render('CreateCourseworkVS.ejs', { passedid: req.user.id })
+    res.render('CreateCourseworkVS.ejs', { passedid: req.user.id, module_json: modulejson })
 })
 
 app.get('/createmodule', checkAuthenticated, (req, res) => {

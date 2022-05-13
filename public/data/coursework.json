@@ -26,6 +26,15 @@
             "notes": "sad life",
             "percentage": 0,
             "modulename": "Data Science"
+        },
+        {
+            "courseworkname": "Flower Arrangement",
+            "description": "I love flowers",
+            "deadline": "2022-05-10",
+            "markvalue": "100",
+            "notes": "Cute",
+            "percentage": 0,
+            "modulename": "MODULE"
         }
     ]
 }
