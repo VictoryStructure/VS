@@ -118,7 +118,8 @@ app.post('/createcoursework', checkAuthenticated, (req, res) => {
                 deadline : req.body.deadline,
                 markvalue : req.body.markvalue,
                 notes : req.body.notes,
-                percentage : 0
+                percentage : 0,
+				modulename : req.body.modulename
             })
         }
         else {
@@ -128,7 +129,8 @@ app.post('/createcoursework', checkAuthenticated, (req, res) => {
                 deadline : req.body.deadline,
                 markvalue : req.body.markvalue,
                 notes : req.body.notes,
-                percentage : 0
+                percentage : 0,
+				modulename : req.body.modulename
             }]
         }
         
