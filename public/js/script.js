@@ -50,7 +50,7 @@ function load(){
     if(i > paddingDays ){
       daySquare.innerText = i - paddingDays;
 
-      daySquare.addEventListener('click', () => openModal(`${month + 1}/${i-paddingDays}`/{year}));
+      daySquare.addEventListener('click', () => openModal(`${month + 1}/${i-paddingDays}/${year}`));
     }
     else {
       daySquare.classList.add('padding');
@@ -65,20 +65,19 @@ function saveEvent(){
     eventTitleInput.classList.remove('error');
 
     events.push({
-      date:clicked,
+      date: clicked,
       title: eventTitleInput.value,
     });
 
-    localStorage.setItem('events',JSON.stringify('events'));
-  }
-  else {
+    localStorage.setItem('events',JSON.stringify(events));
+  } else {
     eventTitleInput.classList.add('error');
   }
 }
 function closeModal(){
   newEventModal.style.display = 'none';
   backDrop.style.display = 'none';
-  eventTitleInput.style.display = 'none';
+  eventTitleInput.style.display = '';
   clicked = null;
   load(); 
 }
@@ -91,8 +90,8 @@ function closeModal(){
       nav--;
       load();
     }); 
-    document.getElementById('saveButton', saveEvent ).addEventListener('click',saveEvent);
-    document.getElementById('cancelButton', closeModal).addEventListener('click', closeModal);
+    //document.getElementById('saveButton', saveEvent ).addEventListener('click',saveEvent);
+    //document.getElementById('cancelButton', closeModal).addEventListener('click', closeModal);
 }
 initButtons();
 load();
