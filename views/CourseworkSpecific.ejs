@@ -15,7 +15,7 @@
         <h2>Victory Structure</h2>
     	<ul>
             <li><a href="/">Home</a></li>
-            <li><a href="/module">Mdule</a></li>
+            <li><a href="/module">Module</a></li>
             <li><a href="/allcourseworks"></i>All Coursework</a></li>
             <li><a href="#"></i>About</a></li>
         </ul>
@@ -23,10 +23,10 @@
 			<ul>
 				<li><a href="#">Account and Settings</a></li>
 				<li>
-          <form action="/logout?_method=DELETE" method="POST">
-            <button type="submit" class="linked_button">Log Out</button>
-          </form>
-        </li>
+				  <form action="/logout?_method=DELETE" method="POST">
+					<button type="submit" class="linked_button">Log Out</button>
+				  </form>
+				</li>
 			</ul>
       </div>
     </div>
@@ -36,6 +36,15 @@
 
 		<div class="info">
 
+			<div class="slidecontainer">
+				<input type="range" min="1" max="100" value="1" class="slider" id="myRange">
+				
+				<label for="checkbox"> Completed:</label>
+				<input type="checkbox" id="checkbox" name="completecheckbox" onchange="handleChange()">
+				
+				<p>Percentage Complete: <span id="demo"></span>%</p>
+			</div>
+			
 		</div>
 	</div>
 
