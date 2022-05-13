@@ -1,4 +1,4 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Ubuntu:wght@300&display=swap');
 
 .login{
 	width: 50%;
@@ -24,13 +24,14 @@
     background-color: #ECEAE0; 
     border: solid green;
 	color: black;
-	padding: 11px 20px;
+	padding: 9.3px 20px;
 	text-align: center;
 	text-decoration: none;
 	font-family: "Arial";
 	display: inline-block;
-	font-size: 12px;
+	font-size: 14px;
 	z-index: 2;
+	font-family: 'Montserrat', sans-serif;
 }
 
 
@@ -125,12 +126,13 @@ input[type=submit]{
 
 
 h1{
-	font-family: 'Trebuchet MS' ;
+	font-family: 'Ubuntu', sans-serif;
 	font-size: 100px;
 	top: 15%;
 	text-align: center;
 	background-size: 100px, 100px;
 	background-color: #A3B4A2;	
+	letter-spacing: 0.04em;
 }
 
 .linked_button {
@@ -143,4 +145,8 @@ h1{
 a {
 	text-decoration: none;
 	color: black;
+}
+
+label, #username, #password, button {
+	font-family: 'Montserrat', sans-serif;
 }
