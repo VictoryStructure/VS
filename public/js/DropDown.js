@@ -1,24 +1,14 @@
-2// referenced from https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_rangeslider_round
-
-var slider = document.getElementById("myRange");
-slider.oninput = function() {
-	var output = document.getElementById("demo");
-	output.innerHTML = slider.value;
-	output.innerHTML = this.value;
-}
-
-function handleChange(checkbox) {
-	let question = "This action will delete this coursework. Do you want to delete it?";
-	if (confirm(question) == true) {
-		text = "You pressed OK!";
-    } else {
-		document.getElementById("checkbox").checked = false;
-    }
-}
-
 // referenced from https://www.aspsnippets.com/Articles/Create-dynamic-DropDownList-in-HTML-using-JavaScript.aspx
 function AddDropBox(fileOption) {
-	if (fileOption == 'cc'){
+	// read coursework json data
+	let courseworkdata = fs.readFileSync('public/data/coursework.json');
+	let coursework = JSON.parse(courseworkdata);
+
+	// read module json data
+	let moduledata = fs.readFileSync('public/data/module.json');
+	let modulejson = JSON.parse(moduledata);
+	
+	if (fileOption == modulejson){
 		parseFile = modulejson;
 	}
 	if (fileOption == 'cca'){
