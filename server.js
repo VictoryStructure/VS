@@ -107,6 +107,7 @@ app.get('/createmodule', checkAuthenticated, (req, res) => {
 	res.render('CreateModule.ejs');
 })
 
+
 app.post('/createcoursework', checkAuthenticated, (req, res) => {
     try {
         if (req.user.id in coursework) {
