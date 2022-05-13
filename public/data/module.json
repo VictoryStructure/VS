@@ -15,6 +15,18 @@
         {
             "modulename": "Maths 2",
             "description": "Mathematics"
+        },
+        {
+            "modulename": "MODULE",
+            "description": "DEATH"
+        },
+        {
+            "modulename": "Check",
+            "description": "12"
+        },
+        {
+            "modulename": "MODULE",
+            "description": "NDJSBL"
         }
     ]
 }
