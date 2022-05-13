@@ -60,21 +60,21 @@ function load(){
 
   }
 }
-function saveEvent(){
-  if (eventTitleInput.value){
-    eventTitleInput.classList.remove('error');
+// function saveEvent(){
+//   if (eventTitleInput.value){
+//     eventTitleInput.classList.remove('error');
 
-    events.push({
-      date:clicked,
-      title: eventTitleInput.value,
-    });
+//     events.push({
+//       date:clicked,
+//       title: eventTitleInput.value,
+//     });
 
-    localStorage.setItem('events',JSON.stringify('events'));
-  }
-  else {
-    eventTitleInput.classList.add('error');
-  }
-}
+//     localStorage.setItem('events',JSON.stringify('events'));
+//   }
+//   else {
+//     eventTitleInput.classList.add('error');
+//   }
+// }
 function closeModal(){
   newEventModal.style.display = 'none';
   backDrop.style.display = 'none';
@@ -91,8 +91,8 @@ function closeModal(){
       nav--;
       load();
     }); 
-    document.getElementById('saveButton', saveEvent ).addEventListener('click',saveEvent);
-    document.getElementById('cancelButton', closeModal).addEventListener('click', closeModal);
+    //document.getElementById('saveButton', saveEvent ).addEventListener('click',saveEvent);
+    //document.getElementById('cancelButton', closeModal).addEventListener('click', closeModal);
 }
 initButtons();
 load();
