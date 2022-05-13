@@ -40,9 +40,9 @@
 				<button class = "button1" type = "submit"> Create Activity</button>
 			</form>
 		</div>
-
+	
 		<div class="info">
-			<div>
+			<div class = "table">
 			<table id = "coursework_table">
 				<tr>
 					<th>Coursename</th>
@@ -54,6 +54,7 @@
 				</tr>
 			</table>
 			</div>
+		
 			<script>
 				$(document).ready(function(){
 					$.getJSON("data/coursework.json", function(data){
@@ -70,7 +71,6 @@
 							coursework_data += '<td>'+value.percentage+'</td>';
 							coursework_data += '</tr>';
 						});
-						
 						$('#coursework_table').append(coursework_data);
 					});
 				});

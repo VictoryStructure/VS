@@ -89,14 +89,15 @@ app.delete('/logout', (req, res) => {
 
 
 app.get('/module', checkAuthenticated, (req, res) => {
-    res.render('Module.ejs');
-})
-app.get('/semester', checkAuthenticated, (req, res) => {
-    res.render('Semester.ejs')
+    res.render('Module.ejs', {passedid: req.user.id})
 })
 
 app.get('/coursework', checkAuthenticated, (req, res) => {
-    res.render('CourseworkVS.ejs', { passedid: req.user.id })
+    res.render('CourseworkVS.ejs', {passedid: req.user.id})
+})
+
+app.get('/semester', checkAuthenticated, (req, res) => {
+    res.render('Semester.ejs')
 })
 
 app.get('/createcoursework', checkAuthenticated, (req, res) => {
@@ -106,6 +107,7 @@ app.get('/createcoursework', checkAuthenticated, (req, res) => {
 app.get('/createmodule', checkAuthenticated, (req, res) => {
 	res.render('CreateModule.ejs');
 })
+
 
 app.post('/createcoursework', checkAuthenticated, (req, res) => {
     try {
@@ -155,7 +157,6 @@ app.post('/createmodule', checkAuthenticated, (req, res) => {
                 description : req.body.description
             }]
         }
-        
         // write data to json file
         let data1 = JSON.stringify(modulejson, undefined, 4)
         fs.writeFileSync('public/data/module.json', data1)
