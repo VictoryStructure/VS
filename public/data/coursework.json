@@ -35,6 +35,15 @@
             "notes": "Cute",
             "percentage": 0,
             "modulename": "MODULE"
+        },
+        {
+            "courseworkname": "REMOVE",
+            "description": "REMOVE",
+            "deadline": "2022-05-05",
+            "markvalue": "REMOVE",
+            "notes": "REMOVE",
+            "percentage": 0,
+            "modulename": "MODULE"
         }
     ]
 }
