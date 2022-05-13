@@ -79,6 +79,22 @@
             "markvalue": "dsfsdfs",
             "ntes": "dfg",
             "percentage": 0
+        },
+        {
+            "courseworkname": "dgdg",
+            "description": "sdgsdg",
+            "deadline": "2022-04-29",
+            "markvalue": "sdgs",
+            "notes": "sdg",
+            "percentage": 0
+        },
+        {
+            "courseworkname": "df",
+            "description": "sdf",
+            "deadline": "2022-05-05",
+            "markvalue": "sf",
+            "notes": "dfg",
+            "percentage": 0
         }
     ]
 }
