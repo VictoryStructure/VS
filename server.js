@@ -89,18 +89,19 @@ app.delete('/logout', (req, res) => {
 
 
 app.get('/module', checkAuthenticated, (req, res) => {
-    res.render('Module.ejs');
+    res.render('Module.ejs', {passedid: req.user.id})
 })
+
+app.get('/coursework', checkAuthenticated, (req, res) => {
+    res.render('CourseworkVS.ejs', { passedid: req.user.id, coursework_json: coursework })
+})
+
 app.get('/semester', checkAuthenticated, (req, res) => {
     res.render('Semester.ejs')
 })
 
-app.get('/coursework', checkAuthenticated, (req, res) => {
-    res.render('CourseworkVS.ejs', { passedid: req.user.id })
-})
-
 app.get('/createcoursework', checkAuthenticated, (req, res) => {
-    res.render('CreateCourseworkVS.ejs')
+    res.render('CreateCourseworkVS.ejs', { passedid: req.user.id })
 })
 
 app.get('/createmodule', checkAuthenticated, (req, res) => {
@@ -112,7 +113,7 @@ app.post('/createcoursework', checkAuthenticated, (req, res) => {
     try {
         if (req.user.id in coursework) {
             coursework[req.user.id].push({
-                name : req.body.courseworkname,
+                courseworkname : req.body.courseworkname,
                 description : req.body.description,
                 deadline : req.body.deadline,
                 markvalue : req.body.markvalue,
@@ -122,7 +123,7 @@ app.post('/createcoursework', checkAuthenticated, (req, res) => {
         }
         else {
             coursework[req.user.id] = [{
-                name : req.body.courseworkname,
+                courseworkname : req.body.courseworkname,
                 description : req.body.description,
                 deadline : req.body.deadline,
                 markvalue : req.body.markvalue,
@@ -146,17 +147,16 @@ app.post('/createmodule', checkAuthenticated, (req, res) => {
     try {
         if (req.user.id in modulejson) {
             modulejson[req.user.id].push({
-                name : req.body.modulename,
+                modulename : req.body.modulename,
                 description : req.body.description
             })
         }
         else {
             modulejson[req.user.id] = [{
-                name : req.body.modulename,
+                modulename : req.body.modulename,
                 description : req.body.description
             }]
         }
-        
         // write data to json file
         let data1 = JSON.stringify(modulejson, undefined, 4)
         fs.writeFileSync('public/data/module.json', data1)
@@ -168,41 +168,7 @@ app.post('/createmodule', checkAuthenticated, (req, res) => {
     }
 })
 
-// referenced from https://www.aspsnippets.com/Articles/Create-dynamic-DropDownList-in-HTML-using-JavaScript.aspx
-function AddDropBox(fileOption) {
-	if (fileOption == 'cc'){
-		parseFile = modulejson;
-	}
-	if (fileOption == 'cca'){
-		parseFile = coursework;
-	}
-	
-	try {
-        if (req.user.id in parseFile) {
-            optionsForUser = parseFile[req.user.id];
-			console.log(optionsForUser);
-        }
-	}
-    catch {
-        res.redirect('/createmodule')
-    }
-	
-	var ddl = document.createElement("SELECT");
-	
-	for (var i = 0; i < optionsForUser.length; i++) {
-		var option = document.createElement("OPTION");
 
-		//Set Name in Text part.
-		option.innerHTML = optionsForUser[i].name;
-
-		//Set Id in Value part.
-		//option.value = optionsForUser[i].CustomerId;
-
-		//Add the Option element to DropDownList.
-		ddl.options.add(option);
-	}
-	document.getElementById('selectContainer').appendChild(ddl);  
-}
 
 app.get('/calendar', checkAuthenticated, (req, res) => {
     res.render('Calendar.ejs');
