@@ -87,7 +87,6 @@ app.delete('/logout', (req, res) => {
     res.redirect('/login')
 })
 
-
 app.get('/module', checkAuthenticated, (req, res) => {
     res.render('Module.ejs', {passedid: req.user.id, module_json: modulejson})
 })
@@ -103,7 +102,6 @@ app.get('/createcoursework', checkAuthenticated, (req, res) => {
 app.get('/createmodule', checkAuthenticated, (req, res) => {
 	res.render('CreateModule.ejs');
 })
-
 
 app.post('/createcoursework', checkAuthenticated, (req, res) => {
     try {
