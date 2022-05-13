@@ -6,15 +6,17 @@
             "deadline": "2022-05-17",
             "markvalue": "20%",
             "notes": "Hello World",
-            "percentage": 0
+            "percentage": 0,
+            "modulename": "Networks"
         },
         {
-            "courseworkname": "Software Engineering ",
+            "courseworkname": "Software Engineering",
             "description": "Team based hell",
             "deadline": "2022-05-16",
             "markvalue": "90%",
             "notes": "Ka shoot me ",
-            "percentage": 0
+            "percentage": 0,
+            "modulename": "Software Engineering"
         },
         {
             "courseworkname": "Data Science",
@@ -22,79 +24,8 @@
             "deadline": "2022-05-23",
             "markvalue": "30",
             "notes": "sad life",
-            "percentage": 0
-        },
-        {
-            "courseworkname": "hell",
-            "description": "fd",
-            "deadline": "2022-05-02",
-            "markvalue": "df",
-            "notes": "df",
-            "percentage": 0
-        },
-        {
-            "coursework": "aldm;amsdadasa",
-            "description": "add",
-            "deadline": "2022-05-04",
-            "markvalue": "weeoo",
-            "notes": "we",
-            "percentage": 0
-        },
-        {
-            "courseworkname": "sf",
-            "description": "sdf",
-            "deadline": "2022-05-12",
-            "markvalue": "dsf",
-            "notes": "sdf",
-            "percentage": 0
-        },
-        {
-            "courseworkname": "sdfsdfsd",
-            "description": "sdf",
-            "deadline": "2022-05-06",
-            "markvalue": "sf",
-            "notes": "dfg",
-            "percentage": 0
-        },
-        {
-            "courseworkname": "ssf",
-            "description": "sdf",
-            "deadline": "2022-04-29",
-            "markvalue": "sdf",
-            "notes": "sdf",
-            "percentage": 0
-        },
-        {
-            "courseworkname": "sdgdgd",
-            "description": "sdfsdfsd",
-            "deadline": "2022-04-27",
-            "markvalue": "sf",
-            "notes": "dfgdfgdf",
-            "percentage": 0
-        },
-        {
-            "courseworkname": "sdgdgd",
-            "description": "sdfsdfsd",
-            "deadline": "2022-05-11",
-            "markvalue": "dsfsdfs",
-            "ntes": "dfg",
-            "percentage": 0
-        },
-        {
-            "courseworkname": "dgdg",
-            "description": "sdgsdg",
-            "deadline": "2022-04-29",
-            "markvalue": "sdgs",
-            "notes": "sdg",
-            "percentage": 0
-        },
-        {
-            "courseworkname": "df",
-            "description": "sdf",
-            "deadline": "2022-05-05",
-            "markvalue": "sf",
-            "notes": "dfg",
-            "percentage": 0
+            "percentage": 0,
+            "modulename": "Data Science"
         }
     ]
 }
