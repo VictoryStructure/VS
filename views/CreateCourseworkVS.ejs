@@ -54,20 +54,10 @@
 					$(document).ready(function(){
 						let userid = <%= passedid %>;
 						var data = <%-JSON.stringify(module_json)%>;
-						var module_data = '';
-						
 						var ddl = document.createElement("SELECT");
-						
 						$.each(data[userid],function(key, value){
 							var option = document.createElement("OPTION");
-
-							//Set Name in Text part.
 							option.innerHTML = value.modulename;
-
-							//Set Id in Value part.
-							//option.value = value.CustomerId;
-
-							//Add the Option element to DropDownList.
 							ddl.options.add(option);
 						});
 						document.getElementById('selectContainer').appendChild(ddl);  

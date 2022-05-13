@@ -6,6 +6,7 @@
 	<link rel="stylesheet" href="css/HomeVS.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<link rel="icon" href="asset/ICON.png">
+	<script src="js/Createcoursework.js"></script>
 </head>
 <body>
 
@@ -36,34 +37,24 @@
         <div class="info">
 			<div class="Table">
 				<form action="#" method="POST">
-				  <label for = "coursename">Enter Coursework Activity Name</label>
-				  <input type = "text" id = "modulename" name = "modulename" placeholder = "Module Name" required>
-				  <label for = "description">Description</label>
-				  <input type = "text" id = "description" name = "description" placeholder = "Description" required >
+					<label for = "coursename">Enter Coursework Activity Name</label>
+					<input type = "text" id = "modulename" name = "modulename" placeholder = "Module Name" required>
+					<label for = "description">Description</label>
+					<input type = "text" id = "description" name = "description" placeholder = "Description" required >
 					<label for = "selectContainer">Coursework Name</label>
 					<div id="selectContainer">
 						<script>
 							$(document).ready(function(){
 								let userid = <%= passedid %>;
-								$.getJSON("data/coursework.json", function(data){
-									var coursework_data = '';
-									
-									var ddl = document.createElement("SELECT");
-									
-									$.each(data[userid],function(key, value){
-										var option = document.createElement("OPTION");
-
-										//Set Name in Text part.
-										option.innerHTML = value.courseworkname;
-
-										//Set Id in Value part.
-										//option.value = value.CustomerId;
-
-										//Add the Option element to DropDownList.
-										ddl.options.add(option);
-									});
-									document.getElementById('selectContainer').appendChild(ddl);  
+								var data = <%-JSON.stringify(coursework_json)%>;
+								var ddl = document.createElement("SELECT");
+								$.each(data[userid],function(key, value){
+									var option = document.createElement("OPTION");
+									option.innerHTML = value.courseworkname;
+									ddl.options.add(option);
 								});
+								document.getElementById('selectContainer2').appendChild(ddl);  
+								ddl.setAttribute("name", "courseworkname");
 							});
 						</script>
 					 </div>

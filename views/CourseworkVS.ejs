@@ -6,6 +6,7 @@
 	<link rel="stylesheet" href="css/HomeVS.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<link rel="icon" href="asset/ICON.png">
+	<script src="js/Createcoursework.js"></script>
 
 </head>
 <body>
@@ -42,28 +43,18 @@
 		</div>
 	
 		<div class="info">
-			<div id="selectContainer">
+			<div id="selectContainer1">
 				<script>
 					$(document).ready(function(){
 						let userid = <%= passedid %>;
 						var data = <%-JSON.stringify(module_json)%>;
-						var module_data = '';
-						
 						var ddl = document.createElement("SELECT");
-						
 						$.each(data[userid],function(key, value){
 							var option = document.createElement("OPTION");
-
-							//Set Name in Text part.
 							option.innerHTML = value.modulename;
-
-							//Set Id in Value part.
-							//option.value = value.CustomerId;
-
-							//Add the Option element to DropDownList.
 							ddl.options.add(option);
 						});
-						document.getElementById('selectContainer').appendChild(ddl);  
+						document.getElementById('selectContainer1').appendChild(ddl);  
 						ddl.setAttribute("name", "modulename");
 					});
 				</script>
@@ -104,18 +95,38 @@
 					$('#coursework_table').append(coursework_data);
 				});
 			</script>
-			</div>
+			
 			<div class="slidecontainer">
 				<input type="range" min="1" max="100" value="1" class="slider" id="myRange">
 				
 				<label for="checkbox"> Completed:</label>
 				<input type="checkbox" id="checkbox" name="completecheckbox" onchange="handleChange()">
 				
-				
-
 				<p>Percentage Complete: <span id="demo"></span>%</p>
-				
-			</div>	
+			</div>
+
+			<form action="#" method="POST">
+				<label for = "selectContainer">Select a Coursework</label>
+				<div id="selectContainer2">
+				<script>
+					$(document).ready(function(){
+						let userid = <%= passedid %>;
+						var data = <%-JSON.stringify(coursework_json)%>;
+						var ddl = document.createElement("SELECT");
+						$.each(data[userid],function(key, value){
+							var option = document.createElement("OPTION");
+							option.innerHTML = value.courseworkname;
+							ddl.options.add(option);
+						});
+						document.getElementById('selectContainer2').appendChild(ddl);  
+						ddl.setAttribute("name", "selectpage");
+					});
+				</script>
+				</div>
+		  
+				<button type="submit" class="linked_button" id="form_submit">Submit</button>       
+			</form> 
+ 			
 		</div>
 	</div>
 

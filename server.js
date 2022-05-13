@@ -96,10 +96,6 @@ app.get('/allcourseworks', checkAuthenticated, (req, res) => {
     res.render('CourseworkVS.ejs', { passedid: req.user.id, coursework_json: coursework, module_json: modulejson })
 })
 
-app.get('/semester', checkAuthenticated, (req, res) => {
-    res.render('Semester.ejs')
-})
-
 app.get('/createcoursework', checkAuthenticated, (req, res) => {
     res.render('CreateCourseworkVS.ejs', { passedid: req.user.id, module_json: modulejson })
 })
@@ -170,14 +166,16 @@ app.post('/createmodule', checkAuthenticated, (req, res) => {
     }
 })
 
-
+app.post('/allcourseworks', checkAuthenticated, (req, res) => {
+    res.render('CourseworkSpecific.ejs', { passedid: req.user.id, coursework_json: coursework, module_json: modulejson })
+})
 
 app.get('/calendar', checkAuthenticated, (req, res) => {
     res.render('Calendar.ejs');
 })
 
 app.get('/createactivity', checkAuthenticated, (req, res) => {
-    res.render('CreateCourseworkActivity.ejs', { passedid: req.user.id });
+    res.render('CreateCourseworkActivity.ejs', { passedid: req.user.id, coursework_json: coursework, module_json: modulejson })
 })
   
 function checkAuthenticated(req, res, next) {
