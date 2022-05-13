@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Ubuntu:wght@300&display=swap');
+
 *{
 	margin: 0;
 	padding: 0;
@@ -18,15 +20,14 @@
 	background-color: #A3B4A2;
 	border: 1px solid green; 
 	color: white; 
-	
+	font-family: 'Montserrat', sans-serif;
 	padding: 10px 24px; 
-	cursor: pointer; /* changes the cursor to poiter symbol */
-	
+	cursor: pointer; /* changes the cursor to poiter symbol */	
 }
+
 .button-group button:not(:last-child) {
   border-right: none; /* Prevent double borders */
 }
-
 
 .button-group:after {
   content: "";
@@ -37,7 +38,7 @@
 .button-group1 button{
 	/*transform: translate(-50%,-50%);*/
 	position: relative;
-	left: 75%;
+	left: 60%;
 	width: 200px;
 	float: left;
 	background-color: #A3B4A2;
@@ -89,10 +90,11 @@ body{
 
 .wrapper .sidebar h2{
 	color: black;
-	font-size: 32px;
-	text-transform: uppercase;
-	text-align: left;
+	font-size: 40px;
 	margin-bottom: 30px;
+	margin-left: 10px;
+	font-family: 'Ubuntu', sans-serif;
+	letter-spacing: 0.04em;
 }
 
 .wrapper .sidebar ul li{
@@ -105,6 +107,7 @@ body{
 .wrapper .sidebar ul li a{
 	color: black;
 	text-align: left;
+	font-family: 'Montserrat', sans-serif;
 }    
 
 .wrapper .sidebar ul li:hover{
@@ -121,14 +124,16 @@ body{
 .wrapper .main_content{
 	width: 100%;
 	margin-left: 200px;
+	font-family: 'Montserrat', sans-serif;
 }
 
 .wrapper .main_content .header{
-	font-size: 35px;
+	font-size: 28px;
 	padding: 20px;
 	background: #fff;
 	color: #717171;
 	border-bottom: 1px solid #e0e4e8;
+	font-family: 'Montserrat', sans-serif;
 }
 
 .wrapper .main_content .info{
@@ -157,6 +162,8 @@ body{
 	border: none;
 	padding: 0!important;
 	cursor: pointer;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 15px;
 }
 
 .slidecontainer {
@@ -219,23 +226,33 @@ input[type=text], select {
   background-color:#A3B4A2;
   height:40px;
 }
-.Table{
-	
-}
-coursework_table{
+
+.table{
 	background-color: none;
-	max-width: 100%;
+}
+table{
 	position: relative;
-	left: ;
+	border-spacing: 20px;
+	border: 1px solid black;
+	font: 16px "Open Sans", Helvetica, Arial, sans-serif;
+	
+			
 }
 tr{
-	
 	text-align: center;
-	border-spacing: px;
+	border-spacing: 10px;
 
 }
+th > tr{
+	 background-color: rgb(228, 240, 245);
+}
 th{
+	
 	background-color:#A3B4A2;
 	padding:10px;
 	
+}
+
+#module_table, #coursework_table, .button2, input::placeholder {
+	font-family: 'Montserrat', sans-serif;
 }

@@ -6,15 +6,17 @@
             "deadline": "2022-05-17",
             "markvalue": "20%",
             "notes": "Hello World",
-            "percentage": 0
+            "percentage": 0,
+            "modulename": "Networks"
         },
         {
-            "courseworkname": "Software Engineering ",
+            "courseworkname": "Software Engineering",
             "description": "Team based hell",
             "deadline": "2022-05-16",
             "markvalue": "90%",
             "notes": "Ka shoot me ",
-            "percentage": 0
+            "percentage": 0,
+            "modulename": "Software Engineering"
         },
         {
             "courseworkname": "Data Science",
@@ -22,15 +24,26 @@
             "deadline": "2022-05-23",
             "markvalue": "30",
             "notes": "sad life",
-            "percentage": 0
+            "percentage": 0,
+            "modulename": "Data Science"
         },
         {
-            "courseworkname": "hell",
-            "description": "fd",
-            "deadline": "2022-05-02",
-            "markvalue": "df",
-            "notes": "df",
-            "percentage": 0
+            "courseworkname": "Flower Arrangement",
+            "description": "I love flowers",
+            "deadline": "2022-05-10",
+            "markvalue": "100",
+            "notes": "Cute",
+            "percentage": 0,
+            "modulename": "MODULE"
+        },
+        {
+            "courseworkname": "REMOVE",
+            "description": "REMOVE",
+            "deadline": "2022-05-05",
+            "markvalue": "REMOVE",
+            "notes": "REMOVE",
+            "percentage": 0,
+            "modulename": "MODULE"
         }
     ]
 }

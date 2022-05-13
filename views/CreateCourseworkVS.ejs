@@ -2,11 +2,16 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Home</title>
+	<title>Create Coursework</title>
 	<link rel="stylesheet" href="css/HomeVS.css">
 	<link rel="icon" href="asset/ICON.png">
+	<script src="js/Createcoursework.js"></script>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
+
 <body>
+
 
 <div class="wrapper">
     <div class="sidebar">
@@ -43,9 +48,37 @@
 			  <input type = "text" id = "markvalue" name = "markvalue" placeholder = "markvalue" required>
 			  <label for = "notes">Notes</label>
 			  <input type = "text" id = "notes" name = "notes" placeholder = "Notes">
+			  <label for = "selectContainer">Module Name</label>
+			  <div id="selectContainer">
+				<script>
+					$(document).ready(function(){
+						let userid = <%= passedid %>;
+						var data = <%-JSON.stringify(module_json)%>;
+						var module_data = '';
+						
+						var ddl = document.createElement("SELECT");
+						
+						$.each(data[userid],function(key, value){
+							var option = document.createElement("OPTION");
+
+							//Set Name in Text part.
+							option.innerHTML = value.modulename;
+
+							//Set Id in Value part.
+							//option.value = value.CustomerId;
+
+							//Add the Option element to DropDownList.
+							ddl.options.add(option);
+						});
+						document.getElementById('selectContainer').appendChild(ddl);  
+						ddl.setAttribute("name", "modulename");
+					});
+				</script>
+			  </div>
 				<div id = "submit" class = "submit">
-				  <button type="submit" class="linked_button" id="form_submit">Submit</button>
-				</div>        
+					<button type="submit" class="linked_button" id="form_submit">Submit</button>
+				</div>
+						
 			</form>  
 			</div>
 		</div>

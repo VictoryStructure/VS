@@ -2,8 +2,11 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Home</title>
+	<title>Module</title>
 	<link rel="stylesheet" href="css/HomeVS.css">
+	
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
 
@@ -29,21 +32,39 @@
       </div>
     </div>
 	
-	
     <div class="main_content">
         <div class="header">Modules</div>
 		<div class ="button-group1">
 			<form action = "/createmodule" method = "GET">
-				<button class = "button2" type = "submit"> Create Module</button>
+				<button class = "button2" type = "submit" > Create Module</button>
 			</form>
-			
 		</div>
         <div class="info">
-			<div>Schedule Table​</div>
-      
-		</div>
-    </div>
+          <div>
+            <table id = "module_table">
+              <tr>
+                <th>Module</th>
+                <th>Description</th>
+              </tr>
+            </table>
+          </div>
+          <script>
+            $(document).ready(function(){
+              var module_data = '';
+              let userid = <%= passedid %>;
+              var data = <%-JSON.stringify(module_json)%>;
+  
+              $.each(data[userid],function(key, value){
+                module_data += '<tr>';
+                module_data += '<td>'+value.modulename+'</td>';
+                module_data += '<td>'+value.description+'</td>';
+                module_data += '</tr>';
+              });
+              $('#module_table').append(module_data);
+              });
+          </script>
+		  </div>
+   </div>
 </div>
-
 </body>
 </html>

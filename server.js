@@ -89,23 +89,25 @@ app.delete('/logout', (req, res) => {
 
 
 app.get('/module', checkAuthenticated, (req, res) => {
-    res.render('Module.ejs');
+    res.render('Module.ejs', {passedid: req.user.id, module_json: modulejson})
 })
+
+app.get('/coursework', checkAuthenticated, (req, res) => {
+    res.render('CourseworkVS.ejs', { passedid: req.user.id, coursework_json: coursework, module_json: modulejson })
+})
+
 app.get('/semester', checkAuthenticated, (req, res) => {
     res.render('Semester.ejs')
 })
 
-app.get('/coursework', checkAuthenticated, (req, res) => {
-    res.render('CourseworkVS.ejs', { passedid: req.user.id })
-})
-
 app.get('/createcoursework', checkAuthenticated, (req, res) => {
-    res.render('CreateCourseworkVS.ejs')
+    res.render('CreateCourseworkVS.ejs', { passedid: req.user.id, module_json: modulejson })
 })
 
 app.get('/createmodule', checkAuthenticated, (req, res) => {
 	res.render('CreateModule.ejs');
 })
+
 
 app.post('/createcoursework', checkAuthenticated, (req, res) => {
     try {
@@ -116,7 +118,8 @@ app.post('/createcoursework', checkAuthenticated, (req, res) => {
                 deadline : req.body.deadline,
                 markvalue : req.body.markvalue,
                 notes : req.body.notes,
-                percentage : 0
+                percentage : 0,
+				modulename : req.body.modulename
             })
         }
         else {
@@ -126,7 +129,8 @@ app.post('/createcoursework', checkAuthenticated, (req, res) => {
                 deadline : req.body.deadline,
                 markvalue : req.body.markvalue,
                 notes : req.body.notes,
-                percentage : 0
+                percentage : 0,
+				modulename : req.body.modulename
             }]
         }
         
@@ -155,11 +159,8 @@ app.post('/createmodule', checkAuthenticated, (req, res) => {
                 description : req.body.description
             }]
         }
-        
         // write data to json file
         let data1 = JSON.stringify(modulejson, undefined, 4)
-        console.log("modulejson", modulejson)
-        console.log("Data", data1)
         fs.writeFileSync('public/data/module.json', data1)
 
         res.redirect('/module')
@@ -169,12 +170,14 @@ app.post('/createmodule', checkAuthenticated, (req, res) => {
     }
 })
 
+
+
 app.get('/calendar', checkAuthenticated, (req, res) => {
     res.render('Calendar.ejs');
 })
 
 app.get('/createactivity', checkAuthenticated, (req, res) => {
-    res.render('CreateCourseworkActivity.ejs');
+    res.render('CreateCourseworkActivity.ejs', { passedid: req.user.id });
 })
   
 function checkAuthenticated(req, res, next) {

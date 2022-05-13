@@ -7,6 +7,21 @@ slider.oninput = function() {
 	output.innerHTML = this.value;
 }
 
+
+function confirmSubmit() {
+	
+	let confirmSubmit = confirm("Are you sure you want to create the coursework? ");
+	if (confirmSubmit) {
+		alert("Coursework Created");
+
+	} else {
+		alert("Coursework not created");
+    }
+
+
+}
+
+
 function handleChange(checkbox) {
 	let question = "This action will delete this coursework. Do you want to delete it?";
 	if (confirm(question) == true) {
@@ -14,4 +29,40 @@ function handleChange(checkbox) {
     } else {
 		document.getElementById("checkbox").checked = false;
     }
+}
+
+// referenced from https://www.aspsnippets.com/Articles/Create-dynamic-DropDownList-in-HTML-using-JavaScript.aspx
+function AddDropBox(fileOption) {
+	if (fileOption == 'cc'){
+		parseFile = modulejson;
+	}
+	if (fileOption == 'cca'){
+		parseFile = coursework;
+	}
+	
+	try {
+        if (req.user.id in parseFile) {
+            optionsForUser = parseFile[req.user.id];
+			console.log(optionsForUser);
+        }
+	}
+    catch {
+        res.redirect('/createmodule')
+    }
+	
+	var ddl = document.createElement("SELECT");
+	
+	for (var i = 0; i < optionsForUser.length; i++) {
+		var option = document.createElement("OPTION");
+
+		//Set Name in Text part.
+		option.innerHTML = optionsForUser[i].name;
+
+		//Set Id in Value part.
+		//option.value = optionsForUser[i].CustomerId;
+
+		//Add the Option element to DropDownList.
+		ddl.options.add(option);
+	}
+	document.getElementById('selectContainer').appendChild(ddl);  
 }
