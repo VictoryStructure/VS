@@ -32,15 +32,30 @@
     </div>
 	
     <div class="main_content">
-        <div class="header"> <%= selectedpage %> Coursework</div> 
+        <div class="header"> <%= selectedpage %> Coursework</div>
 
 		<div class="info">
-
 			<div class="slidecontainer">
 				<input type="range" min="1" max="100" value="1" class="slider" id="myRange">
 				
 				<label for="checkbox"> Completed:</label>
-				<input type="checkbox" id="checkbox" name="completecheckbox" onchange="handleChange()">
+				<input type="checkbox" id="checkbox" name="completecheckbox" onchange="handleChange('<%= selectedpage %>')">
+				
+				<script>
+					function handleChange(name) {
+						let question = "This action will delete this coursework. Do you want to delete it?";
+						if (confirm(question) == true) {
+							console.log(name);
+							$.ajax({
+								type: 'POST',
+								url: '/deletecoursework',
+								data: 'name'
+							})
+						} else {
+							document.getElementById("checkbox").checked = false;
+						}
+					}
+				</script>
 				
 				<p>Percentage Complete: <span id="demo"></span>%</p>
 			</div>

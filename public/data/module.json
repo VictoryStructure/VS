@@ -27,6 +27,7 @@
         {
             "modulename": "MODULE",
             "description": "NDJSBL"
-        }
+        },
+        {}
     ]
 }
