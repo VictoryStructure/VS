@@ -89,7 +89,7 @@ app.delete('/logout', (req, res) => {
 
 
 app.get('/module', checkAuthenticated, (req, res) => {
-    res.render('Module.ejs', {passedid: req.user.id})
+    res.render('Module.ejs', {passedid: req.user.id, module_json: modulejson})
 })
 
 app.get('/coursework', checkAuthenticated, (req, res) => {
