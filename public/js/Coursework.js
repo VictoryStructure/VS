@@ -7,25 +7,18 @@ slider.oninput = function() {
 	output.innerHTML = this.value;
 }
 
-function createCoursework(){
-	let text = "Are you sure you want to create this coursework?";
-	if (confirm(question) == true) {
-		text = " You have created the coursework";
-	}
-	else {
-		text = " You didn't create the coursework";
-		location.href = '/CourseworkVS.ejs';
-    }
 
-}
 function confirmSubmit() {
-	if (confirm("Are you sure you want to create the coursework? ")) {
-		document.getElementById("FORM.ID").submit();
+	
+	let confirmSubmit = confirm("Are you sure you want to create the coursework? ");
+	if (confirmSubmit) {
+		alert("Coursework Created");
 
-	}
-	else {
-		return false;
+	} else {
+		alert("Coursework not created");
     }
+
+
 }
 
 
