@@ -346,6 +346,16 @@ th{
 .confirm_button:focus{
 	
 }
+.Title{
+	 font-size: 40px;
+	 font-weight: 600;
+	 margin-top: 20px;
+}
+.body{
+	margin-top: 20px;
+	
+	font-family: Times New Roman;
+}
 #module_table, #coursework_table, .button2, input::placeholder {
 	font-family: 'Montserrat', sans-serif;
 }
