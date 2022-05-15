@@ -41,7 +41,12 @@
 			<div class = "email"> <%= email %></div>
 		</div>
 		</div>
-		<div class = "change password"> Change Password</div>
+		<div class = "chpbox">
+		<h1 class = "bar">Change Password</h1>
+
+		<% if (error) { %>
+			<%= error %>
+		<% } %>
 		
 		<form method="POST" action="/changepassword">
 			<label for="newPassword">Old Password:</label>
@@ -53,8 +58,9 @@
 			<label for="confirmPassword">Confirm New Password:</label>
 			<input type="password" id="confirmPassword" name="confirmPassword" title="Confirm new password" />
 
-			<button type="submit" class="button-group1">Change Password</button>
+			<button type="submit" class="passbtn">Change Password</button>
 		</form>
+		</div>
 	</div>
 </body>
 </html>
