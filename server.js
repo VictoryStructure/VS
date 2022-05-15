@@ -65,9 +65,10 @@ app.get('/', checkAuthenticated, (req, res) => {
 		temp = obj.deadline
 		new_coursedeadline.push(temp)
 	})
+
 	new_coursedeadline.sort()
 	new_coursedeadline = new_coursedeadline.slice(0,3)
-	
+
 	new_coursedeadline.forEach(function (obj1, index1) { 
 		
 		coursework[userID].forEach(function (obj2, index2) { 
@@ -125,6 +126,16 @@ app.delete('/logout', (req, res) => {
     res.redirect('/login')
 })
 
+/****** About / Settings Endpoints ******/
+
+app.get('/about', checkAuthenticated, (req, res) => { 
+	res.render('About.ejs', {passedid: req.user.id, coursework_json: coursework, module_json: modulejson})
+})
+
+app.get('/settings', checkAuthenticated, (req, res) => {
+	res.render('AccountSettings.ejs', { name: req.user.username, email: req.user.email, error: false})
+})
+
 app.post('/changepassword', checkAuthenticated, async (req, res) => {
     if (await bcrypt.compare(req.body.oldPassword, req.user.password)) {
 
@@ -165,10 +176,6 @@ app.get('/module', checkAuthenticated, (req, res) => {
 
 app.get('/createmodule', checkAuthenticated, (req, res) => {
 	res.render('CreateModule.ejs');
-})
-
-app.get('/settings', checkAuthenticated, (req, res) => {
-	res.render('AccountSettings.ejs', { name: req.user.username, email: req.user.email, error: false})
 })
 
 app.post('/createmodule', checkAuthenticated, (req, res) => {
@@ -253,9 +260,6 @@ app.post('/allcoursework', checkAuthenticated, (req, res) => {
 
 app.get('/createcoursework', checkAuthenticated, (req, res) => {
     res.render('CreateCoursework.ejs', { passedid: req.user.id, module_json: modulejson })
-})
-app.get('/about', checkAuthenticated, (req, res) => { 
-	res.render('About.ejs', {passedid: req.user.id, coursework_json: coursework, module_json: modulejson})
 })
 
 app.post('/createcoursework', checkAuthenticated, (req, res) => {
