@@ -199,30 +199,30 @@ app.post('/createmodule', checkAuthenticated, (req, res) => {   //This is handel
 
 app.get('/deletemodule', checkAuthenticated, (req, res) => {
     let userID = req.user.id										
-    let searchURL = url.parse(req.url,true).search					//get the search
+    let searchURL = url.parse(req.url,true).search					//get the search query from the URL given in the req
     
-    searchURL = searchURL.replace('?', '')							//
-    searchURL = searchURL.split('%20').join(' ')					//
+    searchURL = searchURL.replace('?', '')							
+    searchURL = searchURL.split('%20').join(' ')					//replace all the %20's with spaces
 
-    if (searchURL) {												//
-        modulejson[userID].forEach(function (obj, index) { 			//
-        	if ((obj.modulename) == (searchURL)){					//
-        		modulejson[userID].splice(index , 1)				//
+    if (searchURL) {												//if searchURL isn't empty
+        modulejson[userID].forEach(function (obj, index) { 			//for each module the current user has saved
+        	if ((obj.modulename) == (searchURL)){					//if the objects module name matches the search query
+        		modulejson[userID].splice(index , 1)				//removes the module from the parsed JSON
         	}
         })
 
-        let module_data = JSON.stringify(modulejson, undefined, 4)	//
-        fs.writeFileSync('public/data/module.json', module_data)	//
+        let module_data = JSON.stringify(modulejson, undefined, 4)	
+        fs.writeFileSync('public/data/module.json', module_data)	
 
         new_coursework = []		
-        coursework[userID].forEach(function (obj, index) { 			//
-        	if ((obj.modulename) != (searchURL)){					//
-                new_coursework.push(obj)							//
+        coursework[userID].forEach(function (obj, index) { 			//for each coursework the current user has saved
+        	if ((obj.modulename) != (searchURL)){					//if the objects module name matches the search query
+                new_coursework.push(obj)							//add the coursework to an array
         	}
         })
 
-        coursework[userID] = new_coursework							//
-        let data = JSON.stringify(coursework, undefined, 4)
+        coursework[userID] = new_coursework							//edit the current parsed coursework JSON
+        let data = JSON.stringify(coursework, undefined, 4)			
         fs.writeFileSync('public/data/coursework.json', data)
         
         res.redirect('/module')
