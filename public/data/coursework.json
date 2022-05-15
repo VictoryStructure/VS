@@ -51,7 +51,7 @@
             "courseworkname": "Student Planner",
             "description": "Group of 5 make website",
             "deadline": "2022-05-16",
-            "markvalue": "45%",
+            "markvalue": "45",
             "notes": "",
             "percentage": "43",
             "modulename": "Sys Eng"
@@ -80,7 +80,7 @@
             "deadline": "2022-05-23",
             "markvalue": "30",
             "notes": "sad life",
-            "percentage": 0,
+            "percentage": "68",
             "modulename": "Data Science"
         }
     ]
