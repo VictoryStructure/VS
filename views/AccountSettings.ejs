@@ -31,8 +31,36 @@
 	
     <div class="main_content">
         <div class="header">User Settings</div> 
-	    <div class="header">Username =  <%= name %></div>  
+		<div class = "details">
+	    <div class="detail">Username:
+			<div class ="name"> <%= name %></div>
+		</div>
+		
+		
+		<div class ="detail">Email:
+			<div class = "email"> <%= email %></div>
+		</div>
+		</div>
+		<div class = "chpbox">
+		<h1 class = "bar">Change Password</h1>
 
-</div>
+		<% if (error) { %>
+			<%= error %>
+		<% } %>
+		
+		<form method="POST" action="/changepassword">
+			<label for="newPassword">Old Password:</label>
+			<input type="password" id="oldPassword" name="oldPassword" title="Old password" />
+			
+			<label for="newPassword">New Password:</label>
+			<input type="password" id="newPassword" name="newPassword" title="New password" />
+
+			<label for="confirmPassword">Confirm New Password:</label>
+			<input type="password" id="confirmPassword" name="confirmPassword" title="Confirm new password" />
+
+			<button type="submit" class="passbtn">Change Password</button>
+		</form>
+		</div>
+	</div>
 </body>
 </html>

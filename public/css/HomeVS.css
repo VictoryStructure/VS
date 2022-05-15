@@ -356,6 +356,60 @@ th{
 	
 	font-family: Times New Roman;
 }
+
+
+.detail{
+	font-family: "Trebuchet MS", Verdana, sans-serif;
+	width: 100%;
+	max-width: 600px;
+	border: 3px solid green;
+	padding: 10px 20px;
+	margin: 10px;
+}
+.name{
+	display: inline-block;
+	text-decoration: underline;
+
+}
+.email{
+	display: inline-block;
+	text-decoration: underline;
+
+}
+.form-actions{
+	width: 100%;
+	padding: 14px 20px;
+	margin: 8px 0;
+	border-radius: 4px;
+	cursor: pointer;
+	overflow:auto;
+	background-color:#A3B4A2;
+	height:40px;
+	
+}
+.chpbox{
+	margin-left: 10px;
+	border: 1px solid black;
+	width: 100%;
+	max-width: 1200px;
+	height: 100px;
+}
+.bar{
+	background-color: #A3B4A2;
+	margin-bottom: 10px;
+}
+.passbtn{
+	display: inline-block;
+	margin-top: 10px;
+	width: 200px;
+	background-color: #A3B4A2;
+	border: 1px solid green; 
+	color: white; 
+	font-family: Montserrat, sans-serif;
+	padding: 10px 24px; 
+	cursor: pointer;
+	
+}
 #module_table, #coursework_table, .button2, input::placeholder {
 	font-family: 'Montserrat', sans-serif;
 }

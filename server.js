@@ -102,6 +102,38 @@ app.delete('/logout', (req, res) => {
     res.redirect('/login')
 })
 
+app.post('/changepassword', checkAuthenticated, async (req, res) => {
+    if (await bcrypt.compare(req.body.oldPassword, req.user.password)) {
+
+        if (req.body.newPassword == req.body.confirmPassword) {
+            const hashedPassword = await bcrypt.hash(req.body.newPassword, 10)
+            req.user.password = hashedPassword
+
+            users.forEach(function (obj, index) { 
+                if (obj.id == req.user.id){
+                    obj.password = hashedPassword
+                }
+            })
+
+            let data = JSON.stringify(users, undefined, 4)
+            fs.writeFileSync('public/data/users.json', data)
+
+            res.redirect('/')
+        }
+
+        else {
+            let error_message = "New passwords don't match"
+            res.render('AccountSettings.ejs', { name: req.user.username, email: req.user.email, error: error_message})
+        }
+    } 
+
+    else {
+        let error_message = "Old password incorrect"
+        res.render('AccountSettings.ejs', { name: req.user.username, email: req.user.email, error: error_message})
+    }
+})
+
+
 /****** Module Endpoints ******/
 
 app.get('/module', checkAuthenticated, (req, res) => {
@@ -111,9 +143,9 @@ app.get('/module', checkAuthenticated, (req, res) => {
 app.get('/createmodule', checkAuthenticated, (req, res) => {
 	res.render('CreateModule.ejs');
 })
-app.get('/settings', checkAuthenticated, (req, res) => {
-	res.render('AccountSettings.ejs', { name: req.user.username })
 
+app.get('/settings', checkAuthenticated, (req, res) => {
+	res.render('AccountSettings.ejs', { name: req.user.username, email: req.user.email, error: false})
 })
 
 app.post('/createmodule', checkAuthenticated, (req, res) => {
@@ -142,7 +174,39 @@ app.post('/createmodule', checkAuthenticated, (req, res) => {
 })
 
 app.get('/deletemodule', checkAuthenticated, (req, res) => {
-	res.render('DeleteModule.ejs', { passedid: req.user.id, module_json: modulejson });
+    let userID = req.user.id
+    let searchURL = url.parse(req.url,true).search
+    
+    searchURL = searchURL.replace('?', '')
+    searchURL = searchURL.split('%20').join(' ')
+
+    if (searchURL) {
+        modulejson[userID].forEach(function (obj, index) { 
+        	if ((obj.modulename) == (searchURL)){
+        		modulejson[userID].splice(index , 1)
+        	}
+        })
+
+        let module_data = JSON.stringify(modulejson, undefined, 4)
+        fs.writeFileSync('public/data/module.json', module_data)
+
+        new_coursework = []
+        coursework[userID].forEach(function (obj, index) { 
+        	if ((obj.modulename) != (searchURL)){
+                new_coursework.push(obj)
+        	}
+        })
+
+        coursework[userID] = new_coursework
+        let data = JSON.stringify(coursework, undefined, 4)
+        fs.writeFileSync('public/data/coursework.json', data)
+        
+        res.redirect('/module')
+    }
+
+    else {
+        res.render('DeleteModule.ejs', { passedid: req.user.id, module_json: modulejson })
+    }
 })
 
 /****** Coursework Endpoints ******/
@@ -153,6 +217,7 @@ app.get('/allcoursework', checkAuthenticated, (req, res) => {
 
 app.post('/allcoursework', checkAuthenticated, (req, res) => {
 	let selectedpage = req.body.selectpage
+	
     res.render('CourseworkSpecific.ejs', { selectedpage: selectedpage, passedid: req.user.id, coursework_json: coursework, module_json: modulejson, activity_json: activityjson})
 })
 
@@ -209,7 +274,7 @@ app.get('/deletecoursework', checkAuthenticated, (req, res) => {
 
 		coursework[userID].forEach(function (obj, index) { 
 			if ((obj.courseworkname) == (searchURL)){
-				var deletedItem = coursework[userID].splice(index,1)
+				coursework[userID].splice(index,1)
 			}
 			
 			let data = JSON.stringify(coursework, undefined, 4)
@@ -226,7 +291,7 @@ app.get('/deletecoursework', checkAuthenticated, (req, res) => {
 /****** Coursework Activity ******/
 
 app.get('/createactivity', checkAuthenticated, (req, res) => {
-    res.render('CreateCourseworkActivity.ejs', { passedid: req.user.id, coursework_json: coursework, module_json: modulejson })
+    res.render('CreateCourseworkActivity.ejs', { passedid: req.user.id, coursework_json: coursework, module_json: modulejson, activity_json: activityjson})
 })
 
 app.post('/createactivity', checkAuthenticated, (req, res) => {
