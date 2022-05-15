@@ -1,13 +1,16 @@
+Const Confirm = {
+    open(options) {
+        options = Object.assign({}, {
+            title: "",
+            message: "",
+            okText: "OK",
+            cancelText: "Cancel",
+            onok: function () { },
+            oncancel: function () { }
+        }, options);
+        console.log(options);
+    },
+    _close(confirmEL) {
 
-function confirmSubmit() {
-	var text;
-	var r = confirm("Are you sure you want to create the coursework? ");
-	if (r == true) {
-		alert("Coursework Created");
-
-	} else {
-		alert("Cancelled coursework");
-		event.preventDefault();
-	}
-	console.log(text);
-}
+    }
+};
