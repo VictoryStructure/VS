@@ -215,6 +215,7 @@ app.get('/allcoursework', checkAuthenticated, (req, res) => {
 
 app.post('/allcoursework', checkAuthenticated, (req, res) => {
 	let selectedpage = req.body.selectpage
+	
     res.render('CourseworkSpecific.ejs', { selectedpage: selectedpage, passedid: req.user.id, coursework_json: coursework, module_json: modulejson, activity_json: activityjson})
 })
 
@@ -288,7 +289,7 @@ app.get('/deletecoursework', checkAuthenticated, (req, res) => {
 /****** Coursework Activity ******/
 
 app.get('/createactivity', checkAuthenticated, (req, res) => {
-    res.render('CreateCourseworkActivity.ejs', { passedid: req.user.id, coursework_json: coursework, module_json: modulejson })
+    res.render('CreateCourseworkActivity.ejs', { passedid: req.user.id, coursework_json: coursework, module_json: modulejson, activity_json: activityjson})
 })
 
 app.post('/createactivity', checkAuthenticated, (req, res) => {
