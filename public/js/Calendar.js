@@ -100,7 +100,8 @@ function saveEvent() {
       title: eventTitleInput.value,
     });
 
-    localStorage.setItem('events', JSON.stringify(events));
+    //localStorage.setItem('events', JSON.stringify(events));
+    fs.writeFileSync('public/data/events.json',events);
     closeModal();
   } else {
     eventTitleInput.classList.add('error');
