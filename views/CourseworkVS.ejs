@@ -63,7 +63,7 @@
 				<tr>
 					<th>Coursework Name</th>
 					<th>Description</th>
-					<th>Deadline</th>
+					<th data-column="deadline" data-order="desc">Deadline</th>
 					<th>Markvalue</th>
 					<th>Notes</th>
 					<th>Percentage</th>
@@ -73,10 +73,11 @@
 			</div>
 		
 			<script>
+				var userid = <%= passedid %>;
+				var data = <%-JSON.stringify(coursework_json)%>;
+
 				$(document).ready(function(){
 					var coursework_data = '';
-					let userid = <%= passedid %>;
-					var data = <%-JSON.stringify(coursework_json)%>;
 
 					$.each(data[userid],function(key, value){
 						coursework_data += '<tr>';
@@ -89,9 +90,24 @@
 						coursework_data += '<td>'+value.modulename+'</td>';
 						coursework_data += '</tr>';
 					});
-					
 					$('#coursework_table').append(coursework_data);
 				});
+
+		
+				$('th').on('click', function(){
+					var column = $(this).data('column')
+					var order = $(this).data('order')
+					console.log('Column was clicked', column, order)
+
+				if (order == 'desc'){
+					$(this).data("order", "asc")
+					console.log(data[userid])
+					// data = data[userid].sort((a,b) => a[column] > b[column] ? 1 : -1)
+				}else{
+					$(this).data("order", "desc")
+					// data = data[userid].sort((a,b) => a[column] < b[column] ? 1 : -1)
+				}
+				})
 			</script>
 
 			<form action="#" method="POST">
