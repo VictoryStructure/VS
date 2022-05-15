@@ -60,25 +60,20 @@ app.get('/', checkAuthenticated, (req, res) => {
 	coursedeadline = []
 	var times = 3
 	var temp = 0
-
-	coursework[userID].forEach(function (obj, index) { 
-		temp = obj.deadline
-		new_coursedeadline.push(temp)
+	coursework[userID].forEach(function (obj, index) { 				//for each coursework the user has saved
+		temp = obj.deadline											//saves the current indexs deadline
+		new_coursedeadline.push(temp)								//adds the saved deadline to the array
 	})
+	new_coursedeadline.sort()										//sorts the array
+	new_coursedeadline = new_coursedeadline.slice(0,3)				//takes the 3 earliest dates
 
-	new_coursedeadline.sort()
-	new_coursedeadline = new_coursedeadline.slice(0,3)
-
-	new_coursedeadline.forEach(function (obj1, index1) { 
-		
-		coursework[userID].forEach(function (obj2, index2) { 
-			if ((obj2.deadline) == (obj1)){
-				coursedeadline.push(obj2)
+	new_coursedeadline.forEach(function (obj1, index1) { 			//for each date in the array
+		coursework[userID].forEach(function (obj2, index2) { 		//search the modules for the user
+			if ((obj2.deadline) == (obj1)){							//check the date array against the module deadline
+				coursedeadline.push(obj2)							//if they match, add the module to the array
 			}
 		})
-		
 	})
-	
     res.render('index.ejs', { name: req.user.username, urgent: coursedeadline, passedid: req.user.id})
 })
 
@@ -90,8 +85,8 @@ app.get('/register', checkNotAuthenticated, (req, res) => {
 
 app.post('/register', checkNotAuthenticated, async (req, res) => {
     try {
-        const hashedPassword = await bcrypt.hash(req.body.password, 10)
-        users.push({
+        const hashedPassword = await bcrypt.hash(req.body.password, 10)		//
+        users.push({														
             id: Date.now().toString(),
             username: req.body.username,
             email: req.body.email,
@@ -177,23 +172,23 @@ app.get('/createmodule', checkAuthenticated, (req, res) => {
 	res.render('CreateModule.ejs');
 })
 
-app.post('/createmodule', checkAuthenticated, (req, res) => {
-    try {
-        if (req.user.id in modulejson) {
-            modulejson[req.user.id].push({
-                modulename : req.body.modulename,
-                description : req.body.description
+app.post('/createmodule', checkAuthenticated, (req, res) => {   //This is handeling a post request
+    try {														
+        if (req.user.id in modulejson) {						//if the user already has modules saved
+            modulejson[req.user.id].push({						//add the module to the users JSON
+                modulename : req.body.modulename,				
+                description : req.body.description				
             })
         }
         else {
-            modulejson[req.user.id] = [{
-                modulename : req.body.modulename,
-                description : req.body.description
+            modulejson[req.user.id] = [{						//if the user doesnt have any modules saved, make them a JSON
+                modulename : req.body.modulename,				
+                description : req.body.description				
             }]
         }
         // write data to json file
-        let data1 = JSON.stringify(modulejson, undefined, 4)
-        fs.writeFileSync('public/data/module.json', data1)
+        let data1 = JSON.stringify(modulejson, undefined, 4)	
+        fs.writeFileSync('public/data/module.json', data1)		
 
         res.redirect('/module')
     } 
