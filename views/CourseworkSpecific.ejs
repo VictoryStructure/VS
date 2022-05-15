@@ -54,10 +54,10 @@
           <script>
             $(document).ready(function(){
 			  var activity_data = '';
-			  let userid = <%= passedid %>;
-			  var data = <%-JSON.stringify(activity_json)%>;
-  
-			  $.each(data[userid],function(key, value){
+			  var userid = <%= passedid %>;
+			  var data = <%- JSON.stringify(activity)%>;
+
+			  $.each(data,function(key, value){
 				activity_data += '<tr>';
 				activity_data += '<td>'+value.activityname+'</td>';
 				activity_data += '<td>'+value.description+'</td>';
