@@ -42,6 +42,7 @@
                         let userid = <%= passedid %>;
                         var data = <%-JSON.stringify(module_json)%>;
                         var ddl = document.createElement("SELECT");
+                        ddl.id = "moduleSelect";
                         $.each(data[userid],function(key, value){
                             var option = document.createElement("OPTION");
                             option.innerHTML = value.modulename;
@@ -52,9 +53,21 @@
                     });
                 </script>
             </div>
-            <button type="submit" class="linked_button" id="form_submit">Submit</button>
+            <button type="submit" onclick="deleteModule()" id="form_submit" class="linked_button">Submit</button>
        </div>
 	</div>
+
+  <script>
+    function deleteModule() {
+    
+      var ask = window.confirm("This action will delete this module and all the coursework associated with this module. Do you want to delete it?");
+      if (ask) {
+        var select = document.getElementById('moduleSelect');
+        var value = select.options[select.selectedIndex].text;
+        window.location.href = "/deletemodule?" + value;
+      }
+    }
+  </script>
 	
 </div>
 </body>

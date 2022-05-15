@@ -28,13 +28,22 @@
             "modulename": "Data Science"
         },
         {
-            "courseworkname": "Flower Arrangement",
-            "description": "I love flowers",
-            "deadline": "2022-05-10",
-            "markvalue": "100",
-            "notes": "Cute",
+            "courseworkname": "test",
+            "description": "aa",
+            "deadline": "2022-05-18",
+            "markvalue": "21",
+            "notes": "df",
             "percentage": 0,
             "modulename": "MODULE"
+        },
+        {
+            "courseworkname": "please",
+            "description": "aa",
+            "deadline": "2022-05-17",
+            "markvalue": "21",
+            "notes": "df",
+            "percentage": 0,
+            "modulename": "Check"
         }
     ],
     "1652106222825": [

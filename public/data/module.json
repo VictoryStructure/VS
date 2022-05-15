@@ -1,10 +1,6 @@
 {
     "1652106491240": [
         {
-            "modulename": "Data Structures",
-            "description": "Binary Tree"
-        },
-        {
             "modulename": "Data Sci",
             "description": "Numbers "
         },
@@ -15,20 +11,7 @@
         {
             "modulename": "Maths 2",
             "description": "Mathematics"
-        },
-        {
-            "modulename": "MODULE",
-            "description": "DEATH"
-        },
-        {
-            "modulename": "Check",
-            "description": "12"
-        },
-        {
-            "modulename": "MODULE",
-            "description": "NDJSBL"
-        },
-        {}
+        }
     ],
     "1652106222825": [
         {
