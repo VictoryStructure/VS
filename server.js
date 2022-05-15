@@ -167,7 +167,6 @@ app.post('/changepassword', checkAuthenticated, async (req, res) => {
     }
 })
 
-
 /****** Module Endpoints ******/
 
 app.get('/module', checkAuthenticated, (req, res) => {
