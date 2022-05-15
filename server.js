@@ -220,7 +220,6 @@ app.post('/allcoursework', checkAuthenticated, (req, res) => {
 	let userID = req.user.id
 	new_activity = []
 	activityjson[userID].forEach(function (obj, index) { 
-		console.log(7)
 		if ((obj.courseworkname) == (selectedpage)){
 			new_activity.push(obj)
 		}
@@ -337,7 +336,11 @@ app.post('/createactivity', checkAuthenticated, (req, res) => {
 /****** Calendar ******/
 
 app.get('/calendar', checkAuthenticated, (req, res) => {
-    res.render('Calendar.ejs');
+    res.render('Calendar.ejs')
+})
+
+app.post('/changeslider', checkAuthenticated, (req, res) => {
+    console.log(req.body)
 })
 
 /****** Helper Functions ******/

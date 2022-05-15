@@ -73,7 +73,14 @@
 				<input type="range" min="1" max="100" value="1" class="slider" id="myRange" onchange="sliderChange(this.value)">
 				<script>
 					function sliderChange(sliderValue) {
-					
+						var name = <%- JSON.stringify(selectedpage) %>;
+						$(document).ready(function () {									
+							$.post('/changeslider',   // url
+							{ value: sliderValue , coursename: name}, // data to be submit
+							function(value, coursename, status, jqXHR) {
+								console.log("success")
+							});
+						});
 					}
 				</script>
 				
