@@ -29,6 +29,14 @@
         {
             "modulename": "Data Structures",
             "description": "Mostly Maths"
+        },
+        {
+            "modulename": "fdg",
+            "description": "dfg"
+        },
+        {
+            "modulename": "MODULE",
+            "description": "SWODULE"
         }
     ]
 }
