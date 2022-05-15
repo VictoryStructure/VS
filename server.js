@@ -302,14 +302,14 @@ app.post('/createcoursework', checkAuthenticated, (req, res) => {
 app.get('/deletecoursework', checkAuthenticated, (req, res) => {
     try {
 		let userID = req.user.id
-		let searchURL = url.parse(req.url,true).search
+		let searchURL = url.parse(req.url,true).search						//get the search query from the URL given in the req
 		
 		searchURL = searchURL.replace('?', '')
-		searchURL = searchURL.split('%20').join(' ')
+		searchURL = searchURL.split('%20').join(' ')						//replace all the %20's with spaces
 
-		coursework[userID].forEach(function (obj, index) { 
-			if ((obj.courseworkname) == (searchURL)){
-				coursework[userID].splice(index,1)
+		coursework[userID].forEach(function (obj, index) { 					//for each module the current user has saved
+			if ((obj.courseworkname) == (searchURL)){						//if the objects module name matches the search query
+				coursework[userID].splice(index,1)							//removes the module from the parsed JSON
 			}
 			
 			let data = JSON.stringify(coursework, undefined, 4)
