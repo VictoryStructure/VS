@@ -71,6 +71,24 @@
             "notes": "sdf",
             "percentage": 0,
             "modulename": "Data Structures"
+        },
+        {
+            "courseworkname": "pp",
+            "description": "kk",
+            "deadline": "2022-05-05",
+            "markvalue": "k",
+            "notes": "l",
+            "percentage": 0,
+            "modulename": "Data Structures"
+        },
+        {
+            "courseworkname": "h",
+            "description": "d",
+            "deadline": "2022-05-12",
+            "markvalue": "ll",
+            "notes": "  ,,,",
+            "percentage": 0,
+            "modulename": "MODULE"
         }
     ],
     "1652106222825": [
