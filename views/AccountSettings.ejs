@@ -31,8 +31,29 @@
 	
     <div class="main_content">
         <div class="header">User Settings</div> 
-	    <div class="header">Username =  <%= name %></div>  
+		<div class = "details">
+	    <div class="detail">Username:
+			<div class ="name"> <%= name %></div>
+		</div>
+		
+		
+		<div class ="detail">Email:
+			<div class = "email"> <%= email %></div>
+		</div>
+		</div>
+		<div class = "change password"> Change Password</div>
+		<form method="post" action="">
 
-</div>
+		<label for="newPassword">New Password:</label>
+		<input type="password" id="newPassword" name="newPassword" title="New password" />
+
+		<label for="confirmPassword">Confirm Password:</label>
+		<input type="password" id="confirmPassword" name="confirmPassword" title="Confirm new password" />
+
+		<p class="form-actions">
+		<input type="submit" value="Change Password" title="Change password" onclick =  />
+		</p>
+		</form>
+	</div>
 </body>
 </html>

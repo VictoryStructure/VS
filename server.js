@@ -112,7 +112,7 @@ app.get('/createmodule', checkAuthenticated, (req, res) => {
 	res.render('CreateModule.ejs');
 })
 app.get('/settings', checkAuthenticated, (req, res) => {
-	res.render('AccountSettings.ejs', { name: req.user.username })
+	res.render('AccountSettings.ejs', { name: req.user.username, email: req.user.email})
 
 })
 
