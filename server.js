@@ -47,6 +47,10 @@ let coursework = JSON.parse(courseworkdata);
 let moduledata = fs.readFileSync('public/data/module.json');
 let modulejson = JSON.parse(moduledata);
 
+// read module json data
+let activitydata = fs.readFileSync('public/data/activity.json');
+let activityjson = JSON.parse(activitydata);
+
 
 /****** Index - Home Page ******/
 
@@ -212,6 +216,37 @@ app.get('/deletecoursework', checkAuthenticated, (req, res) => {
 
 app.get('/createactivity', checkAuthenticated, (req, res) => {
     res.render('CreateCourseworkActivity.ejs', { passedid: req.user.id, coursework_json: coursework, module_json: modulejson })
+})
+
+app.post('/createactivity', checkAuthenticated, (req, res) => {
+    try {
+        if (req.user.id in coursework) {
+            coursework[req.user.id].push({
+                activityname : req.body.activityname,
+                description : req.body.description,
+                notes : req.body.notes,
+				courseworkname : req.body.courseworkname
+            })
+        }
+        else {
+            coursework[req.user.id] = [{
+                courseworkname : req.body.courseworkname,
+                activityname : req.body.activityname,
+                description : req.body.description,
+                notes : req.body.notes,
+				courseworkname : req.body.courseworkname
+            }]
+        }
+        
+        // write data to json file
+        let data = JSON.stringify(activityjson, undefined, 4)
+        fs.writeFileSync('public/data/activity.json', data)
+
+        res.redirect('/allcourseworks')
+    } 
+    catch {
+        res.redirect('/allcourseworks')
+    }
 })
 
 /****** Calendar ******/
