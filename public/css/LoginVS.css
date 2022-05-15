@@ -54,27 +54,29 @@
 
 .register {
 	position: absolute;
-	transform: translate(-50%, 50%);
-	top: 71%;
 	left: 60%;
+	top: 79.5%;
+	font-family: 'Arial';
 	text-align: center;
 	width:100px;
 	font-size:15px;
-	padding: 10px 20px;
+	padding: 5px 20px;
 	background-color: #ECEAE0; 
     border: solid green;
+	float: left;
 	display: inline-block;
 	z-index: 2;
 }
 .back{
 	position: absolute;
-	transform: translate(-50%, 50%);
-	top: 64.8%;
 	left: 65%;
-	padding: 10px 20px;
+	top: 68%;
+	font-family: 'Arial';
+	padding: 5px 20px;
 	text-align: center;
 	width:100px;
 	font-size:15px;
+	float:left;
 	display: inline-block;
 	background-color: #ECEAE0; 
     border: solid green;
