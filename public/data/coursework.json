@@ -46,6 +46,15 @@
             "notes": "",
             "percentage": 0,
             "modulename": "Sys Eng"
+        },
+        {
+            "courseworkname": "fdg",
+            "description": "dfg",
+            "deadline": "2022-05-12",
+            "markvalue": "fdg",
+            "notes": "dfg",
+            "percentage": 0,
+            "modulename": "fdg"
         }
     ]
 }
