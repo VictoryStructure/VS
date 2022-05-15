@@ -6,7 +6,7 @@
 	<link rel="stylesheet" href="css/HomeVS.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<link rel="icon" href="asset/ICON.png">
-	<script src="js/Createcoursework.js"></script>
+	<script src="js/CreateCoursework.js"></script>
 
 </head>
 <body>
@@ -16,8 +16,8 @@
     	<ul>
             <li><a href="/">Home</a></li>
             <li><a href="/module">Module</a></li>
-            <li><a href="/allcourseworks"></i>All Coursework</a></li>
             <li><a href="/about"></i>About</a></li>
+			<li><a href="/allcoursework"></i>All Coursework</a></li>
         </ul>
         <div class="options">
 			<ul>
@@ -46,8 +46,6 @@
 					
 						var ask = window.confirm("This action will delete this coursework. Do you want to delete it?");
 						if (ask) {
-							window.alert("This post was successfully deleted.");
-
 							window.location.href = "/deletecoursework?<%= selectedpage %>";
 						}
 					}
@@ -61,7 +59,6 @@
 					
 						var ask = window.confirm("This action will delete this coursework. Do you want to delete it?");
 						if (ask) {
-							window.alert("This post was successfully deleted.");
 
 							window.location.href = "/deletecoursework?<%= selectedpage %>";
 						}

@@ -2,6 +2,8 @@
 //
 // Referenced from https://github.com/WebDevSimplified/Nodejs-Passport-Login/blob/master/server.js
 
+
+// Initialization
 const express = require('express')
 const app = express()
 const passport = require('passport')
@@ -45,9 +47,18 @@ let coursework = JSON.parse(courseworkdata);
 let moduledata = fs.readFileSync('public/data/module.json');
 let modulejson = JSON.parse(moduledata);
 
+// read module json data
+let activitydata = fs.readFileSync('public/data/activity.json');
+let activityjson = JSON.parse(activitydata);
+
+
+/****** Index - Home Page ******/
+
 app.get('/', checkAuthenticated, (req, res) => {
     res.render('index.ejs', { name: req.user.username })
 })
+
+/****** Register Endpoints ******/
 
 app.get('/register', checkNotAuthenticated, (req, res) => {
     res.render('Register.ejs')
@@ -74,8 +85,10 @@ app.post('/register', checkNotAuthenticated, async (req, res) => {
     }
 })
 
+/****** Login/Logout Endpoints ******/
+
 app.get('/login', checkNotAuthenticated, (req, res) => {
-    res.render('LoginVS.ejs')
+    res.render('Login.ejs')
 })
 
 app.post('/login', checkNotAuthenticated, passport.authenticate('local', {
@@ -89,20 +102,54 @@ app.delete('/logout', (req, res) => {
     res.redirect('/login')
 })
 
+/****** Module Endpoints ******/
+
 app.get('/module', checkAuthenticated, (req, res) => {
     res.render('Module.ejs', {passedid: req.user.id, module_json: modulejson})
 })
 
-app.get('/allcourseworks', checkAuthenticated, (req, res) => {
-    res.render('CourseworkVS.ejs', { passedid: req.user.id, coursework_json: coursework, module_json: modulejson })
+app.get('/createmodule', checkAuthenticated, (req, res) => {
+	res.render('CreateModule.ejs');
+})
+
+app.post('/createmodule', checkAuthenticated, (req, res) => {
+    try {
+        if (req.user.id in modulejson) {
+            modulejson[req.user.id].push({
+                modulename : req.body.modulename,
+                description : req.body.description
+            })
+        }
+        else {
+            modulejson[req.user.id] = [{
+                modulename : req.body.modulename,
+                description : req.body.description
+            }]
+        }
+        // write data to json file
+        let data1 = JSON.stringify(modulejson, undefined, 4)
+        fs.writeFileSync('public/data/module.json', data1)
+
+        res.redirect('/module')
+    } 
+    catch {
+        res.redirect('/createmodule')
+    }
+})
+
+/****** Coursework Endpoints ******/
+
+app.get('/allcoursework', checkAuthenticated, (req, res) => {
+    res.render('Coursework.ejs', { passedid: req.user.id, coursework_json: coursework, module_json: modulejson })
+})
+
+app.post('/allcoursework', checkAuthenticated, (req, res) => {
+	let selectedpage = req.body.selectpage
+    res.render('CourseworkSpecific.ejs', { selectedpage: selectedpage, passedid: req.user.id, coursework_json: coursework, module_json: modulejson,  })
 })
 
 app.get('/createcoursework', checkAuthenticated, (req, res) => {
-    res.render('CreateCourseworkVS.ejs', { passedid: req.user.id, module_json: modulejson })
-})
-
-app.get('/createmodule', checkAuthenticated, (req, res) => {
-	res.render('CreateModule.ejs');
+    res.render('CreateCoursework.ejs', { passedid: req.user.id, module_json: modulejson })
 })
 app.get('/about', checkAuthenticated, (req, res) => { 
 	res.render('About.ejs', {passedid: req.user.id, coursework_json: coursework, module_json: modulejson})
@@ -137,35 +184,10 @@ app.post('/createcoursework', checkAuthenticated, (req, res) => {
         let data = JSON.stringify(coursework, undefined, 4)
         fs.writeFileSync('public/data/coursework.json', data)
 
-        res.redirect('/allcourseworks')
+        res.redirect('/allcoursework')
     } 
     catch {
         res.redirect('/createcoursework')
-    }
-})
-
-app.post('/createmodule', checkAuthenticated, (req, res) => {
-    try {
-        if (req.user.id in modulejson) {
-            modulejson[req.user.id].push({
-                modulename : req.body.modulename,
-                description : req.body.description
-            })
-        }
-        else {
-            modulejson[req.user.id] = [{
-                modulename : req.body.modulename,
-                description : req.body.description
-            }]
-        }
-        // write data to json file
-        let data1 = JSON.stringify(modulejson, undefined, 4)
-        fs.writeFileSync('public/data/module.json', data1)
-
-        res.redirect('/module')
-    } 
-    catch {
-        res.redirect('/createmodule')
     }
 })
 
@@ -174,32 +196,54 @@ app.get('/deletecoursework', checkAuthenticated, (req, res) => {
 		let userID = req.user.id
 		let searchURL = url.parse(req.url,true).search
 		
-		console.log(userID)
-		console.log(coursework[userID])
-		console.log(searchURL)
 		searchURL = searchURL.replace('?', '')
-		console.log(searchURL,'\n')
 		searchURL = searchURL.split('%20').join(' ')
-		console.log(searchURL,'\n')
 
 		coursework[userID].forEach(function (obj, index) { 
 			if ((obj.courseworkname) == (searchURL)){
-				console.log(obj.courseworkname, ' == ' ,searchURL)
-				console.log('yes at ', index)
-				var deletedItem = coursework[userID].splice(index,1);
+				var deletedItem = coursework[userID].splice(index,1)
 			}
-			else{ 
-				console.log(obj.courseworkname, ' == ' ,searchURL)
-				console.log('no')
-			}
-			
-			console.log(coursework[userID],'\n')
-			console.log(coursework)
 			
 			let data = JSON.stringify(coursework, undefined, 4)
 			fs.writeFileSync('public/data/coursework.json', data)
 		})
 		
+        res.redirect('/allcoursework')
+    } 
+    catch {
+        res.redirect('/allcoursework')
+    }
+})
+
+/****** Coursework Activity ******/
+
+app.get('/createactivity', checkAuthenticated, (req, res) => {
+    res.render('CreateCourseworkActivity.ejs', { passedid: req.user.id, coursework_json: coursework, module_json: modulejson })
+})
+
+app.post('/createactivity', checkAuthenticated, (req, res) => {
+    try {
+        if (req.user.id in coursework) {
+            coursework[req.user.id].push({
+                activityname : req.body.activityname,
+                description : req.body.description,
+                notes : req.body.notes,
+				courseworkname : req.body.courseworkname
+            })
+        }
+        else {
+            coursework[req.user.id] = [{
+                courseworkname : req.body.courseworkname,
+                activityname : req.body.activityname,
+                description : req.body.description,
+                notes : req.body.notes,
+				courseworkname : req.body.courseworkname
+            }]
+        }
+        
+        // write data to json file
+        let data = JSON.stringify(activityjson, undefined, 4)
+        fs.writeFileSync('public/data/activity.json', data)
 
         res.redirect('/allcourseworks')
     } 
@@ -208,19 +252,13 @@ app.get('/deletecoursework', checkAuthenticated, (req, res) => {
     }
 })
 
-app.post('/allcourseworks', checkAuthenticated, (req, res) => {
-	let selectedpage = req.body.selectpage
-	console.log(selectedpage)
-    res.render('CourseworkSpecific.ejs', { selectedpage: selectedpage, passedid: req.user.id, coursework_json: coursework, module_json: modulejson,  })
-})
+/****** Calendar ******/
 
 app.get('/calendar', checkAuthenticated, (req, res) => {
     res.render('Calendar.ejs');
 })
 
-app.get('/createactivity', checkAuthenticated, (req, res) => {
-    res.render('CreateCourseworkActivity.ejs', { passedid: req.user.id, coursework_json: coursework, module_json: modulejson })
-})
+/****** Helper Functions ******/
   
 function checkAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
@@ -237,4 +275,5 @@ function checkNotAuthenticated(req, res, next) {
     next()
 }
 
+// Listen on port 3000
 app.listen(3000)

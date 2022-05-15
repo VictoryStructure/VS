@@ -6,7 +6,7 @@
 	<link rel="stylesheet" href="css/HomeVS.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<link rel="icon" href="asset/ICON.png">
-	<script src="js/Createcoursework.js"></script>
+	<script src="js/CreateCoursework.js"></script>
 
 </head>
 <body>
@@ -16,8 +16,9 @@
     	<ul>
             <li><a href="/">Home</a></li>
             <li><a href="/module">Module</a></li>
-            <li><a href="/allcourseworks"></i>All Coursework</a></li>
             <li><a href="/about"></i>About</a></li>
+
+            <li><a href="/allcoursework"></i>All Coursework</a></li>
         </ul>
         <div class="options">
 			<ul>
@@ -61,24 +62,45 @@
 			<div class = "table">
 			<table id = "coursework_table">
 				<tr>
-					<th>Coursework Name</th>
-					<th>Description</th>
-					<th>Deadline</th>
-					<th>Markvalue</th>
-					<th>Notes</th>
-					<th>Percentage</th>
-					<th>Module</th>
+					<th data-column="coursework name" data-order="desc">Coursework Name</th>
+					<th data-column="description" data-order="desc">Description</th>
+					<th data-column="deadline" data-order="desc">Deadline</th>
+					<th data-column="markvalue" data-order="desc">Markvalue</th>
+					<th data-column="notes" data-order="desc">Notes</th>
+					<th data-column="percentage" data-order="desc">Percentage</th>
+					<th data-column="module" data-order="desc">Module</th>
 				</tr>
 			</table>
 			</div>
 		
 			<script>
-				$(document).ready(function(){
-					var coursework_data = '';
-					let userid = <%= passedid %>;
-					var data = <%-JSON.stringify(coursework_json)%>;
+				var userid = <%= passedid %>;
+				var jsondata = <%-JSON.stringify(coursework_json)%>;
+				
+				$('th').on('click', function(){
+						var column = $(this).data('column')
+						var order = $(this).data('order')
+						console.log('Column was clicked', column, order)
 
-					$.each(data[userid],function(key, value){
+					if (order == 'desc'){
+						$(this).data("order", "asc")
+						console.log(jsondata[userid])
+						jsondata[userid] = jsondata[userid].sort((a,b) => a[column] > b[column] ? 1 : -1)
+						
+					}else{ 
+						$(this).data("order", "desc")
+						console.log(jsondata[userid])
+						jsondata[userid] = jsondata[userid].sort((a,b) => a[column] < b[column] ? 1 : -1)
+					}
+					buildtable(jsondata);
+				})
+
+				buildtable(jsondata);
+
+				function buildtable(data){
+					$(document).ready(function(){
+					var coursework_data = '';
+					$.each(jsondata[userid],function(key, value){
 						coursework_data += '<tr>';
 						coursework_data += '<td>'+value.courseworkname+'</td>';
 						coursework_data += '<td>'+value.description+'</td>';
@@ -89,9 +111,10 @@
 						coursework_data += '<td>'+value.modulename+'</td>';
 						coursework_data += '</tr>';
 					});
-					
 					$('#coursework_table').append(coursework_data);
+					table.innerHTML = '';
 				});
+				}
 			</script>
 
 			<form action="#" method="POST">
