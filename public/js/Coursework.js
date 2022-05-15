@@ -11,6 +11,13 @@ slider.oninput = function() {
 
 function confirmSubmit() {
 	
+	var ask = window.confirm("Are you sure you want to delete this post?");
+    if (ask) {
+        window.alert("This post was successfully deleted.");
+
+        window.location.href = "window-location.html";
+
+    }
 	let confirmSubmit = confirm("Are you sure you want to create the coursework? ");
 	if (confirmSubmit) {
 		alert("Coursework Created");

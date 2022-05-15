@@ -10,6 +10,8 @@ const session = require('express-session')
 const methodOverride = require('method-override')
 const fs = require('fs')
 const bcrypt = require('bcrypt')
+const url = require('url');
+
 
 const initializePassport = require('./passport-config')
 initializePassport(
@@ -164,9 +166,38 @@ app.post('/createmodule', checkAuthenticated, (req, res) => {
     }
 })
 
-app.post('/deletecoursework', checkAuthenticated, (req, res) => {
+app.get('/deletecoursework', checkAuthenticated, (req, res) => {
     try {
-		console.log('boop')
+		let userID = req.user.id
+		let searchURL = url.parse(req.url,true).search
+		
+		console.log(userID)
+		console.log(coursework[userID])
+		console.log(searchURL)
+		searchURL = searchURL.replace('?', '')
+		console.log(searchURL,'\n')
+		searchURL = searchURL.split('%20').join(' ')
+		console.log(searchURL,'\n')
+
+		coursework[userID].forEach(function (obj, index) { 
+			if ((obj.courseworkname) == (searchURL)){
+				console.log(obj.courseworkname, ' == ' ,searchURL)
+				console.log('yes at ', index)
+				var deletedItem = coursework[userID].splice(index,1);
+			}
+			else{ 
+				console.log(obj.courseworkname, ' == ' ,searchURL)
+				console.log('no')
+			}
+			
+			console.log(coursework[userID],'\n')
+			console.log(coursework)
+			
+			let data = JSON.stringify(coursework, undefined, 4)
+			fs.writeFileSync('public/data/coursework.json', data)
+		})
+		
+
         res.redirect('/allcourseworks')
     } 
     catch {
@@ -175,7 +206,9 @@ app.post('/deletecoursework', checkAuthenticated, (req, res) => {
 })
 
 app.post('/allcourseworks', checkAuthenticated, (req, res) => {
-    res.render('CourseworkSpecific.ejs', { selectedpage: req.body.selectpage,passedid: req.user.id, coursework_json: coursework, module_json: modulejson,  })
+	let selectedpage = req.body.selectpage
+	console.log(selectedpage)
+    res.render('CourseworkSpecific.ejs', { selectedpage: selectedpage, passedid: req.user.id, coursework_json: coursework, module_json: modulejson,  })
 })
 
 app.get('/calendar', checkAuthenticated, (req, res) => {
