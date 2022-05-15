@@ -47,7 +47,7 @@ let coursework = JSON.parse(courseworkdata);
 let moduledata = fs.readFileSync('public/data/module.json');
 let modulejson = JSON.parse(moduledata);
 
-// read module json data
+// read activity json data
 let activitydata = fs.readFileSync('public/data/activity.json');
 let activityjson = JSON.parse(activitydata);
 
