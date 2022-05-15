@@ -14,7 +14,7 @@ const fs = require('fs')
 const bcrypt = require('bcrypt')
 const url = require('url');
 
-
+// We are using passport.js, which is authentication middleware for Node.js
 const initializePassport = require('./passport-config')
 initializePassport(
     passport,
@@ -114,6 +114,7 @@ app.get('/login', checkNotAuthenticated, (req, res) => {
     res.render('Login.ejs')
 })
 
+// The login POST request will be handled in passport-config.js
 app.post('/login', checkNotAuthenticated, passport.authenticate('local', {
     successRedirect: '/',
     failureRedirect: '/login',
@@ -340,6 +341,7 @@ app.post('/changeslider', checkAuthenticated, (req, res) => {
 	var value = req.body.value
 	var coursename = req.body.coursename
 
+    // change progress percentage in coursework object
 	coursework[userID].forEach(function (obj, index) { 
 		if (obj.courseworkname == coursename){
 			obj.percentage = value
