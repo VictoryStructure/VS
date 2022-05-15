@@ -137,6 +137,10 @@ app.post('/createmodule', checkAuthenticated, (req, res) => {
     }
 })
 
+app.get('/deletemodule', checkAuthenticated, (req, res) => {
+	res.render('DeleteModule.ejs', { passedid: req.user.id, module_json: modulejson });
+})
+
 /****** Coursework Endpoints ******/
 
 app.get('/allcoursework', checkAuthenticated, (req, res) => {
