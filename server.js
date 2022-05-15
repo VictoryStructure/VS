@@ -151,6 +151,9 @@ app.post('/allcoursework', checkAuthenticated, (req, res) => {
 app.get('/createcoursework', checkAuthenticated, (req, res) => {
     res.render('CreateCoursework.ejs', { passedid: req.user.id, module_json: modulejson })
 })
+app.get('/about', checkAuthenticated, (req, res) => { 
+	res.render('About.ejs', {passedid: req.user.id, coursework_json: coursework, module_json: modulejson})
+})
 
 app.post('/createcoursework', checkAuthenticated, (req, res) => {
     try {
