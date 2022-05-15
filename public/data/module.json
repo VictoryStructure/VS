@@ -1,15 +1,23 @@
 {
     "1652106491240": [
         {
-            "modulename": "Data Sci",
+            "modulename": "Data Science",
             "description": "Numbers "
         },
         {
-            "modulename": "Sys Eng",
+            "modulename": "Networks",
             "description": "sdfsdfsd"
         },
         {
-            "modulename": "Maths 2",
+            "modulename": "Software Engineering",
+            "description": "Mathematics"
+        },
+        {
+            "modulename": "MODULE",
+            "description": "Mathematics"
+        },
+        {
+            "modulename": "Check",
             "description": "Mathematics"
         }
     ],
