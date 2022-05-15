@@ -167,6 +167,7 @@ app.post('/createmodule', checkAuthenticated, (req, res) => {
 app.post('/deletecoursework', checkAuthenticated, (req, res) => {
     try {
 		console.log('boop')
+		res.setStatus(278)
         res.redirect('/allcourseworks')
     } 
     catch {
