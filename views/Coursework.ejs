@@ -76,6 +76,10 @@
                <script>
                   var userid = <%= passedid %>;
                   var jsondata = <%-JSON.stringify(coursework_json)%>;
+<<<<<<< Updated upstream
+=======
+                  var data = <%-JSON.stringify(module_json)%>;
+>>>>>>> Stashed changes
 
                   $('th').on('click', function(){
                   		var column = $(this).data('column')
@@ -98,6 +102,26 @@
                      $(this).html(text)
                   	buildtable(jsondata);
                   })
+
+                  $(document).ready(function(){
+                     	var ddl = document.createElement("SELECT");
+                     	$.each(data[userid],function(key, value){
+                     		var option = document.createElement("OPTION");
+                     		option.innerHTML = value.modulename;
+                     		ddl.options.add(option);
+                     	});
+                     	document.getElementById('selectContainer1').appendChild(ddl);  
+                     	ddl.setAttribute("name", "modulename");
+                        ddl.onchange = filterByModule(ddl);
+                        console.log(ddl);
+
+                        function filterByModule(obj){
+                           var id = $(obj).val();
+                           console.log(id);
+                           // $('tr[data-modulename='+id+']').hide();
+                           // $('tr[data-modulename='+id+']').show();
+                        }
+                     });
                   
                   buildtable(jsondata);
                   
@@ -105,7 +129,7 @@
                      $(document).ready(function(){
                         var items = [];
                         $.each(jsondata[userid], function(key, val){
-                           items.push("<tr data-category='"+val.category+"'>");
+                           items.push("<tr data-modulename='"+val.modulename+"'>");
                            items.push("<td id=''"+key+"''>"+val.courseworkname+"</td>");
                            items.push("<td id=''"+key+"''>"+val.description+"</td>");
                            items.push("<td id=''"+key+"''>"+val.deadline+"</td>");
@@ -127,6 +151,10 @@
                         }
                   }
                </script>
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
                <form action="#" method="POST">
                   <label for = "selectContainer">Select a Coursework</label>
                   <div id="selectContainer2">
