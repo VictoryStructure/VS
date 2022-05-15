@@ -4,16 +4,16 @@
             "courseworkname": "Networks",
             "description": "Connection",
             "deadline": "2022-05-17",
-            "markvalue": "20%",
+            "markvalue": "20",
             "notes": "Hello World",
-            "percentage": 0,
+            "percentage": "34",
             "modulename": "Networks"
         },
         {
             "courseworkname": "Software Engineering",
             "description": "Team based hell",
             "deadline": "2022-05-16",
-            "markvalue": "90%",
+            "markvalue": "90",
             "notes": "Ka shoot me ",
             "percentage": 0,
             "modulename": "Software Engineering"
