@@ -183,12 +183,18 @@ app.get('/deletecoursework', checkAuthenticated, (req, res) => {
 			if ((obj.courseworkname) == (searchURL)){
 				console.log(obj.courseworkname, ' == ' ,searchURL)
 				console.log('yes at ', index)
-				
+				var deletedItem = coursework[userID].splice(index,1);
 			}
 			else{ 
 				console.log(obj.courseworkname, ' == ' ,searchURL)
 				console.log('no')
 			}
+			
+			console.log(coursework[userID],'\n')
+			console.log(coursework)
+			
+			let data = JSON.stringify(coursework, undefined, 4)
+			fs.writeFileSync('public/data/coursework.json', data)
 		})
 		
 

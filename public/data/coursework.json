@@ -82,15 +82,6 @@
             "notes": "",
             "percentage": 0,
             "modulename": "Sys Eng"
-        },
-        {
-            "courseworkname": "Mini Test 4",
-            "description": "timed test",
-            "deadline": "2022-05-19",
-            "markvalue": "7.5%",
-            "notes": "",
-            "percentage": 0,
-            "modulename": "Data Structures"
         }
     ]
 }
