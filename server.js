@@ -84,7 +84,7 @@ app.post('/register', checkNotAuthenticated, async (req, res) => {
 /****** Login/Logout Endpoints ******/
 
 app.get('/login', checkNotAuthenticated, (req, res) => {
-    res.render('LoginVS.ejs')
+    res.render('Login.ejs')
 })
 
 app.post('/login', checkNotAuthenticated, passport.authenticate('local', {
@@ -135,17 +135,17 @@ app.post('/createmodule', checkAuthenticated, (req, res) => {
 
 /****** Coursework Endpoints ******/
 
-app.get('/allcourseworks', checkAuthenticated, (req, res) => {
-    res.render('CourseworkVS.ejs', { passedid: req.user.id, coursework_json: coursework, module_json: modulejson })
+app.get('/allcoursework', checkAuthenticated, (req, res) => {
+    res.render('Coursework.ejs', { passedid: req.user.id, coursework_json: coursework, module_json: modulejson })
 })
 
-app.post('/allcourseworks', checkAuthenticated, (req, res) => {
+app.post('/allcoursework', checkAuthenticated, (req, res) => {
 	let selectedpage = req.body.selectpage
     res.render('CourseworkSpecific.ejs', { selectedpage: selectedpage, passedid: req.user.id, coursework_json: coursework, module_json: modulejson,  })
 })
 
 app.get('/createcoursework', checkAuthenticated, (req, res) => {
-    res.render('CreateCourseworkVS.ejs', { passedid: req.user.id, module_json: modulejson })
+    res.render('CreateCoursework.ejs', { passedid: req.user.id, module_json: modulejson })
 })
 
 app.post('/createcoursework', checkAuthenticated, (req, res) => {
@@ -177,7 +177,7 @@ app.post('/createcoursework', checkAuthenticated, (req, res) => {
         let data = JSON.stringify(coursework, undefined, 4)
         fs.writeFileSync('public/data/coursework.json', data)
 
-        res.redirect('/allcourseworks')
+        res.redirect('/allcoursework')
     } 
     catch {
         res.redirect('/createcoursework')
@@ -201,10 +201,10 @@ app.get('/deletecoursework', checkAuthenticated, (req, res) => {
 			fs.writeFileSync('public/data/coursework.json', data)
 		})
 		
-        res.redirect('/allcourseworks')
+        res.redirect('/allcoursework')
     } 
     catch {
-        res.redirect('/allcourseworks')
+        res.redirect('/allcoursework')
     }
 })
 
