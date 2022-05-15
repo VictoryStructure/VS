@@ -51,10 +51,18 @@
                      	document.getElementById('selectContainer1').appendChild(ddl);  
                      	ddl.setAttribute("name", "modulename");
                      });
+                     
+                  //    filterByCategory("name");
+
+                  //    function filterByCategory(obj){
+                  //    var id = $(obj).val(); // get currently selected value
+                  //    $('tr[data-category]').hide(); // first hide all rows
+                  //    $('tr[data-category='+id+']').show(); // show only those rows with the requested category id
+                  // }
                   </script>
                </div>
                <div class = "table">
-                  <table id = "coursework_table">
+                  <table id = "coursework_table" class = "table">
                      <thead>
                         <tr>
                            <th data-column="coursework name" data-order="desc">Coursework Name &#9650</th>
@@ -99,22 +107,22 @@
                   buildtable(jsondata);
                   
                   function buildtable(data){
-                  	$(document).ready(function(){
-                  		var coursework_data = '';
-                  		$.each(jsondata[userid],function(key, value){
-                  			coursework_data += '<tr>';
-                  			coursework_data += '<td>'+value.courseworkname+'</td>';
-                  			coursework_data += '<td>'+value.description+'</td>';
-                  			coursework_data += '<td>'+value.deadline+'</td>';
-                  			coursework_data += '<td>'+value.markvalue+'</td>';
-                  			coursework_data += '<td>'+value.notes+'</td>';
-                  			coursework_data += '<td>'+value.percentage+'</td>';
-                  			coursework_data += '<td>'+value.modulename+'</td>';
-                  			coursework_data += '</tr>';
-                  	});
-                     $("#coursework_table  tbody").empty();
-                  	$('#coursework_table tbody').append(coursework_data);
-                  });
+                     $(document).ready(function(){
+                        var items = [];
+                        $.each(jsondata[userid], function(key, val){
+                           items.push("<tr data-category='"+val.category+"'>");
+                           items.push("<td id=''"+key+"''>"+val.courseworkname+"</td>");
+                           items.push("<td id=''"+key+"''>"+val.description+"</td>");
+                           items.push("<td id=''"+key+"''>"+val.deadline+"</td>");
+                           items.push("<td id=''"+key+"''>"+val.markvalue+"</td>");
+                           items.push("<td id=''"+key+"''>"+val.notes+"</td>");
+                           items.push("<td id=''"+key+"''>"+val.percentage+"</td>");
+                           items.push("<td id=''"+key+"''>"+val.modulename+"</td>");
+                           items.push("</tr>");
+                        });
+                        $("#coursework_table  tbody").empty();
+                        $("<tbody/>", {html:items.join("")}).appendTo("table");
+                     });
                   }
                </script>
                <form action="#" method="POST">

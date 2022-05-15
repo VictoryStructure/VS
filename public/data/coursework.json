@@ -35,6 +35,15 @@
             "notes": "Cute",
             "percentage": 0,
             "modulename": "MODULE"
+        },
+        {
+            "courseworkname": "Module",
+            "description": "Module",
+            "deadline": "2022-05-17",
+            "markvalue": "80",
+            "notes": "asdf",
+            "percentage": 0,
+            "modulename": "MODULE"
         }
     ],
     "1652106222825": [
