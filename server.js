@@ -175,7 +175,8 @@ app.get('/deletecoursework', checkAuthenticated, (req, res) => {
 		console.log(coursework[userID])
 		console.log(searchURL)
 		searchURL = searchURL.replace('?', '')
-		searchURL = searchURL.replaceAll('%20', ' ')
+		console.log(searchURL,'\n')
+		searchURL = searchURL.split('%20').join(' ')
 		console.log(searchURL,'\n')
 
 		coursework[userID].forEach(function (obj, index) { 
