@@ -51,16 +51,9 @@
                      	});
                      	document.getElementById('selectContainer1').appendChild(ddl);  
                      	ddl.setAttribute("name", "modulename");
-                        ddl.onchange = filterByCategory(ddl);
-                        console.log("$document bloc");
+                        // ddl.onchange = filterByCategory(ddl);
+                        console.log(ddl);
                      });
-                     
-                     function filterByCategory(obj){
-                     var id = $(obj).val(); // get currently selected value
-                     console.log(id);
-                     $('tr[data-category]').hide(); // first hide all rows
-                     // $('tr[data-category='+id+']').show(); // show only those rows with the requested category id#
-                  }
                   </script>
                </div>
                <div class = "table">
@@ -83,7 +76,7 @@
                <script>
                   var userid = <%= passedid %>;
                   var jsondata = <%-JSON.stringify(coursework_json)%>;
-                  
+
                   $('th').on('click', function(){
                   		var column = $(this).data('column')
                   		var order = $(this).data('order')
@@ -125,6 +118,13 @@
                         $("#coursework_table  tbody").empty();
                         $("<tbody/>", {html:items.join("")}).appendTo("table");
                      });
+
+                     function filterByCategory(obj){
+                        var id = $(obj).val();
+                        console.log(id);
+                        $('tr[data-category='+id+']').hide();
+                        // $('tr[data-category='+id+']').show();
+                        }
                   }
                </script>
                <form action="#" method="POST">
