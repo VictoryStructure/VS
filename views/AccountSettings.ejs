@@ -42,6 +42,10 @@
 		</div>
 		</div>
 		<div class = "change password"> Change Password</div>
+
+		<% if (error) { %>
+			<%= error %>
+		<% } %>
 		
 		<form method="POST" action="/changepassword">
 			<label for="newPassword">Old Password:</label>

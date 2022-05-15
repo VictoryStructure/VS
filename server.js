@@ -103,30 +103,33 @@ app.delete('/logout', (req, res) => {
 })
 
 app.post('/changepassword', checkAuthenticated, async (req, res) => {
-    try {
-        if (await bcrypt.compare(req.body.oldPassword, req.user.password)) {
-            if (req.body.newPassword == req.body.confirmPassword) {
-                const hashedPassword = await bcrypt.hash(req.body.newPassword, 10)
-                req.user.password = hashedPassword
+    if (await bcrypt.compare(req.body.oldPassword, req.user.password)) {
 
-                users.forEach(function (obj, index) { 
-                    if (obj.id == req.user.id){
-                        obj.password = hashedPassword
-                    }
-                })
-                
-                let data = JSON.stringify(users, undefined, 4)
-                fs.writeFileSync('public/data/users.json', data)
+        if (req.body.newPassword == req.body.confirmPassword) {
+            const hashedPassword = await bcrypt.hash(req.body.newPassword, 10)
+            req.user.password = hashedPassword
 
-                res.redirect('/')
-            }
-        } 
+            users.forEach(function (obj, index) { 
+                if (obj.id == req.user.id){
+                    obj.password = hashedPassword
+                }
+            })
+
+            let data = JSON.stringify(users, undefined, 4)
+            fs.writeFileSync('public/data/users.json', data)
+
+            res.redirect('/')
+        }
+
         else {
-            res.redirect('/settings')
+            let error_message = "New passwords don't match"
+            res.render('AccountSettings.ejs', { name: req.user.username, email: req.user.email, error: error_message})
         }
     } 
-    catch {
-        res.redirect('/settings')
+
+    else {
+        let error_message = "Old password incorrect"
+        res.render('AccountSettings.ejs', { name: req.user.username, email: req.user.email, error: error_message})
     }
 })
 
@@ -142,8 +145,7 @@ app.get('/createmodule', checkAuthenticated, (req, res) => {
 })
 
 app.get('/settings', checkAuthenticated, (req, res) => {
-	res.render('AccountSettings.ejs', { name: req.user.username, email: req.user.email})
-
+	res.render('AccountSettings.ejs', { name: req.user.username, email: req.user.email, error: false})
 })
 
 app.post('/createmodule', checkAuthenticated, (req, res) => {
