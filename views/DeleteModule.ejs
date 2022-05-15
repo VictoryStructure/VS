@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Module</title>
+	<link rel="stylesheet" href="css/HomeVS.css">
+	
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+
+<div class="wrapper">
+    <div class="sidebar">
+        <h2>Victory Structure</h2>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/Module">Module</a></li>
+            <li><a href="/allcoursework"></i>All Coursework</a></li>
+            <li><a href="#"></i>About</a></li>
+			
+        </ul>
+        <div class="options">
+			<ul>
+				<li><a href="#">Account and Settings</a></li>
+				<li>
+          <form action="/logout?_method=DELETE" method="POST">
+            <button type="submit" class="linked_button">Log Out</button>
+          </form>
+        </li>
+			</ul>
+      </div>
+    </div>
+
+    <div class="main_content">
+        <div class="header">Delete Module</div>
+        <div class="info">
+            <label for = "selectContainer">Select a Module</label>
+            <div id="selectContainer1">
+                <script>
+                    $(document).ready(function(){
+                        let userid = <%= passedid %>;
+                        var data = <%-JSON.stringify(module_json)%>;
+                        var ddl = document.createElement("SELECT");
+                        $.each(data[userid],function(key, value){
+                            var option = document.createElement("OPTION");
+                            option.innerHTML = value.modulename;
+                            ddl.options.add(option);
+                        });
+                        document.getElementById('selectContainer1').appendChild(ddl);  
+                        ddl.setAttribute("name", "modulename");
+                    });
+                </script>
+            </div>
+            <button type="submit" class="linked_button" id="form_submit">Submit</button>
+       </div>
+	</div>
+	
+</div>
+</body>
+</html>
