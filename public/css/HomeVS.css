@@ -347,11 +347,13 @@ th{
 	
 }
 .Title{
+	 font-family: 'Ubuntu', sans-serif;
 	 font-size: 40px;
 	 font-weight: 600;
 	 margin-top: 20px;
 }
 .body{
+	 font-family: 'Montserrat', sans-serif;
 	margin-top: 20px;
 	
 	font-family: Times New Roman;
@@ -359,7 +361,8 @@ th{
 
 
 .detail{
-	font-family: "Trebuchet MS", Verdana, sans-serif;
+	font-family: 'Ubuntu', sans-serif;
+	font-weight: bold;
 	width: 100%;
 	max-width: 600px;
 	border: 3px solid green;
@@ -367,11 +370,13 @@ th{
 	margin: 10px;
 }
 .name{
+	font-family: 'Montserrat', sans-serif;
 	display: inline-block;
 	text-decoration: underline;
 
 }
 .email{
+	font-family: 'Montserrat', sans-serif;
 	display: inline-block;
 	text-decoration: underline;
 
@@ -395,6 +400,7 @@ th{
 	height: 100px;
 }
 .bar{
+	font-family: 'Ubuntu', sans-serif;
 	background-color: #A3B4A2;
 	margin-bottom: 10px;
 }
