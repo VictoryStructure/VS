@@ -326,8 +326,7 @@ app.post('/changeslider', checkAuthenticated, (req, res) => {
 	let userID = req.user.id
 	var value = req.body.value
 	var coursename = req.body.coursename
-	console.log(value)
-	console.log(coursename)
+
 	coursework[userID].forEach(function (obj, index) { 
 		if (obj.courseworkname == coursename){
 			obj.percentage = value
@@ -337,8 +336,6 @@ app.post('/changeslider', checkAuthenticated, (req, res) => {
 	// write data to json file
 	let data = JSON.stringify(coursework, undefined, 4)
 	fs.writeFileSync('public/data/coursework.json', data)
-
-	res.redirect('/allcoursework')
 })
 
 /****** Coursework Activity ******/
