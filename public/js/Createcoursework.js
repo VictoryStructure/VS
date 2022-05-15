@@ -1,5 +1,6 @@
 function confirmSubmit() {
-    if (confirm("Do you want to create this coursework")) {
+    var r = confirm("Do you want to create this coursework")
+    if (r == true) {
         alert("Coursework Created");
 
     } else {
