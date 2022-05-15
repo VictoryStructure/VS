@@ -217,8 +217,17 @@ app.get('/allcoursework', checkAuthenticated, (req, res) => {
 
 app.post('/allcoursework', checkAuthenticated, (req, res) => {
 	let selectedpage = req.body.selectpage
+	let userID = req.user.id
+	new_activity = []
+	activityjson[userID].forEach(function (obj, index) { 
+		console.log(7)
+		if ((obj.courseworkname) == (selectedpage)){
+			new_activity.push(obj)
+		}
+	})
+	console.log(new_activity)
 	
-    res.render('CourseworkSpecific.ejs', { selectedpage: selectedpage, passedid: req.user.id, coursework_json: coursework, module_json: modulejson, activity_json: activityjson})
+    res.render('CourseworkSpecific.ejs', { selectedpage: selectedpage, passedid: req.user.id, coursework_json: coursework, module_json: modulejson, activity: new_activity})
 })
 
 app.get('/createcoursework', checkAuthenticated, (req, res) => {

@@ -28,22 +28,22 @@
             "modulename": "Data Science"
         },
         {
-            "courseworkname": "test",
-            "description": "aa",
-            "deadline": "2022-05-18",
-            "markvalue": "21",
-            "notes": "df",
+            "courseworkname": "Flower Arrangement",
+            "description": "I love flowers",
+            "deadline": "2022-05-10",
+            "markvalue": "100",
+            "notes": "Cute",
             "percentage": 0,
             "modulename": "MODULE"
         },
         {
-            "courseworkname": "please",
-            "description": "aa",
+            "courseworkname": "Module",
+            "description": "Module",
             "deadline": "2022-05-17",
-            "markvalue": "21",
-            "notes": "df",
+            "markvalue": "80",
+            "notes": "asdf",
             "percentage": 0,
-            "modulename": "Check"
+            "modulename": "MODULE"
         }
     ],
     "1652106222825": [
@@ -57,13 +57,13 @@
             "modulename": "Sys Eng"
         },
         {
-            "courseworkname": "Mini Test 4",
-            "description": "Numbers ",
-            "deadline": "2022-05-19",
-            "markvalue": "7.5%",
-            "notes": "",
+            "courseworkname": "fdg",
+            "description": "dfg",
+            "deadline": "2022-05-12",
+            "markvalue": "fdg",
+            "notes": "dfg",
             "percentage": 0,
-            "modulename": "Data Structures"
+            "modulename": "fdg"
         }
     ]
 }
