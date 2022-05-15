@@ -57,13 +57,31 @@
             "modulename": "Sys Eng"
         },
         {
-            "courseworkname": "fdg",
-            "description": "dfg",
-            "deadline": "2022-05-12",
-            "markvalue": "fdg",
-            "notes": "dfg",
+            "courseworkname": "Flower Arrangement",
+            "description": "I love flowers",
+            "deadline": "2022-05-10",
+            "markvalue": "100",
+            "notes": "Cute",
             "percentage": 0,
-            "modulename": "fdg"
+            "modulename": "MODULE"
+        },
+        {
+            "courseworkname": "Module",
+            "description": "Module",
+            "deadline": "2022-05-17",
+            "markvalue": "80",
+            "notes": "asdf",
+            "percentage": 0,
+            "modulename": "MODULE"
+        },
+        {
+            "courseworkname": "Data Science",
+            "description": "sad",
+            "deadline": "2022-05-23",
+            "markvalue": "30",
+            "notes": "sad life",
+            "percentage": 0,
+            "modulename": "Data Science"
         }
     ]
 }
