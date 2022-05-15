@@ -42,17 +42,14 @@
 		</div>
 		</div>
 		<div class = "change password"> Change Password</div>
-		<form method="post" action="">
+		<form method="POST" action="">
+			<label for="newPassword">New Password:</label>
+			<input type="password" id="newPassword" name="newPassword" title="New password" />
 
-		<label for="newPassword">New Password:</label>
-		<input type="password" id="newPassword" name="newPassword" title="New password" />
+			<label for="confirmPassword">Confirm Password:</label>
+			<input type="password" id="confirmPassword" name="confirmPassword" title="Confirm new password" />
 
-		<label for="confirmPassword">Confirm Password:</label>
-		<input type="password" id="confirmPassword" name="confirmPassword" title="Confirm new password" />
-
-		<p class="form-actions">
-		<input type="submit" value="Change Password" title="Change password" onclick =  />
-		</p>
+			<button type="submit" class="button-group1">Change Password</button>
 		</form>
 	</div>
 </body>
