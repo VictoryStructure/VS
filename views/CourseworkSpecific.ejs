@@ -36,7 +36,18 @@
 
 		<div class="info">
 			<div class="slidecontainer">
-				<input type="range" min="1" max="100" value="1" class="slider" id="myRange">
+				<input type="range" min="1" max="100" value="1" class="slider" id="myRange" onchange="sliderChange(this.value)">
+				<script>
+					function sliderChange(sliderValue) {
+					
+						var ask = window.confirm("This action will delete this coursework. Do you want to delete it?");
+						if (ask) {
+							window.alert("This post was successfully deleted.");
+
+							window.location.href = "/deletecoursework?<%= selectedpage %>";
+						}
+					}
+				</script>
 				
 				<label for="checkbox"> Completed:</label>
 				<input type="checkbox" id="checkbox" name="completecheckbox" onchange="handleChange('<%= selectedpage %>')">
@@ -50,20 +61,6 @@
 
 							window.location.href = "/deletecoursework?<%= selectedpage %>";
 						}
-					
-						/*if (confirm(question) == true) {
-							console.log(name);
-							$.ajax({
-								type: 'POST',
-								url: '/deletecoursework',
-								success: function (response) {
-								   if (response.d == true) {
-										alert("You will now be redirected.");
-										window.location = "//www.aspsnippets.com/";
-									}
-								}
-							})
-						}*/ 
 						else {
 							document.getElementById("checkbox").checked = false;
 						}
