@@ -210,30 +210,30 @@ app.post('/createmodule', checkAuthenticated, (req, res) => {   //This is handli
 })
 
 app.get('/deletemodule', checkAuthenticated, (req, res) => {
-    let userID = req.user.id
-    let searchURL = url.parse(req.url,true).search
+    let userID = req.user.id										
+    let searchURL = url.parse(req.url,true).search					//get the search
     
-    searchURL = searchURL.replace('?', '')
-    searchURL = searchURL.split('%20').join(' ')
+    searchURL = searchURL.replace('?', '')							//
+    searchURL = searchURL.split('%20').join(' ')					//
 
-    if (searchURL) {
-        modulejson[userID].forEach(function (obj, index) { 
-        	if ((obj.modulename) == (searchURL)){
-        		modulejson[userID].splice(index , 1)
+    if (searchURL) {												//
+        modulejson[userID].forEach(function (obj, index) { 			//
+        	if ((obj.modulename) == (searchURL)){					//
+        		modulejson[userID].splice(index , 1)				//
         	}
         })
 
-        let module_data = JSON.stringify(modulejson, undefined, 4)
-        fs.writeFileSync('public/data/module.json', module_data)
+        let module_data = JSON.stringify(modulejson, undefined, 4)	//
+        fs.writeFileSync('public/data/module.json', module_data)	//
 
-        new_coursework = []
-        coursework[userID].forEach(function (obj, index) { 
-        	if ((obj.modulename) != (searchURL)){
-                new_coursework.push(obj)
+        new_coursework = []		
+        coursework[userID].forEach(function (obj, index) { 			//
+        	if ((obj.modulename) != (searchURL)){					//
+                new_coursework.push(obj)							//
         	}
         })
 
-        coursework[userID] = new_coursework
+        coursework[userID] = new_coursework							//
         let data = JSON.stringify(coursework, undefined, 4)
         fs.writeFileSync('public/data/coursework.json', data)
         
