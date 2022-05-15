@@ -6,7 +6,7 @@
       <link rel="stylesheet" href="css/HomeVS.css">
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
       <link rel="icon" href="asset/ICON.png">
-      <script src="/public/js/Createcoursework.js"></script>
+      <!-- <script src="/public/js/Createcoursework.js"></script> -->
    </head>
    <body>
       <div class="wrapper">
@@ -51,15 +51,16 @@
                      	});
                      	document.getElementById('selectContainer1').appendChild(ddl);  
                      	ddl.setAttribute("name", "modulename");
+                        ddl.onchange = filterByCategory(ddl);
+                        console.log("$document bloc");
                      });
                      
-                  //    filterByCategory("name");
-
-                  //    function filterByCategory(obj){
-                  //    var id = $(obj).val(); // get currently selected value
-                  //    $('tr[data-category]').hide(); // first hide all rows
-                  //    $('tr[data-category='+id+']').show(); // show only those rows with the requested category id
-                  // }
+                     function filterByCategory(obj){
+                     var id = $(obj).val(); // get currently selected value
+                     console.log(id);
+                     $('tr[data-category]').hide(); // first hide all rows
+                     // $('tr[data-category='+id+']').show(); // show only those rows with the requested category id#
+                  }
                   </script>
                </div>
                <div class = "table">
