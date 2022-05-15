@@ -68,8 +68,6 @@ app.get('/', checkAuthenticated, (req, res) => {
 	new_coursedeadline.sort()
 	new_coursedeadline = new_coursedeadline.slice(0,3)
 	
-	console.log(new_coursedeadline)
-	
 	new_coursedeadline.forEach(function (obj1, index1) { 
 		
 		coursework[userID].forEach(function (obj2, index2) { 
@@ -79,8 +77,6 @@ app.get('/', checkAuthenticated, (req, res) => {
 		})
 		
 	})
-	
-	console.log(coursedeadline)
 	
     res.render('index.ejs', { name: req.user.username, urgent: coursedeadline, passedid: req.user.id})
 })
@@ -322,6 +318,25 @@ app.get('/deletecoursework', checkAuthenticated, (req, res) => {
     }
 })
 
+app.post('/changeslider', checkAuthenticated, (req, res) => {
+	let userID = req.user.id
+	var value = req.body.value
+	var coursename = req.body.coursename
+	console.log(value)
+	console.log(coursename)
+	coursework[userID].forEach(function (obj, index) { 
+		if (obj.courseworkname == coursename){
+			obj.percentage = value
+		}
+	})
+
+	// write data to json file
+	let data = JSON.stringify(coursework, undefined, 4)
+	fs.writeFileSync('public/data/coursework.json', data)
+
+	res.redirect('/allcoursework')
+})
+
 /****** Coursework Activity ******/
 
 app.get('/createactivity', checkAuthenticated, (req, res) => {
@@ -365,9 +380,6 @@ app.get('/calendar', checkAuthenticated, (req, res) => {
     res.render('Calendar.ejs')
 })
 
-app.post('/changeslider', checkAuthenticated, (req, res) => {
-    console.log(req.body)
-})
 
 /****** Helper Functions ******/
   
