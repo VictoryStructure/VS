@@ -153,7 +153,7 @@ app.get('/allcoursework', checkAuthenticated, (req, res) => {
 
 app.post('/allcoursework', checkAuthenticated, (req, res) => {
 	let selectedpage = req.body.selectpage
-    res.render('CourseworkSpecific.ejs', { selectedpage: selectedpage, passedid: req.user.id, coursework_json: coursework, module_json: modulejson,  })
+    res.render('CourseworkSpecific.ejs', { selectedpage: selectedpage, passedid: req.user.id, coursework_json: coursework, module_json: modulejson, activity_json: activityjson})
 })
 
 app.get('/createcoursework', checkAuthenticated, (req, res) => {

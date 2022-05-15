@@ -35,9 +35,6 @@
                <form action = "/createcoursework" method = "GET">
                   <button class = "button1" type = "submit"> Create Coursework</button>
                </form>
-               <form action = "/createactivity">
-                  <button class = "button1" type = "submit"> Create Activity</button>
-               </form>
             </div>
             <div class="info">
                <div id="selectContainer1">
@@ -60,13 +57,13 @@
                   <table id = "coursework_table">
                      <thead>
                         <tr>
-                           <th data-column="coursework name" data-order="desc">Coursework Name</th>
-                           <th data-column="description" data-order="desc">Description</th>
-                           <th data-column="deadline" data-order="desc">Deadline</th>
-                           <th data-column="markvalue" data-order="desc">Markvalue</th>
-                           <th data-column="notes" data-order="desc">Notes</th>
-                           <th data-column="percentage" data-order="desc">Percentage</th>
-                           <th data-column="module" data-order="desc">Module</th>
+                           <th data-column="coursework name" data-order="desc">Coursework Name &#9650</th>
+                           <th data-column="description" data-order="desc">Description &#9650</th>
+                           <th data-column="deadline" data-order="desc">Deadline &#9650</th>
+                           <th data-column="markvalue" data-order="desc">Markvalue &#9650</th>
+                           <th data-column="notes" data-order="desc">Notes &#9650</th>
+                           <th data-column="percentage" data-order="desc">Percentage &#9650</th>
+                           <th data-column="module" data-order="desc">Module &#9650</th>
                         </tr>
                      </thead>
                      <tbody id = "tbody">
@@ -80,18 +77,22 @@
                   $('th').on('click', function(){
                   		var column = $(this).data('column')
                   		var order = $(this).data('order')
+                        var text = $(this).html();
+                        text = text.substring(0, text.length - 1)
                   		console.log('Column was clicked', column, order)
                   
                   	if (order == 'desc'){
                   		$(this).data("order", "asc")
                   		console.log(jsondata[userid])
                   		jsondata[userid] = jsondata[userid].sort((a,b) => a[column] > b[column] ? 1 : -1)
-                  		
+                        text += '&#9660'
                   	}else{ 
                   		$(this).data("order", "desc")
                   		console.log(jsondata[userid])
                   		jsondata[userid] = jsondata[userid].sort((a,b) => a[column] < b[column] ? 1 : -1)
+                        text += '&#9650'
                   	}
+                     $(this).html(text)
                   	buildtable(jsondata);
                   })
                   
