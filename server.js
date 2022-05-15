@@ -55,7 +55,31 @@ let activityjson = JSON.parse(activitydata);
 /****** Index - Home Page ******/
 
 app.get('/', checkAuthenticated, (req, res) => {
-    res.render('index.ejs', { name: req.user.username })
+	let userID = req.user.id
+	new_coursedeadline = []
+	coursedeadline = []
+	var times = 3
+	var temp = 0
+
+	coursework[userID].forEach(function (obj, index) { 
+		temp = obj.deadline
+		new_coursedeadline.push(temp)
+	})
+
+	new_coursedeadline.sort()
+	new_coursedeadline = new_coursedeadline.slice(0,3)
+
+	new_coursedeadline.forEach(function (obj1, index1) { 
+		
+		coursework[userID].forEach(function (obj2, index2) { 
+			if ((obj2.deadline) == (obj1)){
+				coursedeadline.push(obj2)
+			}
+		})
+		
+	})
+	
+    res.render('index.ejs', { name: req.user.username, urgent: coursedeadline, passedid: req.user.id})
 })
 
 /****** Register Endpoints ******/
@@ -102,6 +126,12 @@ app.delete('/logout', (req, res) => {
     res.redirect('/login')
 })
 
+/****** Account Settings ******/
+
+app.get('/settings', checkAuthenticated, (req, res) => {
+	res.render('AccountSettings.ejs', { name: req.user.username, email: req.user.email, error: false})
+})
+
 app.post('/changepassword', checkAuthenticated, async (req, res) => {
     if (await bcrypt.compare(req.body.oldPassword, req.user.password)) {
 
@@ -142,10 +172,6 @@ app.get('/module', checkAuthenticated, (req, res) => {
 
 app.get('/createmodule', checkAuthenticated, (req, res) => {
 	res.render('CreateModule.ejs');
-})
-
-app.get('/settings', checkAuthenticated, (req, res) => {
-	res.render('AccountSettings.ejs', { name: req.user.username, email: req.user.email, error: false})
 })
 
 app.post('/createmodule', checkAuthenticated, (req, res) => {
@@ -220,12 +246,10 @@ app.post('/allcoursework', checkAuthenticated, (req, res) => {
 	let userID = req.user.id
 	new_activity = []
 	activityjson[userID].forEach(function (obj, index) { 
-		console.log(7)
 		if ((obj.courseworkname) == (selectedpage)){
 			new_activity.push(obj)
 		}
 	})
-	console.log(new_activity)
 	
     res.render('CourseworkSpecific.ejs', { selectedpage: selectedpage, passedid: req.user.id, coursework_json: coursework, module_json: modulejson, activity: new_activity})
 })
@@ -337,7 +361,11 @@ app.post('/createactivity', checkAuthenticated, (req, res) => {
 /****** Calendar ******/
 
 app.get('/calendar', checkAuthenticated, (req, res) => {
-    res.render('Calendar.ejs');
+    res.render('Calendar.ejs')
+})
+
+app.post('/changeslider', checkAuthenticated, (req, res) => {
+    console.log(req.body)
 })
 
 /****** Helper Functions ******/
