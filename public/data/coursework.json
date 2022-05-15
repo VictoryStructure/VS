@@ -46,6 +46,15 @@
             "notes": "",
             "percentage": 0,
             "modulename": "Sys Eng"
+        },
+        {
+            "courseworkname": "etw",
+            "description": "wete",
+            "deadline": "2022-04-27",
+            "markvalue": "wet",
+            "notes": "ewt",
+            "percentage": 0,
+            "modulename": "Sys Eng"
         }
     ]
 }

@@ -220,8 +220,8 @@ app.get('/createactivity', checkAuthenticated, (req, res) => {
 
 app.post('/createactivity', checkAuthenticated, (req, res) => {
     try {
-        if (req.user.id in coursework) {
-            coursework[req.user.id].push({
+        if (req.user.id in activityjson) {
+            activityjson[req.user.id].push({
                 activityname : req.body.activityname,
                 description : req.body.description,
                 notes : req.body.notes,
@@ -229,7 +229,7 @@ app.post('/createactivity', checkAuthenticated, (req, res) => {
             })
         }
         else {
-            coursework[req.user.id] = [{
+            activityjson[req.user.id] = [{
                 courseworkname : req.body.courseworkname,
                 activityname : req.body.activityname,
                 description : req.body.description,
@@ -242,10 +242,10 @@ app.post('/createactivity', checkAuthenticated, (req, res) => {
         let data = JSON.stringify(activityjson, undefined, 4)
         fs.writeFileSync('public/data/activity.json', data)
 
-        res.redirect('/allcourseworks')
+        res.redirect('/allcoursework')
     } 
     catch {
-        res.redirect('/allcourseworks')
+        res.redirect('/allcoursework')
     }
 })
 
