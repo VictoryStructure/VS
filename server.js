@@ -10,6 +10,8 @@ const session = require('express-session')
 const methodOverride = require('method-override')
 const fs = require('fs')
 const bcrypt = require('bcrypt')
+const url = require('url');
+
 
 const initializePassport = require('./passport-config')
 initializePassport(
@@ -164,10 +166,31 @@ app.post('/createmodule', checkAuthenticated, (req, res) => {
     }
 })
 
-app.post('/deletecoursework', checkAuthenticated, (req, res) => {
+app.get('/deletecoursework', checkAuthenticated, (req, res) => {
     try {
-		console.log('boop')
-		res.setStatus(278)
+		let userID = req.user.id
+		let searchURL = url.parse(req.url,true).search
+		
+		console.log(userID)
+		console.log(coursework[userID])
+		console.log(searchURL)
+		searchURL = searchURL.replace('?', '')
+		searchURL = searchURL.replaceAll('%20', ' ')
+		console.log(searchURL,'\n')
+
+		coursework[userID].forEach(function (obj, index) { 
+			if ((obj.courseworkname) == (searchURL)){
+				console.log(obj.courseworkname, ' == ' ,searchURL)
+				console.log('yes at ', index)
+				
+			}
+			else{ 
+				console.log(obj.courseworkname, ' == ' ,searchURL)
+				console.log('no')
+			}
+		})
+		
+
         res.redirect('/allcourseworks')
     } 
     catch {
@@ -176,7 +199,9 @@ app.post('/deletecoursework', checkAuthenticated, (req, res) => {
 })
 
 app.post('/allcourseworks', checkAuthenticated, (req, res) => {
-    res.render('CourseworkSpecific.ejs', { selectedpage: req.body.selectpage,passedid: req.user.id, coursework_json: coursework, module_json: modulejson,  })
+	let selectedpage = req.body.selectpage
+	console.log(selectedpage)
+    res.render('CourseworkSpecific.ejs', { selectedpage: selectedpage, passedid: req.user.id, coursework_json: coursework, module_json: modulejson,  })
 })
 
 app.get('/calendar', checkAuthenticated, (req, res) => {

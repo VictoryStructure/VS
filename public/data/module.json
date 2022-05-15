@@ -29,5 +29,15 @@
             "description": "NDJSBL"
         },
         {}
+    ],
+    "1652106222825": [
+        {
+            "modulename": "Sys Eng",
+            "description": "Team Work"
+        },
+        {
+            "modulename": "Data Structures",
+            "description": "Mostly Maths"
+        }
     ]
 }
