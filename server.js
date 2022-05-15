@@ -58,8 +58,8 @@ app.get('/', checkAuthenticated, (req, res) => {
 	let userID = req.user.id
 	new_coursedeadline = []
 	coursedeadline = []
-	var times = 3
 	var temp = 0
+
 	coursework[userID].forEach(function (obj, index) { 				//for each coursework the user has saved
 		temp = obj.deadline											//saves the current indexs deadline
 		new_coursedeadline.push(temp)								//adds the saved deadline to the array
@@ -74,6 +74,7 @@ app.get('/', checkAuthenticated, (req, res) => {
 			}
 		})
 	})
+
     res.render('index.ejs', { name: req.user.username, urgent: coursedeadline, passedid: req.user.id})
 })
 
@@ -85,7 +86,10 @@ app.get('/register', checkNotAuthenticated, (req, res) => {
 
 app.post('/register', checkNotAuthenticated, async (req, res) => {
     try {
-        const hashedPassword = await bcrypt.hash(req.body.password, 10)		//
+        // turns the user password into a hash through bcrypt library
+        const hashedPassword = await bcrypt.hash(req.body.password, 10)		
+
+        // push user registration information into user array to write to json file
         users.push({														
             id: Date.now().toString(),
             username: req.body.username,
@@ -132,18 +136,25 @@ app.get('/settings', checkAuthenticated, (req, res) => {
 })
 
 app.post('/changepassword', checkAuthenticated, async (req, res) => {
-    if (await bcrypt.compare(req.body.oldPassword, req.user.password)) {			//
 
-        if (req.body.newPassword == req.body.confirmPassword) {						//
-            const hashedPassword = await bcrypt.hash(req.body.newPassword, 10)		//
-            req.user.password = hashedPassword										//
-	
-            users.forEach(function (obj, index) { 									//
-                if (obj.id == req.user.id){											//
-                    obj.password = hashedPassword									//
+    // if the old password the user enters matches the user password
+    if (await bcrypt.compare(req.body.oldPassword, req.user.password)) {
+
+        // if the new password confirmation matches
+        if (req.body.newPassword == req.body.confirmPassword) {
+
+            // make a new hash based on the new password
+            const hashedPassword = await bcrypt.hash(req.body.newPassword, 10)
+            req.user.password = hashedPassword
+
+            // change password in users object
+            users.forEach(function (obj, index) { 
+                if (obj.id == req.user.id){
+                    obj.password = hashedPassword
                 }
             })
 
+            // write to json
             let data = JSON.stringify(users, undefined, 4)
             fs.writeFileSync('public/data/users.json', data)
 
@@ -172,7 +183,7 @@ app.get('/createmodule', checkAuthenticated, (req, res) => {
 	res.render('CreateModule.ejs');
 })
 
-app.post('/createmodule', checkAuthenticated, (req, res) => {   //This is handeling a post request
+app.post('/createmodule', checkAuthenticated, (req, res) => {   //This is handling a post request
     try {														
         if (req.user.id in modulejson) {						//if the user already has modules saved
             modulejson[req.user.id].push({						//add the module to the users JSON
@@ -186,6 +197,7 @@ app.post('/createmodule', checkAuthenticated, (req, res) => {   //This is handel
                 description : req.body.description				
             }]
         }
+        
         // write data to json file
         let data1 = JSON.stringify(modulejson, undefined, 4)	
         fs.writeFileSync('public/data/module.json', data1)		
