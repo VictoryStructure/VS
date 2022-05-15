@@ -1,3 +1,5 @@
+const { fstat } = require("fs");
+
 let nav = 0;
 let clicked = null;
 let events = localStorage.getItem('events') ? JSON.parse(localStorage.getItem('events')) : [];
@@ -8,6 +10,7 @@ const deleteEventModal = document.getElementById('deleteEventModal');
 const backDrop = document.getElementById('modalBackDrop');
 const eventTitleInput = document.getElementById('eventTitleInput');
 const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
 
 function openModal(date) {
   clicked = date;
@@ -78,6 +81,9 @@ function load() {
     }
 
     calendar.appendChild(daySquare);    
+
+
+    
   }
 }
 
@@ -101,6 +107,7 @@ function saveEvent() {
     });
 
     localStorage.setItem('events', JSON.stringify(events));
+    //fs.writeFileSync('public/data/events.json', events);
     closeModal();
   } else {
     eventTitleInput.classList.add('error');
@@ -129,6 +136,8 @@ function initButtons() {
   document.getElementById('deleteButton').addEventListener('click', deleteEvent);
   document.getElementById('closeButton').addEventListener('click', closeModal);
 }
+
+
 
 initButtons();
 load();
