@@ -33,6 +33,10 @@
         {
             "modulename": "fdg",
             "description": "dfg"
+        },
+        {
+            "modulename": "MODULE",
+            "description": "SWODULE"
         }
     ]
 }

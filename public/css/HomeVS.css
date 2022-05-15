@@ -353,12 +353,7 @@ th{
 	 margin-top: 20px;
 	 text-decoration: underline;
 }
-.body{
-	 font-family: 'Montserrat', sans-serif;
-	margin-top: 20px;
-	
-	font-family: Times New Roman;
-}
+
 
 
 .detail{
@@ -371,13 +366,13 @@ th{
 	margin: 10px;
 }
 .name{
-	font-family: 'Montserrat', sans-serif;
+	font-family: Montserrat, sans-serif;
 	display: inline-block;
 	text-decoration: underline;
 
 }
 .email{
-	font-family: 'Montserrat', sans-serif;
+	font-family: Montserrat, sans-serif;
 	display: inline-block;
 	text-decoration: underline;
 
@@ -417,6 +412,11 @@ th{
 	padding: 10px 24px; 
 	cursor: pointer;
 	
+}
+p{
+	margin-top: 20px;
+	font-family: 'Montserrat', sans-serif;
+
 }
 #module_table, #coursework_table, .button2, input::placeholder {
 	font-family: 'Montserrat', sans-serif;
