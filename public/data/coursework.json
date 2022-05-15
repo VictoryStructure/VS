@@ -35,42 +35,6 @@
             "notes": "Cute",
             "percentage": 0,
             "modulename": "MODULE"
-        },
-        {
-            "courseworkname": "REMOVE",
-            "description": "REMOVE",
-            "deadline": "2022-05-05",
-            "markvalue": "REMOVE",
-            "notes": "REMOVE",
-            "percentage": 0,
-            "modulename": "MODULE"
-        },
-        {
-            "courseworkname": "sd",
-            "description": "sd",
-            "deadline": "2022-05-18",
-            "markvalue": "sd",
-            "notes": "sd",
-            "percentage": 0,
-            "modulename": "Data Structures"
-        },
-        {
-            "courseworkname": "dgdg",
-            "description": "sdfsdfsd",
-            "deadline": "2022-05-12",
-            "markvalue": "dsfsdfs",
-            "notes": "sdg",
-            "percentage": 0,
-            "modulename": "Data Structures"
-        },
-        {
-            "courseworkname": "sf",
-            "description": "dsf",
-            "deadline": "2022-04-27",
-            "markvalue": "dsf",
-            "notes": "sdf",
-            "percentage": 0,
-            "modulename": "Data Structures"
         }
     ],
     "1652106222825": [

@@ -6,7 +6,7 @@
 	<link rel="stylesheet" href="css/HomeVS.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<link rel="icon" href="asset/ICON.png">
-	<script src="js/Createcoursework.js"></script>
+	<script src="js/CreateCoursework.js"></script>
 </head>
 <body>
 
@@ -16,7 +16,7 @@
         <ul>
             <li><a href="/">Home</a></li>
             <li><a href="/module">Module</a></li>
-            <li><a href="/allcourseworks"></i>All Coursework</a></li>
+            <li><a href="/allcoursework"></i>All Coursework</a></li>
             <li><a href="#"></i>About</a></li>
         </ul>
         <div class="options">
@@ -37,27 +37,29 @@
         <div class="info">
 			<div class="Table">
 				<form action="#" method="POST">
-					<label for = "coursename">Enter Coursework Activity Name</label>
-					<input type = "text" id = "modulename" name = "modulename" placeholder = "Module Name" required>
+					<label for = "activityname">Enter Coursework Activity Name</label>
+					<input type = "text" id = "activityname" name = "activityname" placeholder = "Coursework Activity Name" required>
 					<label for = "description">Description</label>
 					<input type = "text" id = "description" name = "description" placeholder = "Description" required >
-					<label for = "selectContainer">Coursework Name</label>
-					<div id="selectContainer">
-						<script>
-							$(document).ready(function(){
-								let userid = <%= passedid %>;
-								var data = <%-JSON.stringify(coursework_json)%>;
-								var ddl = document.createElement("SELECT");
-								$.each(data[userid],function(key, value){
-									var option = document.createElement("OPTION");
-									option.innerHTML = value.courseworkname;
-									ddl.options.add(option);
-								});
-								document.getElementById('selectContainer2').appendChild(ddl);  
-								ddl.setAttribute("name", "courseworkname");
-							});
-						</script>
-					 </div>
+					<label for = "notes">Notes</label>
+					<input type = "text" id = "notes" name = "notes" placeholder = "Notes">
+					<label for = "selectContainer">Select a Coursework</label>
+				<div id="selectContainer2">
+				<script>
+					$(document).ready(function(){
+						let userid = <%= passedid %>;
+						var data = <%-JSON.stringify(coursework_json)%>;
+						var ddl = document.createElement("SELECT");
+						$.each(data[userid],function(key, value){
+							var option = document.createElement("OPTION");
+							option.innerHTML = value.courseworkname;
+							ddl.options.add(option);
+						});
+						document.getElementById('selectContainer2').appendChild(ddl);  
+						ddl.setAttribute("name", "selectpage");
+					});
+				</script>
+				</div>
 				  
 					  <button type="submit" class="linked_button" id="form_submit">Submit</button>       
 				</form>  
