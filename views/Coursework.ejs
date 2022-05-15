@@ -39,22 +39,6 @@
             <div class="info">
 			   <label for = "selectContainer1">Filter by Module</label>
                <div id="selectContainer1">
-                  <script>
-                     $(document).ready(function(){
-                     	let userid = <%= passedid %>;
-                     	var data = <%-JSON.stringify(module_json)%>;
-                     	var ddl = document.createElement("SELECT");
-                     	$.each(data[userid],function(key, value){
-                     		var option = document.createElement("OPTION");
-                     		option.innerHTML = value.modulename;
-                     		ddl.options.add(option);
-                     	});
-                     	document.getElementById('selectContainer1').appendChild(ddl);  
-                     	ddl.setAttribute("name", "modulename");
-                        // ddl.onchange = filterByCategory(ddl);
-                        console.log(ddl);
-                     });
-                  </script>
                </div>
                <div class = "table">
                   <table id = "coursework_table" class = "table">
@@ -76,6 +60,27 @@
                <script>
                   var userid = <%= passedid %>;
                   var jsondata = <%-JSON.stringify(coursework_json)%>;
+                  var data = <%-JSON.stringify(module_json)%>;
+
+                  $(document).ready(function(){
+                     	var ddl = document.createElement("SELECT");
+                     	$.each(data[userid],function(key, value){
+                     		var option = document.createElement("OPTION");
+                     		option.innerHTML = value.modulename;
+                     		ddl.options.add(option);
+                     	});
+                     	document.getElementById('selectContainer1').appendChild(ddl);  
+                     	ddl.setAttribute("name", "modulename");
+                        ddl.onchange = filterByCategory(ddl);
+                        console.log(ddl);
+
+                        function filterByCategory(obj){
+                        var id = $(obj).val();
+                        console.log(id);
+                        $('tr[data-category]').hide();
+                        $('tr[data-category='+id+']').show();
+                        }
+                     });
 
                   $('th').on('click', function(){
                   		var column = $(this).data('column')
@@ -118,15 +123,9 @@
                         $("#coursework_table  tbody").empty();
                         $("<tbody/>", {html:items.join("")}).appendTo("table");
                      });
-
-                     function filterByCategory(obj){
-                        var id = $(obj).val();
-                        console.log(id);
-                        $('tr[data-category='+id+']').hide();
-                        // $('tr[data-category='+id+']').show();
-                        }
                   }
                </script>
+               
                <form action="#" method="POST">
                   <label for = "selectContainer">Select a Coursework</label>
                   <div id="selectContainer2">
