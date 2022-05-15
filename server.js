@@ -248,8 +248,15 @@ app.post('/allcoursework', checkAuthenticated, (req, res) => {
 			new_activity.push(obj)
 		}
 	})
+
+    let percent = 0
+    coursework[userID].forEach(function (obj, index) { 
+		if ((obj.courseworkname) == (selectedpage)){
+			percent = obj.percentage
+		}
+	})
 	
-    res.render('CourseworkSpecific.ejs', { selectedpage: selectedpage, passedid: req.user.id, coursework_json: coursework, module_json: modulejson, activity: new_activity})
+    res.render('CourseworkSpecific.ejs', { selectedpage: selectedpage, passedid: req.user.id, coursework_json: coursework, module_json: modulejson, activity: new_activity, percentage: percent})
 })
 
 app.get('/createcoursework', checkAuthenticated, (req, res) => {
