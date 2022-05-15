@@ -42,26 +42,15 @@
 		</div>
 		</div>
 		<div class = "change password"> Change Password</div>
-
 		
-		<label for="newPassword">Old Password:</label>
-		<input type="password" id="newPassword" name="newPassword" title="New password" />
-		
-		<label for="newPassword">New Password:</label>
-		<input type="password" id="newPassword" name="newPassword" title="New password" />
-
-		<label for="confirmPassword">Confirm New Password:</label>
-		<input type="password" id="confirmPassword" name="confirmPassword" title="Confirm new password" />
-
-		<p class="form-actions">
-		<input type="submit" value="Change Password" title="Change password" onclick =  />
-		</p>
-
-		<form method="POST" action="">
+		<form method="POST" action="/changepassword">
+			<label for="newPassword">Old Password:</label>
+			<input type="password" id="oldPassword" name="oldPassword" title="Old password" />
+			
 			<label for="newPassword">New Password:</label>
 			<input type="password" id="newPassword" name="newPassword" title="New password" />
 
-			<label for="confirmPassword">Confirm Password:</label>
+			<label for="confirmPassword">Confirm New Password:</label>
 			<input type="password" id="confirmPassword" name="confirmPassword" title="Confirm new password" />
 
 			<button type="submit" class="button-group1">Change Password</button>

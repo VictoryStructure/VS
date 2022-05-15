@@ -102,6 +102,35 @@ app.delete('/logout', (req, res) => {
     res.redirect('/login')
 })
 
+app.post('/changepassword', checkAuthenticated, async (req, res) => {
+    try {
+        if (await bcrypt.compare(req.body.oldPassword, req.user.password)) {
+            if (req.body.newPassword == req.body.confirmPassword) {
+                const hashedPassword = await bcrypt.hash(req.body.newPassword, 10)
+                req.user.password = hashedPassword
+
+                users.forEach(function (obj, index) { 
+                    if (obj.id == req.user.id){
+                        obj.password = hashedPassword
+                    }
+                })
+                
+                let data = JSON.stringify(users, undefined, 4)
+                fs.writeFileSync('public/data/users.json', data)
+
+                res.redirect('/')
+            }
+        } 
+        else {
+            res.redirect('/settings')
+        }
+    } 
+    catch {
+        res.redirect('/settings')
+    }
+})
+
+
 /****** Module Endpoints ******/
 
 app.get('/module', checkAuthenticated, (req, res) => {
@@ -111,6 +140,7 @@ app.get('/module', checkAuthenticated, (req, res) => {
 app.get('/createmodule', checkAuthenticated, (req, res) => {
 	res.render('CreateModule.ejs');
 })
+
 app.get('/settings', checkAuthenticated, (req, res) => {
 	res.render('AccountSettings.ejs', { name: req.user.username, email: req.user.email})
 
