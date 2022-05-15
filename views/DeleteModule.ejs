@@ -40,8 +40,8 @@
                 <script>
                     $(document).ready(function(){
                         let userid = <%= passedid %>;
-                        var data = <%-JSON.stringify(module_json)%>;
-                        var ddl = document.createElement("SELECT");
+                        let data = <%-JSON.stringify(module_json)%>;
+                        let ddl = document.createElement("SELECT");
                         ddl.id = "moduleSelect";
                         $.each(data[userid],function(key, value){
                             var option = document.createElement("OPTION");
@@ -60,10 +60,10 @@
   <script>
     function deleteModule() {
     
-      var ask = window.confirm("This action will delete this module and all the coursework associated with this module. Do you want to delete it?");
+      let ask = window.confirm("This action will delete this module and all the coursework associated with this module. Do you want to delete it?");
       if (ask) {
-        var select = document.getElementById('moduleSelect');
-        var value = select.options[select.selectedIndex].text;
+        let select = document.getElementById('moduleSelect');
+        let value = select.options[select.selectedIndex].text;
         window.location.href = "/deletemodule?" + value;
       }
     }
