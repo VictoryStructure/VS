@@ -8,7 +8,6 @@ slider.oninput = function() {
 	output.innerHTML = this.value;
 }
 
-
 function confirmSubmit() {
 	var ask = window.confirm("Are you sure you want to delete this post?");
     if (ask) {
@@ -22,5 +21,7 @@ function confirmSubmit() {
 
 	} else {
 		alert("Coursework not created");
-    }
+    } 
 }
+
+

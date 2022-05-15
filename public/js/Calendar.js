@@ -105,7 +105,6 @@ function saveEvent() {
     });
 
     localStorage.setItem('events', JSON.stringify(events));
-    //fs.writeFileSync('public/data/events.json', events);
     closeModal();
   } else {
     eventTitleInput.classList.add('error');

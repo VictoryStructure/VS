@@ -22,7 +22,7 @@
         </ul>
         <div class="options">
 			<ul>
-				<li><a href="#">Account and Settings</a></li>
+				<li><a href="/settings">Account and Settings</a></li>
 				<li>
 				  <form action="/logout?_method=DELETE" method="POST">
 					<button type="submit" class="linked_button">Log Out</button>
@@ -53,20 +53,20 @@
           </div>
           <script>
             $(document).ready(function(){
-              var activity_data = '';
-              let userid = <%= passedid %>;
-              var data = <%-JSON.stringify(activity_json)%>;
+			  var activity_data = '';
+			  let userid = <%= passedid %>;
+			  var data = <%-JSON.stringify(activity_json)%>;
   
-              $.each(data[userid],function(key, value){
-                activity_data += '<tr>';
-                activity_data += '<td>'+value.activityname+'</td>';
-                activity_data += '<td>'+value.description+'</td>';
+			  $.each(data[userid],function(key, value){
+				activity_data += '<tr>';
+				activity_data += '<td>'+value.activityname+'</td>';
+				activity_data += '<td>'+value.description+'</td>';
 				activity_data += '<td>'+value.notes+'</td>';
-                activity_data += '<td>'+value.courseworkname+'</td>';
-                activity_data += '</tr>';
-              });
-              $('#activity_table').append(activity_data);
-              });
+				activity_data += '<td>'+value.courseworkname+'</td>';
+				activity_data += '</tr>';
+			  });
+			  $('#activity_table').append(activity_data);
+			  });
           </script>
 		
 			<div class="slidecontainer">
@@ -74,10 +74,6 @@
 				<script>
 					function sliderChange(sliderValue) {
 					
-						var ask = window.confirm("This action will delete this coursework. Do you want to delete it?");
-						if (ask) {
-							window.location.href = "/deletecoursework?<%= selectedpage %>";
-						}
 					}
 				</script>
 				

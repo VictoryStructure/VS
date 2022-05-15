@@ -57,13 +57,13 @@
             "modulename": "Sys Eng"
         },
         {
-            "courseworkname": "fdg",
-            "description": "dfg",
-            "deadline": "2022-05-12",
-            "markvalue": "fdg",
-            "notes": "dfg",
+            "courseworkname": "Mini Test 4",
+            "description": "Numbers ",
+            "deadline": "2022-05-19",
+            "markvalue": "7.5%",
+            "notes": "",
             "percentage": 0,
-            "modulename": "fdg"
+            "modulename": "Data Structures"
         }
     ]
 }
