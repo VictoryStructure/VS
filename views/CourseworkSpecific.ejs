@@ -33,25 +33,39 @@
 	
     <div class="main_content">
         <div class="header"> <%= selectedpage %> Coursework</div>
-
+		<div class = "button-group">
+		<form action = "/createactivity">
+				<button class = "button1" type = "submit"> Create Activity</button>
+			</form>
+		</div>
 		<div class="info">
 			<div class="slidecontainer">
-				<input type="range" min="1" max="100" value="1" class="slider" id="myRange">
+				<input type="range" min="1" max="100" value="1" class="slider" id="myRange" onchange="sliderChange(this.value)">
+				<script>
+					function sliderChange(sliderValue) {
+					
+						var ask = window.confirm("This action will delete this coursework. Do you want to delete it?");
+						if (ask) {
+							window.alert("This post was successfully deleted.");
+
+							window.location.href = "/deletecoursework?<%= selectedpage %>";
+						}
+					}
+				</script>
 				
 				<label for="checkbox"> Completed:</label>
 				<input type="checkbox" id="checkbox" name="completecheckbox" onchange="handleChange('<%= selectedpage %>')">
 				
 				<script>
 					function handleChange(name) {
-						let question = "This action will delete this coursework. Do you want to delete it?";
-						if (confirm(question) == true) {
-							console.log(name);
-							$.ajax({
-								type: 'POST',
-								url: '/deletecoursework',
-								data: 'name'
-							})
-						} else {
+					
+						var ask = window.confirm("This action will delete this coursework. Do you want to delete it?");
+						if (ask) {
+							window.alert("This post was successfully deleted.");
+
+							window.location.href = "/deletecoursework?<%= selectedpage %>";
+						}
+						else {
 							document.getElementById("checkbox").checked = false;
 						}
 					}

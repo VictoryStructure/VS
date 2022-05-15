@@ -1,13 +1,9 @@
-
 function confirmSubmit() {
-	var text;
-	var r = confirm("Are you sure you want to create the coursework? ");
-	if (r == true) {
-		alert("Coursework Created");
+    if (confirm("Do you want to create this coursework")) {
+        alert("Coursework Created");
 
-	} else {
-		alert("Cancelled coursework");
-		event.preventDefault();
-	}
-	console.log(text);
+    } else {
+        alert("Coursework not created");
+        event.preventDefault();
+    }
 }
