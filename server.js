@@ -111,6 +111,9 @@ app.get('/module', checkAuthenticated, (req, res) => {
 app.get('/createmodule', checkAuthenticated, (req, res) => {
 	res.render('CreateModule.ejs');
 })
+app.get('/settings', checkAuthenticated, (req, res) => {
+	res.render('AccountSettings.ejs', {passedid: req.user.id, module_json: modulejson})
+})
 
 app.post('/createmodule', checkAuthenticated, (req, res) => {
     try {
