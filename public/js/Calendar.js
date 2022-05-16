@@ -77,7 +77,7 @@ function load() {
         eventDiv.innerText = eventForDay.title;
         daySquare.appendChild(eventDiv);
       }
-
+      //if click opens event window
       daySquare.addEventListener('click', () => openModal(dayString));
     } else {
       daySquare.classList.add('emptyDays');
@@ -89,17 +89,17 @@ function load() {
     
   }
 }
-//closes pop up when clicking on event
+//closes pop up when clicking on event, changing css when close clicked on.
 function closeModal() {
-  eventTitleInput.classList.remove('error');
-  newEventModal.style.display = 'none';
+  eventTitleInput.classList.remove('error'); 
+  newEventModal.style.display = 'none'; 
   deleteEventModal.style.display = 'none';
   backDrop.style.display = 'none';
   eventTitleInput.value = '';
   clicked = null;
   load();
 }
-
+// saves into local storage
 function saveEvent() {
   if (eventTitleInput.value) {
     eventTitleInput.classList.remove('error');
@@ -115,7 +115,7 @@ function saveEvent() {
     eventTitleInput.classList.add('error');
   }
 }
-
+// removes event on the day thats clicked. 
 function deleteEvent() {
   events = events.filter(e => e.date !== clicked);
   localStorage.setItem('events', JSON.stringify(events));
