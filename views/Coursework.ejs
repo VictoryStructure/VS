@@ -40,7 +40,7 @@
                <div id="selectContainer1">
                   <select id="filterModule" onChange="javascript:filterByCategory(this)">
                      <option>
-                        --All Coursework--
+                        --All Modules--
                      </option>
                   </select>
                </div>
@@ -48,13 +48,13 @@
                   <table id = "coursework_table" class = "table">
                      <thead>
                         <tr>
-                           <th data-column="courseworkname" data-order="desc">Coursework Name &#9650</th>
-                           <th data-column="description" data-order="desc">Description &#9650</th>
+                           <th data-column="courseworkname" data-order="desc">Coursework Name</th>
+                           <th data-column="description" data-order="desc">Description</th>
                            <th data-column="deadline" data-order="desc">Deadline &#9650</th>
                            <th data-column="markvalue" data-order="desc">Mark Value &#9650</th>
-                           <th data-column="notes" data-order="desc">Notes &#9650</th>
-                           <th data-column="percentage" data-order="desc">Progress &#9650</th>
-                           <th data-column="module" data-order="desc">Module &#9650</th>
+                           <th data-column="notes" data-order="desc">Notes/th>
+                           <th data-column="percentage" data-order="desc">Progress</th>
+                           <th data-column="module" data-order="desc">Module</th>
                         </tr>
                      </thead>
                   </table>
@@ -76,7 +76,7 @@
                         }
                      }
 
-                     if (id == "--All Coursework--") {
+                     if (id == "--All Modules--") {
                         $('tr[data-category]').show();
                      }
                   }
