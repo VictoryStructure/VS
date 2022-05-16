@@ -11,6 +11,36 @@
             "description": "Numbers ",
             "notes": "",
             "courseworkname": "Mini Test 4"
+        },
+        {
+            "activityname": "Practice paper on blackoard",
+            "description": "Complete practice paper on topic",
+            "notes": "",
+            "courseworkname": "Mini Exam"
+        },
+        {
+            "activityname": "Watch lecture 3",
+            "description": "Use lecture 3 to revise",
+            "notes": "",
+            "courseworkname": "Mini Exam"
+        },
+        {
+            "activityname": "Watch blackboard lectures",
+            "description": "Revise using BB lectures",
+            "notes": "",
+            "courseworkname": "Final Exam"
+        },
+        {
+            "activityname": "HTML AND CSS",
+            "description": "Design and create website",
+            "notes": "",
+            "courseworkname": "Student Planner Website"
+        },
+        {
+            "activityname": "Create Server",
+            "description": "Making server for website",
+            "notes": "",
+            "courseworkname": "Student Planner Website"
         }
     ],
     "1652106491240": [
