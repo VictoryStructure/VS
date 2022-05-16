@@ -1,4 +1,4 @@
-//referenced from https://github.com/portexe/VanillaCalendar
+//referenced from https://github.com/portexe/VanillaCalendar2
 let nav = 0;
 let clicked = null;
 let events = localStorage.getItem('events') ? JSON.parse(localStorage.getItem('events')) : [];
@@ -71,7 +71,6 @@ function load() {
       if (i - emptyDays === day && nav === 0) {
         daySquare.id = 'currentDay';
       }
-
       if (eventForDay) {
         const eventDiv = document.createElement('div');
         eventDiv.classList.add('event');
@@ -90,7 +89,7 @@ function load() {
     
   }
 }
-
+//closes pop up when clicking on event
 function closeModal() {
   eventTitleInput.classList.remove('error');
   newEventModal.style.display = 'none';

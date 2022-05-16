@@ -84,7 +84,7 @@ button {
 }
 .emptyDays {
   cursor: default !important;
-  background-color: #FFFCFF !important;
+  background-color: #A3B4A2 !important;
   box-shadow: none !important;
 }
 #newEventModal, #deleteEventModal {
