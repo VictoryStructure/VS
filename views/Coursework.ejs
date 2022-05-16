@@ -79,10 +79,11 @@
                      if (id == "--All Coursework--") {
                         $('tr[data-category]').show();
                      }
-
                   }
 
-                  $('th').on('click', function(){
+                  $(document).ready(function(){
+                     
+                     $('th').on('click', function(){
                   		var column = $(this).data('column')
                   		var order = $(this).data('order')
                         var text = $(this).html();
@@ -104,9 +105,8 @@
                   	buildtable(jsondata);
                   })
 
-                  $(document).ready(function(){
-                        buildtable(jsondata);
-                  
+                     buildtable(jsondata)
+
                         function buildtable(data){
                            $(document).ready(function(){
                               var items = [];
