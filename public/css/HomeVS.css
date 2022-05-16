@@ -13,7 +13,7 @@
 *::-webkit-scrollbar {
 	display: none;
 }
-
+/* Grouping css for multipe buttons*/
 .button-group{
 	background-color: none;
 	padding-top:10px;
@@ -67,26 +67,20 @@
   /* displays in its own space */
   display: table;
 }
-
-
-
-
 /* Add a background color on hover */
 .button-group button:hover {
   background-color: #768f75;
 }
-
-
-
+/*body background*/
 body{
 	background-color: #ECEAE0;
 }
-
+/*CSS for Wrapper */
 .wrapper{
 	display: flex;
 	position: relative;
 }
-
+/*Styling side menu options*/
 .wrapper .sidebar{
 	width: 200px;
 	height: 100%;
@@ -163,7 +157,7 @@ body{
 .wrapper .main_content .info .Tasks{
 	height: 200px;
 }
-
+/*styling button*/
 .linked_button {
 	background: none;
 	border: none;
@@ -172,6 +166,7 @@ body{
 	font-family: 'Montserrat', sans-serif;
 	font-size: 15px;
 }
+/*CSS design for the slider*/
 
 .slidecontainer {
   width: 100%;
@@ -212,7 +207,7 @@ body{
   background: #04AA6D;
   cursor: pointer;
 }
-
+/*Styling input boxes*/
 input[type=text], select {
   width: 100%;
   padding: 12px 20px;
@@ -222,7 +217,7 @@ input[type=text], select {
   border-radius: 4px;
   box-sizing: border-box;
 }
-
+/*Styling submit part of the form*/
 #form_submit{
   width: 100%;
   padding: 14px 20px;
@@ -233,7 +228,7 @@ input[type=text], select {
   background-color:#A3B4A2;
   height:40px;
 }
-
+/*Styling Table to make it clear and legible*/
 .table{
 	background-color: none;
 }
@@ -259,6 +254,7 @@ th{
 	padding:10px;
 	
 }
+/*Attempt at making custom pp ups (we ended up scrapping)*/
 .confirm{
 	position: fixed;
 	top: 0;
@@ -346,6 +342,7 @@ th{
 .confirm_button:focus{
 	
 }
+/*Styling title */
 .Title{
 	 font-family: 'Ubuntu', sans-serif;
 	 font-size: 25px;
@@ -353,9 +350,7 @@ th{
 	 margin-top: 20px;
 	 text-decoration: underline;
 }
-
-
-
+/*Styling details in the user settings page*/
 .detail{
 	font-family: 'Ubuntu', sans-serif;
 	font-weight: bold;
@@ -365,18 +360,21 @@ th{
 	padding: 10px 20px;
 	margin: 10px;
 }
+/*what user name looks like on user settings page*/
 .name{
 	font-family: Montserrat, sans-serif;
 	display: inline-block;
 	text-decoration: underline;
 
 }
+/*what email looks like on user settings page*/
 .email{
 	font-family: Montserrat, sans-serif;
 	display: inline-block;
 	text-decoration: underline;
 
 }
+/*change password form*/
 .form-actions{
 	width: 100%;
 	padding: 14px 20px;
@@ -388,7 +386,7 @@ th{
 	height:40px;
 	
 }
-
+/*Box around the change password form*/
 .chpbox{
 	margin-left: 10px;
 	border: 1px solid black;
@@ -396,12 +394,13 @@ th{
 	max-width: 1200px;
 	height: 120px;
 }
-
+/*Top part of change password box*/
 .bar{
 	font-family: 'Ubuntu', sans-serif;
 	background-color: #A3B4A2;
 	margin-bottom: 10px;
 }
+/*changepassword button styling*/
 .passbtn{
 	display: inline-block;
 	margin-top: 10px;
