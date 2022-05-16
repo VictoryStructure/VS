@@ -73,7 +73,7 @@
             "notes": "",
             "percentage": 0,
             "modulename": "Programming 2"
-		},
+        },
         {
             "courseworkname": "Report writing",
             "description": "Create an individua report on the project",
@@ -82,6 +82,15 @@
             "notes": "",
             "percentage": 0,
             "modulename": "Software Engineering"
+        },
+        {
+            "courseworkname": "Statistics",
+            "description": "Answer all the questions within the coursework, about the statistics given",
+            "deadline": "2022-06-15",
+            "markvalue": "35",
+            "notes": "",
+            "percentage": 0,
+            "modulename": "Maths"
         }
     ]
 }
