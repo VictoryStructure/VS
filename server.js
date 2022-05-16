@@ -396,6 +396,10 @@ app.post('/createactivity', checkAuthenticated, (req, res) => {
     }
 })
 
+app.get('/deleteactivity', checkAuthenticated, (req, res) => {
+    res.render('DeleteActivity.ejs', { passedid: req.user.id, coursework_json: coursework, module_json: modulejson, activity_json: activityjson})
+})
+
 /****** Calendar ******/
 
 app.get('/calendar', checkAuthenticated, (req, res) => {
