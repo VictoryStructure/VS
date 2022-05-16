@@ -93,13 +93,13 @@
                   	if (order == 'desc'){
                   		$(this).data("order", "asc")
                   		console.log(jsondata[userid])
-                  		jsondata[userid] = jsondata[userid].sort((a,b) => a[column] > b[column] ? 1 : -1)
+                  		jsondata[userid] = jsondata[userid].sort((a,b) => parseInt(a[column]) > parseInt(b[column]) ? 1 : -1)
                         
                         text += '&#9660'
                   	}else{ 
                   		$(this).data("order", "desc")
                   		console.log(jsondata[userid])
-                  		jsondata[userid] = jsondata[userid].sort((a,b) => a[column] < b[column] ? 1 : -1)
+                  		jsondata[userid] = jsondata[userid].sort((a,b) => parseInt(a[column]) < parseInt(b[column]) ? 1 : -1)
                        
                         text += '&#9650'
                   	}
