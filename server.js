@@ -14,7 +14,7 @@ const fs = require('fs')
 const bcrypt = require('bcrypt')
 const url = require('url');
 
-
+// We are using passport.js, which is authentication middleware for Node.js
 const initializePassport = require('./passport-config')
 initializePassport(
     passport,
@@ -58,27 +58,23 @@ app.get('/', checkAuthenticated, (req, res) => {
 	let userID = req.user.id
 	new_coursedeadline = []
 	coursedeadline = []
-	var times = 3
 	var temp = 0
 
-	coursework[userID].forEach(function (obj, index) { 
-		temp = obj.deadline
-		new_coursedeadline.push(temp)
+	coursework[userID].forEach(function (obj, index) { 				//for each coursework the user has saved
+		temp = obj.deadline											//saves the current indexs deadline
+		new_coursedeadline.push(temp)								//adds the saved deadline to the array
 	})
+	new_coursedeadline.sort()										//sorts the array
+	new_coursedeadline = new_coursedeadline.slice(0,3)				//takes the 3 earliest dates
 
-	new_coursedeadline.sort()
-	new_coursedeadline = new_coursedeadline.slice(0,3)
-
-	new_coursedeadline.forEach(function (obj1, index1) { 
-		
-		coursework[userID].forEach(function (obj2, index2) { 
-			if ((obj2.deadline) == (obj1)){
-				coursedeadline.push(obj2)
+	new_coursedeadline.forEach(function (obj1, index1) { 			//for each date in the array
+		coursework[userID].forEach(function (obj2, index2) { 		//search the modules for the user
+			if ((obj2.deadline) == (obj1)){							//check the date array against the module deadline
+				coursedeadline.push(obj2)							//if they match, add the module to the array
 			}
 		})
-		
 	})
-	
+
     res.render('index.ejs', { name: req.user.username, urgent: coursedeadline, passedid: req.user.id})
 })
 
@@ -90,8 +86,11 @@ app.get('/register', checkNotAuthenticated, (req, res) => {
 
 app.post('/register', checkNotAuthenticated, async (req, res) => {
     try {
-        const hashedPassword = await bcrypt.hash(req.body.password, 10)
-        users.push({
+        // turns the user password into a hash through bcrypt library
+        const hashedPassword = await bcrypt.hash(req.body.password, 10)		
+
+        // push user registration information into user array to write to json file
+        users.push({														
             id: Date.now().toString(),
             username: req.body.username,
             email: req.body.email,
@@ -115,6 +114,7 @@ app.get('/login', checkNotAuthenticated, (req, res) => {
     res.render('Login.ejs')
 })
 
+// The login POST request will be handled in passport-config.js
 app.post('/login', checkNotAuthenticated, passport.authenticate('local', {
     successRedirect: '/',
     failureRedirect: '/login',
@@ -137,18 +137,25 @@ app.get('/settings', checkAuthenticated, (req, res) => {
 })
 
 app.post('/changepassword', checkAuthenticated, async (req, res) => {
+
+    // if the old password the user enters matches the user password
     if (await bcrypt.compare(req.body.oldPassword, req.user.password)) {
 
+        // if the new password confirmation matches
         if (req.body.newPassword == req.body.confirmPassword) {
+
+            // make a new hash based on the new password
             const hashedPassword = await bcrypt.hash(req.body.newPassword, 10)
             req.user.password = hashedPassword
 
+            // change password in users object
             users.forEach(function (obj, index) { 
                 if (obj.id == req.user.id){
                     obj.password = hashedPassword
                 }
             })
 
+            // write to json
             let data = JSON.stringify(users, undefined, 4)
             fs.writeFileSync('public/data/users.json', data)
 
@@ -167,7 +174,6 @@ app.post('/changepassword', checkAuthenticated, async (req, res) => {
     }
 })
 
-
 /****** Module Endpoints ******/
 
 app.get('/module', checkAuthenticated, (req, res) => {
@@ -178,23 +184,24 @@ app.get('/createmodule', checkAuthenticated, (req, res) => {
 	res.render('CreateModule.ejs');
 })
 
-app.post('/createmodule', checkAuthenticated, (req, res) => {
-    try {
-        if (req.user.id in modulejson) {
-            modulejson[req.user.id].push({
-                modulename : req.body.modulename,
-                description : req.body.description
+app.post('/createmodule', checkAuthenticated, (req, res) => {   //This is handling a post request
+    try {														
+        if (req.user.id in modulejson) {						//if the user already has modules saved
+            modulejson[req.user.id].push({						//add the module to the users JSON
+                modulename : req.body.modulename,				
+                description : req.body.description				
             })
         }
         else {
-            modulejson[req.user.id] = [{
-                modulename : req.body.modulename,
-                description : req.body.description
+            modulejson[req.user.id] = [{						//if the user doesnt have any modules saved, make them a JSON
+                modulename : req.body.modulename,				
+                description : req.body.description				
             }]
         }
+        
         // write data to json file
-        let data1 = JSON.stringify(modulejson, undefined, 4)
-        fs.writeFileSync('public/data/module.json', data1)
+        let data1 = JSON.stringify(modulejson, undefined, 4)	
+        fs.writeFileSync('public/data/module.json', data1)		
 
         res.redirect('/module')
     } 
@@ -204,31 +211,31 @@ app.post('/createmodule', checkAuthenticated, (req, res) => {
 })
 
 app.get('/deletemodule', checkAuthenticated, (req, res) => {
-    let userID = req.user.id
-    let searchURL = url.parse(req.url,true).search
+    let userID = req.user.id										
+    let searchURL = url.parse(req.url,true).search					//get the search query from the URL given in the req
     
-    searchURL = searchURL.replace('?', '')
-    searchURL = searchURL.split('%20').join(' ')
+    searchURL = searchURL.replace('?', '')							
+    searchURL = searchURL.split('%20').join(' ')					//replace all the %20's with spaces
 
-    if (searchURL) {
-        modulejson[userID].forEach(function (obj, index) { 
-        	if ((obj.modulename) == (searchURL)){
-        		modulejson[userID].splice(index , 1)
+    if (searchURL) {												//if searchURL isn't empty
+        modulejson[userID].forEach(function (obj, index) { 			//for each module the current user has saved
+        	if ((obj.modulename) == (searchURL)){					//if the objects module name matches the search query
+        		modulejson[userID].splice(index , 1)				//removes the module from the parsed JSON
         	}
         })
 
-        let module_data = JSON.stringify(modulejson, undefined, 4)
-        fs.writeFileSync('public/data/module.json', module_data)
+        let module_data = JSON.stringify(modulejson, undefined, 4)	
+        fs.writeFileSync('public/data/module.json', module_data)	
 
-        new_coursework = []
-        coursework[userID].forEach(function (obj, index) { 
-        	if ((obj.modulename) != (searchURL)){
-                new_coursework.push(obj)
+        new_coursework = []		
+        coursework[userID].forEach(function (obj, index) { 			//for each coursework the current user has saved
+        	if ((obj.modulename) != (searchURL)){					//if the objects module name matches the search query
+                new_coursework.push(obj)							//add the coursework to an array
         	}
         })
 
-        coursework[userID] = new_coursework
-        let data = JSON.stringify(coursework, undefined, 4)
+        coursework[userID] = new_coursework							//edit the current parsed coursework JSON
+        let data = JSON.stringify(coursework, undefined, 4)			
         fs.writeFileSync('public/data/coursework.json', data)
         
         res.redirect('/module')
@@ -245,17 +252,28 @@ app.get('/allcoursework', checkAuthenticated, (req, res) => {
     res.render('Coursework.ejs', { passedid: req.user.id, coursework_json: coursework, module_json: modulejson })
 })
 
-app.post('/allcoursework', checkAuthenticated, (req, res) => {
-	let selectedpage = req.body.selectpage
-	let userID = req.user.id
+app.get('/coursework', checkAuthenticated, (req, res) => {
+    let userID = req.user.id
+    let searchURL = url.parse(req.url,true).search						//get the search query from the URL given in the req
+    
+    searchURL = searchURL.replace('?', '')
+    searchURL = searchURL.split('%20').join(' ')	
+
 	new_activity = []
 	activityjson[userID].forEach(function (obj, index) { 
-		if ((obj.courseworkname) == (selectedpage)){
+		if ((obj.courseworkname) == (searchURL)){
 			new_activity.push(obj)
 		}
 	})
+
+    let percent = 0
+    coursework[userID].forEach(function (obj, index) { 
+		if ((obj.courseworkname) == (searchURL)){
+			percent = obj.percentage
+		}
+	})
 	
-    res.render('CourseworkSpecific.ejs', { selectedpage: selectedpage, passedid: req.user.id, coursework_json: coursework, module_json: modulejson, activity: new_activity})
+    res.render('CourseworkSpecific.ejs', { selectedpage: searchURL, passedid: req.user.id, coursework_json: coursework, module_json: modulejson, activity: new_activity, percentage: percent})
 })
 
 app.get('/createcoursework', checkAuthenticated, (req, res) => {
@@ -301,14 +319,14 @@ app.post('/createcoursework', checkAuthenticated, (req, res) => {
 app.get('/deletecoursework', checkAuthenticated, (req, res) => {
     try {
 		let userID = req.user.id
-		let searchURL = url.parse(req.url,true).search
+		let searchURL = url.parse(req.url,true).search						//get the search query from the URL given in the req
 		
 		searchURL = searchURL.replace('?', '')
-		searchURL = searchURL.split('%20').join(' ')
+		searchURL = searchURL.split('%20').join(' ')						//replace all the %20's with spaces
 
-		coursework[userID].forEach(function (obj, index) { 
-			if ((obj.courseworkname) == (searchURL)){
-				coursework[userID].splice(index,1)
+		coursework[userID].forEach(function (obj, index) { 					//for each module the current user has saved
+			if ((obj.courseworkname) == (searchURL)){						//if the objects module name matches the search query
+				coursework[userID].splice(index,1)							//removes the module from the parsed JSON
 			}
 			
 			let data = JSON.stringify(coursework, undefined, 4)
@@ -327,6 +345,7 @@ app.post('/changeslider', checkAuthenticated, (req, res) => {
 	var value = req.body.value
 	var coursename = req.body.coursename
 
+    // change progress percentage in coursework object
 	coursework[userID].forEach(function (obj, index) { 
 		if (obj.courseworkname == coursename){
 			obj.percentage = value
@@ -368,10 +387,12 @@ app.post('/createactivity', checkAuthenticated, (req, res) => {
         let data = JSON.stringify(activityjson, undefined, 4)
         fs.writeFileSync('public/data/activity.json', data)
 
-        res.redirect('/allcoursework')
+        console.log("Success")
+
+        res.redirect('/coursework?' + req.body.courseworkname)
     } 
     catch {
-        res.redirect('/allcoursework')
+        res.redirect('/coursework?' + req.body.courseworkname)
     }
 })
 

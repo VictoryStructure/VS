@@ -7,6 +7,7 @@ function initialize(passport, getUsername, getUserId) {
     const authenticateUser = async (username, password, done) => {
         const user = getUsername(username)
         
+        // User not found
         if (user == null) {
             return done(null, false, {message: 'Username not recognized'})
         }

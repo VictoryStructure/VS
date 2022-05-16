@@ -6,7 +6,6 @@
 	<link rel="stylesheet" href="css/HomeVS.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<link rel="icon" href="asset/ICON.png">
-	<script src="js/CreateCoursework.js"></script>
 
 </head>
 <body>
@@ -70,8 +69,23 @@
           </script>
 		
 			<div class="slidecontainer">
-				<input type="range" min="1" max="100" value="1" class="slider" id="myRange" onchange="sliderChange(this.value)">
+				<input type="range" min="0" max="100" class="slider" id="myRange" onchange="sliderChange(this.value)">
+
 				<script>
+					$(document).ready(function(){ 
+						var slider = document.getElementById("myRange");
+						slider.value = <%- JSON.stringify(percentage)%>;
+
+						var output = document.getElementById("demo");
+						output.innerHTML = slider.value;
+
+						slider.oninput = function() {
+							var output = document.getElementById("demo");
+							output.innerHTML = slider.value;
+							output.innerHTML = this.value;
+						}
+					});
+
 					function sliderChange(sliderValue) {
 						var name = <%- JSON.stringify(selectedpage) %>;
 						$(document).ready(function () {									
@@ -82,7 +96,6 @@
 							});
 						});
 					}
-					
 				</script>
 				
 				<label for="checkbox"> Completed:</label>

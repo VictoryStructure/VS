@@ -21,16 +21,28 @@
             "notes": ""
         },
         {
-            "activityname": "4e1232321",
-            "description": "321321",
-            "notes": "321",
-            "courseworkname": "Networks"
+            "activityname": "Final Project",
+            "description": "Study Planner",
+            "notes": "Group Project",
+            "courseworkname": "Software Engineering"
         },
         {
-            "activityname": "312",
-            "description": "321",
-            "notes": "321",
-            "courseworkname": "Networks"
+            "activityname": "Final Project",
+            "description": "aaa",
+            "notes": "a",
+            "courseworkname": "Software Engineering"
+        },
+        {
+            "activityname": "fesdsdf",
+            "description": "aa",
+            "notes": "df",
+            "courseworkname": "Data Science"
+        },
+        {
+            "activityname": "fesdsdf",
+            "description": "aa",
+            "notes": "a",
+            "courseworkname": "Software Engineering"
         }
     ]
 }

@@ -6,7 +6,6 @@
       <link rel="stylesheet" href="css/HomeVS.css">
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
       <link rel="icon" href="asset/ICON.png">
-      <!-- <script src="/public/js/Createcoursework.js"></script> -->
    </head>
    <body>
       <div class="wrapper">
@@ -39,12 +38,17 @@
             <div class="info">
 			   <label for = "selectContainer1">Filter by Module</label>
                <div id="selectContainer1">
+                  <select id="filterModule" onChange="javascript:filterByCategory(this)">
+                     <option>
+                        --All Coursework--
+                     </option>
+                  </select>
                </div>
                <div class = "table">
                   <table id = "coursework_table" class = "table">
                      <thead>
                         <tr>
-                           <th data-column="coursework name" data-order="desc">Coursework Name &#9650</th>
+                           <th data-column="courseworkname" data-order="desc">Coursework Name &#9650</th>
                            <th data-column="description" data-order="desc">Description &#9650</th>
                            <th data-column="deadline" data-order="desc">Deadline &#9650</th>
                            <th data-column="markvalue" data-order="desc">Mark Value &#9650</th>
@@ -53,8 +57,6 @@
                            <th data-column="module" data-order="desc">Module &#9650</th>
                         </tr>
                      </thead>
-                     <tbody id = "tbody">
-                     </tbody>
                   </table>
                </div>
                <script>
@@ -62,27 +64,26 @@
                   var jsondata = <%-JSON.stringify(coursework_json)%>;
                   var data = <%-JSON.stringify(module_json)%>;
 
-                  $(document).ready(function(){
-                     	var ddl = document.createElement("SELECT");
-                     	$.each(data[userid],function(key, value){
-                     		var option = document.createElement("OPTION");
-                     		option.innerHTML = value.modulename;
-                     		ddl.options.add(option);
-                     	});
-                     	document.getElementById('selectContainer1').appendChild(ddl);  
-                     	ddl.setAttribute("name", "modulename");
-                        ddl.onchange = filterByCategory(ddl);
-                        console.log(ddl);
+                  function filterByCategory(obj) {
 
-                        function filterByCategory(obj){
-                        var id = $(obj).val();
-                        console.log(id);
-                        $('tr[data-category]').hide();
-                        $('tr[data-category='+id+']').show();
+                     var id = $(obj).val(); // get currently selected value
+                     var tr = $('tr[data-category]');
+                     $('tr[data-category]').hide(); // first hide all rows
+
+                     for (i = 0; i < tr.length; i++) {
+                        if ($(tr[i]).attr("data-category") == id) {
+                           $(tr[i]).show();
                         }
-                     });
+                     }
 
-                  $('th').on('click', function(){
+                     if (id == "--All Coursework--") {
+                        $('tr[data-category]').show();
+                     }
+                  }
+
+                  $(document).ready(function(){
+                     
+                     $('th').on('click', function(){
                   		var column = $(this).data('column')
                   		var order = $(this).data('order')
                         var text = $(this).html();
@@ -93,40 +94,52 @@
                   		$(this).data("order", "asc")
                   		console.log(jsondata[userid])
                   		jsondata[userid] = jsondata[userid].sort((a,b) => a[column] > b[column] ? 1 : -1)
+                        
                         text += '&#9660'
                   	}else{ 
                   		$(this).data("order", "desc")
                   		console.log(jsondata[userid])
                   		jsondata[userid] = jsondata[userid].sort((a,b) => a[column] < b[column] ? 1 : -1)
+                       
                         text += '&#9650'
                   	}
                      $(this).html(text)
                   	buildtable(jsondata);
                   })
-                  
-                  buildtable(jsondata);
-                  
-                  function buildtable(data){
-                     $(document).ready(function(){
-                        var items = [];
-                        $.each(jsondata[userid], function(key, val){
-                           items.push("<tr data-category='"+val.category+"'>");
-                           items.push("<td id=''"+key+"''>"+val.courseworkname+"</td>");
-                           items.push("<td id=''"+key+"''>"+val.description+"</td>");
-                           items.push("<td id=''"+key+"''>"+val.deadline+"</td>");
-                           items.push("<td id=''"+key+"''>"+val.markvalue+"%</td>");
-                           items.push("<td id=''"+key+"''>"+val.notes+"</td>");
-                           items.push("<td id=''"+key+"''>"+val.percentage+"%</td>");
-                           items.push("<td id=''"+key+"''>"+val.modulename+"</td>");
-                           items.push("</tr>");
-                        });
-                        $("#coursework_table  tbody").empty();
-                        $("<tbody/>", {html:items.join("")}).appendTo("table");
-                     });
-                  }
+
+                     buildtable(jsondata)
+                     
+
+                        function buildtable(data){
+                           $(document).ready(function(){
+                              var items = [];
+                              $.each(jsondata[userid], function(key, val){
+                                 items.push("<tr data-category='"+val.modulename+"'>");
+                                 items.push("<td>"+val.courseworkname+"</td>");
+                                 items.push("<td>"+val.description+"</td>");
+                                 items.push("<td>"+val.deadline+"</td>");
+                                 items.push("<td>"+val.markvalue+"%</td>");
+                                 items.push("<td>"+val.notes+"</td>");
+                                 items.push("<td>"+val.percentage+"%</td>");
+                                 items.push("<td>"+val.modulename+"</td>");
+                                 items.push("</tr>");
+                              });
+                              $("#coursework_table tbody").empty();
+                              $("<tbody/>", {html:items.join("")}).appendTo("table");
+                           });
+                        }
+
+                     	var ddl = document.getElementById("filterModule");
+                     	$.each(data[userid],function(key, value){
+                     		var option = document.createElement("OPTION");
+                     		option.innerHTML = value.modulename;
+                     		ddl.options.add(option);
+                     	});
+                     	document.getElementById('selectContainer1').appendChild(ddl);  
+                     	ddl.setAttribute("name", "modulename");
+                  });
                </script>
                
-               <form action="#" method="POST">
                   <label for = "selectContainer">Select a Coursework</label>
                   <div id="selectContainer2">
                      <script>
@@ -134,6 +147,7 @@
                         	let userid = <%= passedid %>;
                         	var data = <%-JSON.stringify(coursework_json)%>;
                         	var ddl = document.createElement("SELECT");
+                           ddl.id = "courseSelect";
                         	$.each(data[userid],function(key, value){
                         		var option = document.createElement("OPTION");
                         		option.innerHTML = value.courseworkname;
@@ -142,10 +156,15 @@
                         	document.getElementById('selectContainer2').appendChild(ddl);  
                         	ddl.setAttribute("name", "selectpage");
                         });
+
+                        function chooseCoursework() {
+                           let select = document.getElementById('courseSelect');
+                           let value = select.options[select.selectedIndex].text;
+                           window.location.href = "/coursework?" + value;
+					         }
                      </script>
                   </div>
-                  <button type="submit" class="linked_button" id="form_submit">Submit</button>       
-               </form>
+                  <button type="submit" class="linked_button" id="form_submit" onclick="chooseCoursework()">Submit</button>       
             </div>
          </div>
       </div>
