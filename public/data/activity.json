@@ -61,6 +61,17 @@
             "courseworkname": "Student Planner Website"
         },
         {
+            "activityname": "Plan out classes needed",
+            "description": "Make a use case to help execute.",
+            "notes": "",
+            "courseworkname": "Shopping Simulation"
+        },
+        {
+            "activityname": "Create functions",
+            "description": "Working out and executing functions in code",
+            "notes": "",
+            "courseworkname": "Shopping Simulation"
+
             "activityname": "Create Test Data",
             "description": "Make the data that is going to be used within the tests",
             "notes": "",
