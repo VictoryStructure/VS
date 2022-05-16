@@ -11,20 +11,24 @@
     ],
     "1652106222825": [
         {
-            "modulename": "Sys Eng",
-            "description": "Team Work"
+            "modulename": "Maths",
+            "description": "Numbers and Graphs"
         },
         {
-            "modulename": "Data Structures",
-            "description": "Mostly Maths"
+            "modulename": "Data Structures and Algorithms ",
+            "description": "Arrays, Trees, Tries and Lists"
         },
         {
-            "modulename": "fdg",
-            "description": "dfg"
+            "modulename": "Software Engineering",
+            "description": "Developing a software"
         },
         {
-            "modulename": "MODULE",
-            "description": "SWODULE"
+            "modulename": "Programming 2",
+            "description": "Java, C and C++"
+        },
+        {
+            "modulename": "Intro to Data Science",
+            "description": "Graphs and correlation"
         }
     ]
 }
