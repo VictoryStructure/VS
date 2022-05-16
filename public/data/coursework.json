@@ -64,6 +64,15 @@
             "notes": "",
             "percentage": 0,
             "modulename": "Programming 2"
+        },
+        {
+            "courseworkname": "Shopping Simulation",
+            "description": "Make a simulation of a shop with automated customers",
+            "deadline": "2022-06-07",
+            "markvalue": "20",
+            "notes": "",
+            "percentage": 0,
+            "modulename": "Programming 2"
         }
     ]
 }
