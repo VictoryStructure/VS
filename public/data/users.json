@@ -18,9 +18,21 @@
         "password": "$2b$10$xdGihc1672iJdnay2Fro1eqLxbxJ2N7Auzw6nWecPE7zWRox9VHZO"
     },
     {
-        "id": "1652279794490",
-        "username": "john.doe",
-        "email": "sfsfs@dsds",
-        "password": "$2b$10$7EXSscjkE02hfuf6zzVeje0Zt38BjIMpasittvz9e9opUmNTQM3YK"
+        "id": "1652701536615",
+        "username": "test4",
+        "email": "test4@gmail.com",
+        "password": "$2b$10$Wcrqrk55481xsjkb5y9tJehVPaGgoupRep1l7t.Fkgoa8NmfoViRO"
+    },
+    {
+        "id": "1652701755852",
+        "username": "test10",
+        "email": "test10@gmail.com",
+        "password": "$2b$10$Axm2UwPTu4NJ3lS5MV34pei9ooY2/69rA0d520IxQNPrV/nhzFW3e"
+    },
+    {
+        "id": "1652702572410",
+        "username": "test11",
+        "email": "test11@gmail.com",
+        "password": "$2b$10$T2GwushHAWnYu4jDuukmf.UFOCK2MjZor95gJOopo6qCFQvQ8xYoC"
     }
 ]

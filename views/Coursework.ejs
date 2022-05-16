@@ -4,7 +4,8 @@
       <meta charset="UTF-8">
       <title>Coursework</title>
       <link rel="stylesheet" href="css/HomeVS.css">
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> <!--Jquery plugin-->
+      
       <link rel="icon" href="asset/ICON.png">
    </head>
    <body>
@@ -48,7 +49,8 @@
                   <table id = "coursework_table" class = "table">
                      <thead>
                         <tr>
-                           <th data-column="courseworkname" data-order="desc">Coursework Name &#9650</th>
+                           <!-- Table headers with the data in descending order as default -->
+                           <th data-column="courseworkname" data-order="desc">Coursework Name &#9650</th> 
                            <th data-column="description" data-order="desc">Description &#9650</th>
                            <th data-column="deadline" data-order="desc">Deadline &#9650</th>
                            <th data-column="markvalue" data-order="desc">Mark Value &#9650</th>
@@ -60,19 +62,20 @@
                   </table>
                </div>
                <script>
-                  var userid = <%= passedid %>;
-                  var jsondata = <%-JSON.stringify(coursework_json)%>;
-                  var data = <%-JSON.stringify(module_json)%>;
+                  
+                  var userid = <%= passedid %>; // Puts user id into useable variable
+                  var jsondata = <%-JSON.stringify(coursework_json)%>; // Turns json file into string
+                  var data = <%-JSON.stringify(module_json)%>; // Turns json file into string
 
                   function filterByCategory(obj) {
 
                      var id = $(obj).val(); // get currently selected value
-                     var tr = $('tr[data-category]');
+                     var tr = $('tr[data-category]'); // gets table row value and puts it into a variable
                      $('tr[data-category]').hide(); // first hide all rows
 
-                     for (i = 0; i < tr.length; i++) {
-                        if ($(tr[i]).attr("data-category") == id) {
-                           $(tr[i]).show();
+                     for (i = 0; i < tr.length; i++) { 
+                        if ($(tr[i]).attr("data-category") == id) { // if statement to iterate through the categories and shows                                       
+                           $(tr[i]).show();                         //the ones shown in the select button
                         }
                      }
 
