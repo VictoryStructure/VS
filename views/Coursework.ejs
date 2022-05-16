@@ -140,7 +140,6 @@
                   
                </script>
                
-               <form action="#" method="POST">
                   <label for = "selectContainer">Select a Coursework</label>
                   <div id="selectContainer2">
                      <script>
@@ -148,6 +147,7 @@
                         	let userid = <%= passedid %>;
                         	var data = <%-JSON.stringify(coursework_json)%>;
                         	var ddl = document.createElement("SELECT");
+                           ddl.id = "courseSelect";
                         	$.each(data[userid],function(key, value){
                         		var option = document.createElement("OPTION");
                         		option.innerHTML = value.courseworkname;
@@ -156,10 +156,15 @@
                         	document.getElementById('selectContainer2').appendChild(ddl);  
                         	ddl.setAttribute("name", "selectpage");
                         });
+
+                        function chooseCoursework() {
+                           let select = document.getElementById('courseSelect');
+                           let value = select.options[select.selectedIndex].text;
+                           window.location.href = "/coursework?" + value;
+					         }
                      </script>
                   </div>
-                  <button type="submit" class="linked_button" id="form_submit">Submit</button>       
-               </form>
+                  <button type="submit" class="linked_button" id="form_submit" onclick="chooseCoursework()">Submit</button>       
             </div>
          </div>
       </div>

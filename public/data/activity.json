@@ -25,6 +25,24 @@
             "description": "Study Planner",
             "notes": "Group Project",
             "courseworkname": "Software Engineering"
+        },
+        {
+            "activityname": "Final Project",
+            "description": "aaa",
+            "notes": "a",
+            "courseworkname": "Software Engineering"
+        },
+        {
+            "activityname": "fesdsdf",
+            "description": "aa",
+            "notes": "df",
+            "courseworkname": "Data Science"
+        },
+        {
+            "activityname": "fesdsdf",
+            "description": "aa",
+            "notes": "a",
+            "courseworkname": "Software Engineering"
         }
     ]
 }

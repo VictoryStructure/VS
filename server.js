@@ -252,24 +252,28 @@ app.get('/allcoursework', checkAuthenticated, (req, res) => {
     res.render('Coursework.ejs', { passedid: req.user.id, coursework_json: coursework, module_json: modulejson })
 })
 
-app.post('/allcoursework', checkAuthenticated, (req, res) => {
-	let selectedpage = req.body.selectpage
-	let userID = req.user.id
+app.get('/coursework', checkAuthenticated, (req, res) => {
+    let userID = req.user.id
+    let searchURL = url.parse(req.url,true).search						//get the search query from the URL given in the req
+    
+    searchURL = searchURL.replace('?', '')
+    searchURL = searchURL.split('%20').join(' ')	
+
 	new_activity = []
 	activityjson[userID].forEach(function (obj, index) { 
-		if ((obj.courseworkname) == (selectedpage)){
+		if ((obj.courseworkname) == (searchURL)){
 			new_activity.push(obj)
 		}
 	})
 
     let percent = 0
     coursework[userID].forEach(function (obj, index) { 
-		if ((obj.courseworkname) == (selectedpage)){
+		if ((obj.courseworkname) == (searchURL)){
 			percent = obj.percentage
 		}
 	})
 	
-    res.render('CourseworkSpecific.ejs', { selectedpage: selectedpage, passedid: req.user.id, coursework_json: coursework, module_json: modulejson, activity: new_activity, percentage: percent})
+    res.render('CourseworkSpecific.ejs', { selectedpage: searchURL, passedid: req.user.id, coursework_json: coursework, module_json: modulejson, activity: new_activity, percentage: percent})
 })
 
 app.get('/createcoursework', checkAuthenticated, (req, res) => {
@@ -383,10 +387,12 @@ app.post('/createactivity', checkAuthenticated, (req, res) => {
         let data = JSON.stringify(activityjson, undefined, 4)
         fs.writeFileSync('public/data/activity.json', data)
 
-        res.redirect('/allcoursework')
+        console.log("Success")
+
+        res.redirect('/coursework?' + req.body.courseworkname)
     } 
     catch {
-        res.redirect('/allcoursework')
+        res.redirect('/coursework?' + req.body.courseworkname)
     }
 })
 
