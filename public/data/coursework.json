@@ -21,40 +21,13 @@
     ],
     "1652106222825": [
         {
-            "courseworkname": "Student Planner",
-            "description": "Group of 5 make website",
+            "courseworkname": "Student Planner Website",
+            "description": "Make a student planner website",
             "deadline": "2022-05-16",
             "markvalue": "45",
             "notes": "",
-            "percentage": "43",
-            "modulename": "Sys Eng"
-        },
-        {
-            "courseworkname": "Flower Arrangement",
-            "description": "I love flowers",
-            "deadline": "2022-05-10",
-            "markvalue": "100",
-            "notes": "Cute",
-            "percentage": "32",
-            "modulename": "MODULE"
-        },
-        {
-            "courseworkname": "Module",
-            "description": "Module",
-            "deadline": "2022-05-17",
-            "markvalue": "80",
-            "notes": "asdf",
-            "percentage": "81",
-            "modulename": "MODULE"
-        },
-        {
-            "courseworkname": "Data Science",
-            "description": "sad",
-            "deadline": "2022-05-23",
-            "markvalue": "30",
-            "notes": "sad life",
-            "percentage": "68",
-            "modulename": "Data Science"
+            "percentage": 0,
+            "modulename": "Software Engineering"
         }
     ]
 }
