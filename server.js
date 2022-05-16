@@ -60,7 +60,7 @@ app.get('/', checkAuthenticated, (req, res) => {
 	coursedeadline = []
 	var temp = 0
 
-    if (coursework[userID].length > 0) {
+    if (coursework[userID]) {
         coursework[userID].forEach(function (obj, index) { 				//for each coursework the user has saved
             temp = obj.deadline											//saves the current indexs deadline
             new_coursedeadline.push(temp)								//adds the saved deadline to the array
