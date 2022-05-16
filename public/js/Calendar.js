@@ -25,34 +25,37 @@ function openModal(date) {
 
   backDrop.style.display = 'block';
 }
-
+//loads up the calendar 
 function load() {
-  const dt = new Date();
+  const date = new Date();
 
+  // increments by month
   if (nav !== 0) {
-    dt.setMonth(new Date().getMonth() + nav);
+    date.setMonth(new Date().getMonth() + nav);
   }
 
-  const day = dt.getDate();
-  const month = dt.getMonth();
-  const year = dt.getFullYear();
+  const day = date.getDate();
+  const month = date.getMonth();
+  const year = date.getFullYear();
 
   const firstDayOfMonth = new Date(year, month, 1);
   //to get the next month - 1 day (day has to = 0)
   const daysInMonth = new Date(year, month + 1, 0).getDate();
-  //sets to GB format
+
   const dateString = firstDayOfMonth.toLocaleDateString('en-GB', {
     weekday: 'long',
     year: 'numeric',
     month: 'numeric',
     day: 'numeric',
   });
+
   //days that dont line up with the month 
   const emptyDays = weekdays.indexOf(dateString.split(', ')[0]);
-  //String interpolation implemented allows injecting variables, function calls, arithmetic expressions directly into a string. 
+
   document.getElementById('monthDisplay').innerText = 
-    `${dt.toLocaleDateString('en-GB', { month: 'long' })} ${year}`;
-// wipes out day squares
+    `${date.toLocaleDateString('en-GB', { month: 'long' })} ${year}`;
+
+// clears out day squares
   calendar.innerHTML = '';
 // Rendering the days including the empty days
   for(let i = 1; i <= emptyDays + daysInMonth; i++) {
@@ -60,7 +63,7 @@ function load() {
     daySquare.classList.add('day');
 
     const dayString = `${month + 1}/${i - emptyDays}/${year}`;
-//renders empty days first and event listens to 
+//renders empty days first and event listens
     if (i > emptyDays) {
       daySquare.innerText = i - emptyDays;
       const eventForDay = events.find(e => e.date === dayString);
