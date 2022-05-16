@@ -59,6 +59,24 @@
             "description": "Choose a program and a analyse",
             "notes": "",
             "courseworkname": "Student Planner Website"
+        },
+        {
+            "activityname": "Create Test Data",
+            "description": "Make the data that is going to be used within the tests",
+            "notes": "",
+            "courseworkname": "Statistics"
+        },
+        {
+            "activityname": "Create Scatter Graph",
+            "description": "Create a graph to visualise the data",
+            "notes": "",
+            "courseworkname": "Statistics"
+        },
+        {
+            "activityname": "Create Hypothesis",
+            "description": "Write a hypothesis based on the scatter graph",
+            "notes": "",
+            "courseworkname": "Statistics"
         }
     ],
     "1652106491240": [
