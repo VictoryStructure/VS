@@ -38,6 +38,11 @@
             <div class="info">
 			   <label for = "selectContainer1">Filter by Module</label>
                <div id="selectContainer1">
+                  <select id="filterModule" onChange="javascript:filterByCategory(this)">
+                     <option>
+                        --All Coursework--
+                     </option>
+                  </select>
                </div>
                <div class = "table">
                   <table id = "coursework_table" class = "table">
@@ -52,8 +57,6 @@
                            <th data-column="module" data-order="desc">Module &#9650</th>
                         </tr>
                      </thead>
-                     <tbody id = "tbody">
-                     </tbody>
                   </table>
                </div>
                <script>
@@ -61,25 +64,21 @@
                   var jsondata = <%-JSON.stringify(coursework_json)%>;
                   var data = <%-JSON.stringify(module_json)%>;
 
-                  $(document).ready(function(){
-                     	var ddl = document.createElement("SELECT");
-                     	$.each(data[userid],function(key, value){
-                     		var option = document.createElement("OPTION");
-                     		option.innerHTML = value.modulename;
-                     		ddl.options.add(option);
-                     	});
-                     	document.getElementById('selectContainer1').appendChild(ddl);  
-                     	ddl.setAttribute("name", "modulename");
-                        ddl.onchange = filterByCategory(ddl);
-                        console.log(ddl);
+                  function filterByCategory(obj){
+                     var id = $(obj).val(); // get currently selected value
+                     var tr = $('tr[data-category]');
+                     $('tr[data-category]').hide(); // first hide all rows
 
-                        function filterByCategory(obj){
-                           var id = $(obj).val();
-                           console.log(id);
-                           $('tr[modulename]').hide();
-                           $('tr[modulename='+id+']').show();
+                     for (i = 0; i < tr.length; i++) {
+                        if ($(tr[i]).attr("data-category") == id) {
+                           $(tr[i]).show();
                         }
-                     });
+                     }
+
+                     if (id == "--All Coursework--") {
+                        $('tr[data-category]').show();
+                     }
+                  }
 
                   $('th').on('click', function(){
                   		var column = $(this).data('column')
@@ -102,27 +101,41 @@
                      $(this).html(text)
                   	buildtable(jsondata);
                   })
+
+                  $(document).ready(function(){
+                        buildtable(jsondata);
                   
-                  buildtable(jsondata);
+                        function buildtable(data){
+                           $(document).ready(function(){
+                              var items = [];
+                              $.each(jsondata[userid], function(key, val){
+                                 items.push("<tr data-category='"+val.modulename+"'>");
+                                 items.push("<td>"+val.courseworkname+"</td>");
+                                 items.push("<td>"+val.description+"</td>");
+                                 items.push("<td>"+val.deadline+"</td>");
+                                 items.push("<td>"+val.markvalue+"%</td>");
+                                 items.push("<td>"+val.notes+"</td>");
+                                 items.push("<td>"+val.percentage+"%</td>");
+                                 items.push("<td>"+val.modulename+"</td>");
+                                 items.push("</tr>");
+                              });
+                              $("#coursework_table tbody").empty();
+                              $("<tbody/>", {html:items.join("")}).appendTo("table");
+                           });
+                        }
+
+                     	var ddl = document.getElementById("filterModule");
+                     	$.each(data[userid],function(key, value){
+                     		var option = document.createElement("OPTION");
+                     		option.innerHTML = value.modulename;
+                     		ddl.options.add(option);
+                     	});
+                     	document.getElementById('selectContainer1').appendChild(ddl);  
+                     	ddl.setAttribute("name", "modulename");
+                  });
+
+                 
                   
-                  function buildtable(data){
-                     $(document).ready(function(){
-                        var items = [];
-                        $.each(jsondata[userid], function(key, val){
-                           items.push("<tr modulename='"+val.modulename+"'>");
-                           items.push("<td id=''"+key+"''>"+val.courseworkname+"</td>");
-                           items.push("<td id=''"+key+"''>"+val.description+"</td>");
-                           items.push("<td id=''"+key+"''>"+val.deadline+"</td>");
-                           items.push("<td id=''"+key+"''>"+val.markvalue+"%</td>");
-                           items.push("<td id=''"+key+"''>"+val.notes+"</td>");
-                           items.push("<td id=''"+key+"''>"+val.percentage+"%</td>");
-                           items.push("<td id=''"+key+"''>"+val.modulename+"</td>");
-                           items.push("</tr>");
-                        });
-                        $("#coursework_table  tbody").empty();
-                        $("<tbody/>", {html:items.join("")}).appendTo("table");
-                     });
-                  }
                </script>
                
                <form action="#" method="POST">
