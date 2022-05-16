@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Module</title>
+	<link rel="stylesheet" href="css/HomeVS.css">
+	<script src="js/Module.js"></script>
+	<link rel="icon" href="asset/ICON.png">
+
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+
+<div class="wrapper">
+    <div class="sidebar">
+        <h2>Victory Structure</h2>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/Module">Module</a></li>
+            <li><a href="/allcoursework"></i>All Coursework</a></li>
+            <li><a href="/about"></i>About</a></li>
+			
+        </ul>
+        <div class="options">
+			<ul>
+				<li><a href="/settings">Account and Settings</a></li>
+				<li>
+          <form action="/logout?_method=DELETE" method="POST">
+            <button type="submit" class="linked_button">Log Out</button>
+          </form>
+        </li>
+			</ul>
+      </div>
+    </div>
+
+    <div class="main_content">
+        <div class="header">Delete Module</div>
+        <div class="info">
+            <label for = "selectContainer">Select a Module</label>
+            <div id="selectContainer1">
+                <script>
+                    $(document).ready(function(){
+                        let userid = <%= passedid %>;
+                        let data = <%-JSON.stringify(activity_json)%>;
+                        let ddl = document.createElement("SELECT");
+                        ddl.id = "moduleSelect";
+                        $.each(data[userid],function(key, value){
+                            var option = document.createElement("OPTION");
+                            option.innerHTML = value.activityname;
+                            ddl.options.add(option);
+                        });
+                        document.getElementById('selectContainer1').appendChild(ddl);  
+                        ddl.setAttribute("name", "activityname");
+                    });
+                </script>
+            </div>
+            <button type="submit" onclick="deleteModule()" id="form_submit" class="linked_button">Submit</button>
+       </div>
+	</div>
+
+  <script>
+    function deleteActivity() {
+      let ask = window.confirm("This action will delete this activity. Do you want to delete it?");
+      if (ask) {
+        let select = document.getElementById('moduleSelect');
+        let value = select.options[select.selectedIndex].text;
+        window.location.href = "/deleteactivity?" + value;
+      }
+    }
+  </script>
+	
+</div>
+</body>
+</html>
