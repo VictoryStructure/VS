@@ -19,6 +19,12 @@
             "activityname": "Blah",
             "description": "flowers go bur",
             "notes": ""
+        },
+        {
+            "activityname": "Final Project",
+            "description": "Study Planner",
+            "notes": "Group Project",
+            "courseworkname": "Software Engineering"
         }
     ]
 }
