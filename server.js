@@ -398,7 +398,28 @@ app.post('/createactivity', checkAuthenticated, (req, res) => {
 })
 
 app.get('/deleteactivity', checkAuthenticated, (req, res) => {
-    res.render('DeleteActivity.ejs', { passedid: req.user.id, coursework_json: coursework, module_json: modulejson, activity_json: activityjson})
+    let userID = req.user.id										
+    let searchURL = url.parse(req.url,true).search					//get the search query from the URL given in the req
+    
+    searchURL = searchURL.replace('?', '')							
+    searchURL = searchURL.split('%20').join(' ')					//replace all the %20's with spaces
+
+    if (searchURL) {												//if searchURL isn't empty
+        activityjson[userID].forEach(function (obj, index) { 			//for each activity the current user has saved
+        	if ((obj.activityname) == (searchURL)){					//if the objects activity name matches the search query
+        		activityjson[userID].splice(index , 1)				//removes the activity from the parsed JSON
+        	}
+        })
+
+        let activity_data = JSON.stringify(activityjson, undefined, 4)	
+        fs.writeFileSync('public/data/activity.json', activity_data)	
+        
+        res.redirect('/allcoursework')
+    }
+
+    else {
+        res.render('DeleteActivity.ejs', { passedid: req.user.id, activity_json: activityjson })
+    }
 })
 
 /****** Calendar ******/

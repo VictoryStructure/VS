@@ -7,12 +7,6 @@
             "courseworkname": "Student Planner"
         },
         {
-            "activityname": "boop",
-            "description": "Numbers ",
-            "notes": "",
-            "courseworkname": "Mini Test 4"
-        },
-        {
             "activityname": "Practice paper on blackoard",
             "description": "Complete practice paper on topic",
             "notes": "",
@@ -71,7 +65,6 @@
             "description": "Working out and executing functions in code",
             "notes": "",
             "courseworkname": "Shopping Simulation"
-
         },
         {
             "activityname": "Create Scatter Graph",
@@ -84,6 +77,18 @@
             "description": "Write a hypothesis based on the scatter graph",
             "notes": "",
             "courseworkname": "Statistics"
+        },
+        {
+            "activityname": "Revise",
+            "description": "Make sure to look at the revision lecture",
+            "notes": "",
+            "courseworkname": "Mini Test 4"
+        },
+        {
+            "activityname": "Get there on time",
+            "description": "Inperson exam",
+            "notes": "",
+            "courseworkname": "Mini Test 4"
         }
     ],
     "1652106491240": [
