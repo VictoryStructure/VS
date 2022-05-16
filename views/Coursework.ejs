@@ -36,54 +36,30 @@
                </form>
             </div>
             <div class="info">
-			   <label for = "selectContainer1">Filter by Module</label>
-               <div id="selectContainer1">
-                  <select id="filterModule" onChange="javascript:filterByCategory(this)">
-                     <option>
-                        --All Coursework--
-                     </option>
-                  </select>
+			   <label for = "selectContainer">Filter by Module</label>
+               <div id="selectContainer">
+                  <input id="search-input" class="form-control" type="text">
                </div>
                <div class = "table">
                   <table id = "coursework_table" class = "table">
-                     <thead>
                         <tr>
-                           <th data-column="coursework name" data-order="desc">Coursework Name &#9650</th>
+                           <th data-column="courseworkname" data-order="desc">Coursework Name &#9650</th>
                            <th data-column="description" data-order="desc">Description &#9650</th>
                            <th data-column="deadline" data-order="desc">Deadline &#9650</th>
                            <th data-column="markvalue" data-order="desc">Mark Value &#9650</th>
                            <th data-column="notes" data-order="desc">Notes &#9650</th>
                            <th data-column="percentage" data-order="desc">Progress &#9650</th>
-                           <th data-column="module" data-order="desc">Module &#9650</th>
+                           <th data-column="modulename " data-order="desc">Module &#9650</th>
                         </tr>
-                     </thead>
+                        <tbody id = "tbody">
+                        </tbody>
                   </table>
                </div>
                <script>
                   var userid = <%= passedid %>;
                   var jsondata = <%-JSON.stringify(coursework_json)%>;
-                  var data = <%-JSON.stringify(module_json)%>;
 
-                  function filterByCategory(obj) {
-
-                     var id = $(obj).val(); // get currently selected value
-                     var tr = $('tr[data-category]');
-                     $('tr[data-category]').hide(); // first hide all rows
-
-                     for (i = 0; i < tr.length; i++) {
-                        if ($(tr[i]).attr("data-category") == id) {
-                           $(tr[i]).show();
-                        }
-                     }
-
-                     if (id == "--All Coursework--") {
-                        $('tr[data-category]').show();
-                     }
-                  }
-
-                  $(document).ready(function(){
-                     
-                     $('th').on('click', function(){
+                  $('th').on('click', function(){
                   		var column = $(this).data('column')
                   		var order = $(this).data('order')
                         var text = $(this).html();
@@ -102,42 +78,50 @@
                         text += '&#9650'
                   	}
                      $(this).html(text)
-                  	buildtable(jsondata);
+                  	buildtable(jsondata[userid]);
                   })
 
-                     buildtable(jsondata)
-
-                        function buildtable(data){
-                           $(document).ready(function(){
-                              var items = [];
-                              $.each(jsondata[userid], function(key, val){
-                                 items.push("<tr data-category='"+val.modulename+"'>");
-                                 items.push("<td>"+val.courseworkname+"</td>");
-                                 items.push("<td>"+val.description+"</td>");
-                                 items.push("<td>"+val.deadline+"</td>");
-                                 items.push("<td>"+val.markvalue+"%</td>");
-                                 items.push("<td>"+val.notes+"</td>");
-                                 items.push("<td>"+val.percentage+"%</td>");
-                                 items.push("<td>"+val.modulename+"</td>");
-                                 items.push("</tr>");
-                              });
-                              $("#coursework_table tbody").empty();
-                              $("<tbody/>", {html:items.join("")}).appendTo("table");
-                           });
-                        }
-
-                     	var ddl = document.getElementById("filterModule");
-                     	$.each(data[userid],function(key, value){
-                     		var option = document.createElement("OPTION");
-                     		option.innerHTML = value.modulename;
-                     		ddl.options.add(option);
-                     	});
-                     	document.getElementById('selectContainer1').appendChild(ddl);  
-                     	ddl.setAttribute("name", "modulename");
-                  });
-
-                 
+                  $('#search-input').on('keyup', function(){
+                     var value = $(this).val();
+                     var data = searchTable(value, jsondata[userid])
+                     buildtable(data)
+                  })
                   
+                  buildtable(jsondata[userid]);
+                  
+                  function searchTable(value, data){
+                     var filteredData = [];
+
+                     for(var i = 0; i < data.length; i++){
+                        value = value.toLowerCase();
+                        var name = String(data[i].name).toLowerCase()
+                        console.log("Value:", value);
+                        console.log("Name:", name);
+                     
+                        if(name.includes(value)){
+                           filteredData.push(data[i])
+                        }
+                     }
+
+                     return filteredData;  
+                  }
+
+                  function buildtable(data){
+                     var table = document.getElementById("tbody")
+                     table.innerHTML = '';
+                     for(var i = 0; i < data.length; i++){
+                        var row = `<tr>
+                                    <td>${data[i].courseworkname}</td>
+                                    <td>${data[i].description}</td>
+                                    <td>${data[i].deadline}</td>
+                                    <td>${data[i].markvalue}</td>
+                                    <td>${data[i].notes}</td>
+                                    <td>${data[i].percentage}</td>
+                                    <td>${data[i].modulename}</td>
+                                  </tr>`
+                        table.innerHTML += row
+                     }
+                  }
                </script>
                
                <form action="#" method="POST">
