@@ -73,6 +73,15 @@
             "notes": "",
             "percentage": 0,
             "modulename": "Programming 2"
+		},
+        {
+            "courseworkname": "Report writing",
+            "description": "Create an individua report on the project",
+            "deadline": "2022-05-17",
+            "markvalue": "10",
+            "notes": "",
+            "percentage": 0,
+            "modulename": "Software Engineering"
         }
     ]
 }
