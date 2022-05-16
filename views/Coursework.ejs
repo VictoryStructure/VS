@@ -65,6 +65,7 @@
                   var data = <%-JSON.stringify(module_json)%>;
 
                   function filterByCategory(obj){
+                     
                      var id = $(obj).val(); // get currently selected value
                      var tr = $('tr[data-category]');
                      $('tr[data-category]').hide(); // first hide all rows
@@ -78,6 +79,7 @@
                      if (id == "--All Coursework--") {
                         $('tr[data-category]').show();
                      }
+
                   }
 
                   $('th').on('click', function(){
