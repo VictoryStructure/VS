@@ -60,20 +60,22 @@ app.get('/', checkAuthenticated, (req, res) => {
 	coursedeadline = []
 	var temp = 0
 
-	coursework[userID].forEach(function (obj, index) { 				//for each coursework the user has saved
-		temp = obj.deadline											//saves the current indexs deadline
-		new_coursedeadline.push(temp)								//adds the saved deadline to the array
-	})
-	new_coursedeadline.sort()										//sorts the array
-	new_coursedeadline = new_coursedeadline.slice(0,3)				//takes the 3 earliest dates
-
-	new_coursedeadline.forEach(function (obj1, index1) { 			//for each date in the array
-		coursework[userID].forEach(function (obj2, index2) { 		//search the modules for the user
-			if ((obj2.deadline) == (obj1)){							//check the date array against the module deadline
-				coursedeadline.push(obj2)							//if they match, add the module to the array
-			}
-		})
-	})
+    if (coursework.length > 0) {
+        coursework[userID].forEach(function (obj, index) { 				//for each coursework the user has saved
+            temp = obj.deadline											//saves the current indexs deadline
+            new_coursedeadline.push(temp)								//adds the saved deadline to the array
+        })
+        new_coursedeadline.sort()										//sorts the array
+        new_coursedeadline = new_coursedeadline.slice(0,3)				//takes the 3 earliest dates
+    
+        new_coursedeadline.forEach(function (obj1, index1) { 			//for each date in the array
+            coursework[userID].forEach(function (obj2, index2) { 		//search the modules for the user
+                if ((obj2.deadline) == (obj1)){							//check the date array against the module deadline
+                    coursedeadline.push(obj2)							//if they match, add the module to the array
+                }
+            })
+        })    
+    }
 
     res.render('index.ejs', { name: req.user.username, urgent: coursedeadline, passedid: req.user.id})
 })
