@@ -22,5 +22,11 @@
         "username": "test4",
         "email": "test4@gmail.com",
         "password": "$2b$10$Wcrqrk55481xsjkb5y9tJehVPaGgoupRep1l7t.Fkgoa8NmfoViRO"
+    },
+    {
+        "id": "1652701755852",
+        "username": "test10",
+        "email": "test10@gmail.com",
+        "password": "$2b$10$Axm2UwPTu4NJ3lS5MV34pei9ooY2/69rA0d520IxQNPrV/nhzFW3e"
     }
 ]
