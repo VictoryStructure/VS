@@ -72,10 +72,6 @@
             "notes": "",
             "courseworkname": "Shopping Simulation"
 
-            "activityname": "Create Test Data",
-            "description": "Make the data that is going to be used within the tests",
-            "notes": "",
-            "courseworkname": "Statistics"
         },
         {
             "activityname": "Create Scatter Graph",
