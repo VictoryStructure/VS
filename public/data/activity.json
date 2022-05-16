@@ -41,6 +41,24 @@
             "description": "Making server for website",
             "notes": "",
             "courseworkname": "Student Planner Website"
+        },
+        {
+            "activityname": "Use Cases",
+            "description": "Create a use case for create coursework activity",
+            "notes": "",
+            "courseworkname": "Report writing"
+        },
+        {
+            "activityname": "Gantt ",
+            "description": "Create a gantt diagram",
+            "notes": "",
+            "courseworkname": "Report writing"
+        },
+        {
+            "activityname": "System Analysis",
+            "description": "Choose a program and a analyse",
+            "notes": "",
+            "courseworkname": "Student Planner Website"
         }
     ],
     "1652106491240": [
