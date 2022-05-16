@@ -28,6 +28,33 @@
             "notes": "",
             "percentage": 0,
             "modulename": "Software Engineering"
+        },
+        {
+            "courseworkname": "Mini Exam ",
+            "description": "This is a small exam",
+            "deadline": "2022-05-31",
+            "markvalue": "10",
+            "notes": "Revise simultaneous equations",
+            "percentage": 0,
+            "modulename": "Maths"
+        },
+        {
+            "courseworkname": "Mini Test 4",
+            "description": "This is a 30 min test",
+            "deadline": "2022-05-19",
+            "markvalue": "8",
+            "notes": "",
+            "percentage": 0,
+            "modulename": "Data Structures and Algorithms"
+        },
+        {
+            "courseworkname": "Final Exam",
+            "description": "This is the last exam of the year",
+            "deadline": "2022-05-26",
+            "markvalue": "30",
+            "notes": "",
+            "percentage": 0,
+            "modulename": "Data Structures and Algorithms"
         }
     ]
 }
