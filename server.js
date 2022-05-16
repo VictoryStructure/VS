@@ -280,9 +280,10 @@ app.get('/createcoursework', checkAuthenticated, (req, res) => {
     res.render('CreateCoursework.ejs', { passedid: req.user.id, module_json: modulejson })
 })
 
-app.post('/createcoursework', checkAuthenticated, (req, res) => {
+app.post('/createcoursework', checkAuthenticated, (req, res) => {    //This is handling a post request
     try {
-        if (req.user.id in coursework) {
+        if (req.user.id in coursework) {                             // if the user already has modules saved
+                                                                     // add the module to the users JSON
             coursework[req.user.id].push({
                 courseworkname : req.body.courseworkname,
                 description : req.body.description,
@@ -294,7 +295,7 @@ app.post('/createcoursework', checkAuthenticated, (req, res) => {
             })
         }
         else {
-            coursework[req.user.id] = [{
+            coursework[req.user.id] = [{                             // if the user doesnt have any modules saved, make them a JSON
                 courseworkname : req.body.courseworkname,
                 description : req.body.description,
                 deadline : req.body.deadline,
@@ -394,6 +395,10 @@ app.post('/createactivity', checkAuthenticated, (req, res) => {
     catch {
         res.redirect('/coursework?' + req.body.courseworkname)
     }
+})
+
+app.get('/deleteactivity', checkAuthenticated, (req, res) => {
+    res.render('DeleteActivity.ejs', { passedid: req.user.id, coursework_json: coursework, module_json: modulejson, activity_json: activityjson})
 })
 
 /****** Calendar ******/
