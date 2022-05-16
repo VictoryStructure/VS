@@ -93,14 +93,23 @@
                   	if (order == 'desc'){
                   		$(this).data("order", "asc")
                   		console.log(jsondata[userid])
-                  		jsondata[userid] = jsondata[userid].sort((a,b) => parseInt(a[column]) > parseInt(b[column]) ? 1 : -1)
+
+                        if(column == "markvalue" || column == "percentage"){
+                           jsondata[userid] = jsondata[userid].sort((a,b) => parseInt(a[column]) > parseInt(b[column]) ? 1 : -1)
+                        } else {
+                           jsondata[userid] = jsondata[userid].sort((a,b) => String(a[column]).toLowerCase() > String(b[column]).toLowerCase() ? 1 : -1)
+                        }
                         
                         text += '&#9660'
+
                   	}else{ 
                   		$(this).data("order", "desc")
                   		console.log(jsondata[userid])
-                  		jsondata[userid] = jsondata[userid].sort((a,b) => parseInt(a[column]) < parseInt(b[column]) ? 1 : -1)
-                       
+                        if(column == "markvalue" || column == "percentage"){
+                           jsondata[userid] = jsondata[userid].sort((a,b) => parseInt(a[column]) < parseInt(b[column]) ? 1 : -1)
+                        } else {
+                           jsondata[userid] = jsondata[userid].sort((a,b) => String(a[column]).toLowerCase() < String(b[column]).toLowerCase() ? 1 : -1)
+                        }
                         text += '&#9650'
                   	}
                      $(this).html(text)
