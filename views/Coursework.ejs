@@ -48,7 +48,7 @@
                   <table id = "coursework_table" class = "table">
                      <thead>
                         <tr>
-                           <th data-column="coursework name" data-order="desc">Coursework Name &#9650</th>
+                           <th data-column="courseworkname" data-order="desc">Coursework Name &#9650</th>
                            <th data-column="description" data-order="desc">Description &#9650</th>
                            <th data-column="deadline" data-order="desc">Deadline &#9650</th>
                            <th data-column="markvalue" data-order="desc">Mark Value &#9650</th>
@@ -94,11 +94,13 @@
                   		$(this).data("order", "asc")
                   		console.log(jsondata[userid])
                   		jsondata[userid] = jsondata[userid].sort((a,b) => a[column] > b[column] ? 1 : -1)
+                        
                         text += '&#9660'
                   	}else{ 
                   		$(this).data("order", "desc")
                   		console.log(jsondata[userid])
                   		jsondata[userid] = jsondata[userid].sort((a,b) => a[column] < b[column] ? 1 : -1)
+                       
                         text += '&#9650'
                   	}
                      $(this).html(text)
@@ -106,6 +108,7 @@
                   })
 
                      buildtable(jsondata)
+                     
 
                         function buildtable(data){
                            $(document).ready(function(){
@@ -135,9 +138,6 @@
                      	document.getElementById('selectContainer1').appendChild(ddl);  
                      	ddl.setAttribute("name", "modulename");
                   });
-
-                 
-                  
                </script>
                
                   <label for = "selectContainer">Select a Coursework</label>
