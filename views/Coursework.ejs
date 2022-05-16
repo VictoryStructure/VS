@@ -74,10 +74,10 @@
                         console.log(ddl);
 
                         function filterByCategory(obj){
-                        var id = $(obj).val();
-                        console.log(id);
-                        $('tr[data-category]').hide();
-                        $('tr[data-category='+id+']').show();
+                           var id = $(obj).val();
+                           console.log(id);
+                           $('tr[modulename]').hide();
+                           $('tr[modulename='+id+']').show();
                         }
                      });
 
@@ -109,7 +109,7 @@
                      $(document).ready(function(){
                         var items = [];
                         $.each(jsondata[userid], function(key, val){
-                           items.push("<tr data-category='"+val.category+"'>");
+                           items.push("<tr modulename='"+val.modulename+"'>");
                            items.push("<td id=''"+key+"''>"+val.courseworkname+"</td>");
                            items.push("<td id=''"+key+"''>"+val.description+"</td>");
                            items.push("<td id=''"+key+"''>"+val.deadline+"</td>");
