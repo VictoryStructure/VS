@@ -1,5 +1,5 @@
-//referenced from https://github.com/portexe/VanillaCalendar2
-let nav = 0;
+//ref https://www.youtube.com/watch?v=m9OSBJaQTlM&t=2543
+let monthNo = 0;
 let clicked = null;
 let events = localStorage.getItem('events') ? JSON.parse(localStorage.getItem('events')) : [];
 
@@ -30,8 +30,8 @@ function load() {
   const date = new Date();
 
   // increments by month
-  if (nav !== 0) {
-    date.setMonth(new Date().getMonth() + nav);
+  if (monthNo !== 0) {
+    date.setMonth(new Date().getMonth() + monthNo);
   }
 
   const day = date.getDate();
@@ -52,6 +52,7 @@ function load() {
   //days that dont line up with the month 
   const emptyDays = weekdays.indexOf(dateString.split(', ')[0]);
 
+  // Referenced from https://www.w3docs.com/snippets/javascript/how-to-do-string-interpolation-in-javascript.html
   document.getElementById('monthDisplay').innerText = 
     `${date.toLocaleDateString('en-GB', { month: 'long' })} ${year}`;
 
@@ -68,7 +69,7 @@ function load() {
       daySquare.innerText = i - emptyDays;
       const eventForDay = events.find(e => e.date === dayString);
 
-      if (i - emptyDays === day && nav === 0) {
+      if (i - emptyDays === day && monthNo === 0) {
         daySquare.id = 'currentDay';
       }
       if (eventForDay) {
@@ -124,12 +125,12 @@ function deleteEvent() {
 // initialises buttons 
 function initButtons() {
   document.getElementById('nextButton').addEventListener('click', () => {
-    nav++;
+    monthNo++;
     load();
   });
 
   document.getElementById('backButton').addEventListener('click', () => {
-    nav--;
+    monthNo--;
     load();
   });
 
