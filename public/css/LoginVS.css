@@ -66,6 +66,7 @@
 	float: left;
 	display: inline-block;
 	z-index: 2;
+	cursor: pointer;
 }
 .back{
 	position: absolute;
@@ -81,6 +82,7 @@
 	background-color: #ECEAE0; 
     border: solid green;
 	z-index: 2;
+	cursor: pointer;
 }
 
 .header{

@@ -28,5 +28,11 @@
         "username": "test10",
         "email": "test10@gmail.com",
         "password": "$2b$10$Axm2UwPTu4NJ3lS5MV34pei9ooY2/69rA0d520IxQNPrV/nhzFW3e"
+    },
+    {
+        "id": "1652702572410",
+        "username": "test11",
+        "email": "test11@gmail.com",
+        "password": "$2b$10$T2GwushHAWnYu4jDuukmf.UFOCK2MjZor95gJOopo6qCFQvQ8xYoC"
     }
 ]
