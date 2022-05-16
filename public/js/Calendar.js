@@ -1,3 +1,4 @@
+//referenced from https://github.com/portexe/VanillaCalendar
 let nav = 0;
 let clicked = null;
 let events = localStorage.getItem('events') ? JSON.parse(localStorage.getItem('events')) : [];
@@ -37,32 +38,34 @@ function load() {
   const year = dt.getFullYear();
 
   const firstDayOfMonth = new Date(year, month, 1);
+  //to get the next month - 1 day (day has to = 0)
   const daysInMonth = new Date(year, month + 1, 0).getDate();
-  
-  const dateString = firstDayOfMonth.toLocaleDateString('en-us', {
+  //sets to GB format
+  const dateString = firstDayOfMonth.toLocaleDateString('en-GB', {
     weekday: 'long',
     year: 'numeric',
     month: 'numeric',
     day: 'numeric',
   });
-  const paddingDays = weekdays.indexOf(dateString.split(', ')[0]);
-
+  //days that dont line up with the month 
+  const emptyDays = weekdays.indexOf(dateString.split(', ')[0]);
+  //String interpolation implemented allows injecting variables, function calls, arithmetic expressions directly into a string. 
   document.getElementById('monthDisplay').innerText = 
-    `${dt.toLocaleDateString('en-us', { month: 'long' })} ${year}`;
-
+    `${dt.toLocaleDateString('en-GB', { month: 'long' })} ${year}`;
+// wipes out day squares
   calendar.innerHTML = '';
-
-  for(let i = 1; i <= paddingDays + daysInMonth; i++) {
+// Rendering the days including the empty days
+  for(let i = 1; i <= emptyDays + daysInMonth; i++) {
     const daySquare = document.createElement('div');
     daySquare.classList.add('day');
 
-    const dayString = `${month + 1}/${i - paddingDays}/${year}`;
-
-    if (i > paddingDays) {
-      daySquare.innerText = i - paddingDays;
+    const dayString = `${month + 1}/${i - emptyDays}/${year}`;
+//renders empty days first and event listens to 
+    if (i > emptyDays) {
+      daySquare.innerText = i - emptyDays;
       const eventForDay = events.find(e => e.date === dayString);
 
-      if (i - paddingDays === day && nav === 0) {
+      if (i - emptyDays === day && nav === 0) {
         daySquare.id = 'currentDay';
       }
 
@@ -75,9 +78,9 @@ function load() {
 
       daySquare.addEventListener('click', () => openModal(dayString));
     } else {
-      daySquare.classList.add('padding');
+      daySquare.classList.add('emptyDays');
     }
-
+    //renders the days within a month
     calendar.appendChild(daySquare);    
 
 
@@ -116,7 +119,7 @@ function deleteEvent() {
   localStorage.setItem('events', JSON.stringify(events));
   closeModal();
 }
-
+// initialises buttons 
 function initButtons() {
   document.getElementById('nextButton').addEventListener('click', () => {
     nav++;
